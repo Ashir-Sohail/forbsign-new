@@ -12,7 +12,6 @@
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
                             Admin Two
-                            {{-- <span class="user-level">Administrator</span> --}}
                         </span>
                     </a>
                 </div>

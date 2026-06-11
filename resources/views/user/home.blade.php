@@ -254,8 +254,6 @@
                             </div>
                         @endforeach
                     </div>
-                @else
-                    <p class="text-center">No Category available.</p>
                 @endif
                 @if ($allActiveCategories->isNotEmpty())
                     <div class="text-center">
@@ -284,8 +282,6 @@
                             </div>
                         @endforeach
                     </div>
-                @else
-                    <p class="text-center">No brands available.</p>
                 @endif
                 @if ($brands->isNotEmpty())
                     <div class="text-center">

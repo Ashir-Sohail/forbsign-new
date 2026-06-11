@@ -38,22 +38,22 @@ Route::prefix('client')->group(function () {
     //     });
     // });
     Route::controller(ClientController::class)->group(function () {
-        Route::get('/client/login', 'index')->name('client.login');
-        Route::post('/client/after/login', 'login')->name('client.make.login');
-        Route::get('/client-forgot-password',  'showForgotPasswordForm')->name('passwordforgot');
-        Route::post('/client-forgot-password',  'submitForgotPasswordForm')->name('passwordemail');
-        Route::get('/client-reset-password/{token}',  'showResetPasswordForm')->name('showresetpassword');
-        Route::post('/client-reset-password',  'submitResetPasswordForm')->name('updateresetpassword');
+        Route::get('/login', 'index')->name('client.login');
+        Route::post('/after/login', 'login')->name('client.make.login');
+        Route::get('forgot-password',  'showForgotPasswordForm')->name('passwordforgot');
+        Route::post('forgot-password',  'submitForgotPasswordForm')->name('passwordemail');
+        Route::get('reset-password/{token}',  'showResetPasswordForm')->name('showresetpassword');
+        Route::post('reset-password',  'submitResetPasswordForm')->name('updateresetpassword');
     });
     Route::middleware(['auth:client'])->group(function () {
 
-        Route::get('/client-dashboard', [DashboardController::class, 'index'])->name('client.dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('client.dashboard');
 
         // Cients Login Route
         Route::controller(ClientController::class)->group(function () {
             Route::get('/profile', 'profile_view')->name('client.profile.view');
             Route::post('/profile/update', 'update_profile')->name('client.update.profile');
-            Route::post('/client-logout', 'logout')->name('client.logout');
+            Route::post('logout', 'logout')->name('client.logout');
         });
 
         Route::controller(CategoryController::class)->group(function () {
@@ -275,13 +275,13 @@ Route::prefix('client')->group(function () {
 
         // // Clients Route
         // Route::controller(ClientController::class)->group(function () {
-        //     Route::get('/client/index', 'index')->name('admin.client.index');
-        //     Route::get('/admin/client/create', 'create')->name('admin.client.create');
-        //     Route::post('/admin/client/store', 'store')->name('admin.client.store');
-        //     Route::get('/client/edit/{id}', 'edit')->name('admin.client.edit');
-        //     Route::post('/client/update/{id}', 'update')->name('admin.client.update');
-        //     Route::get('/client/status/{id}', 'update_status')->name('admin.client.change.status');
-        //     Route::delete('/client/delete/{id}', 'delete')->name('admin.client.delete');
+        //     Route::get('/index', 'index')->name('admin.client.index');
+        //     Route::get('/admin/create', 'create')->name('admin.client.create');
+        //     Route::post('/admin/store', 'store')->name('admin.client.store');
+        //     Route::get('/edit/{id}', 'edit')->name('admin.client.edit');
+        //     Route::post('/update/{id}', 'update')->name('admin.client.update');
+        //     Route::get('/status/{id}', 'update_status')->name('admin.client.change.status');
+        //     Route::delete('/delete/{id}', 'delete')->name('admin.client.delete');
         // });
 
         // // Email Template Route

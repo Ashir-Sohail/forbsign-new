@@ -19,9 +19,16 @@ use App\Models\Subscribe;
 
 class DashboardController extends Controller
 {
-    function index(): View
+    function index()
     {
         $client = auth()->user();
+        $websiteId = $client->website?->id;
+
+        if (!$websiteId) {
+            return response()->json([
+                'msg' => 'Client does not have a website'
+            ], 404);
+        }
         $pending_orders = Order::whereOrderStatus('pending')->where('website_id', $client->website->id)->count();
         $processing_orders = Order::whereOrderStatus('processing')->where('website_id', $client->website->id)->count();
         $progress_orders = Order::whereOrderStatus('progress')->where('website_id', $client->website->id)->count();

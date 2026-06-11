@@ -17,7 +17,6 @@ use App\Helpers\EmailHelper;
 
 class ClientController extends Controller
 {
-    //
 
     // client login page
     function index()
