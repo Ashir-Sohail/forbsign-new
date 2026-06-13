@@ -35,8 +35,8 @@
                                                         <label id="slider_text" for="name">Set Slider Image *</label>
                                                         <br>
                                                         <img class="admin-img"
-                                                            src="{{ Storage::disk('s3')->url($slider->image) }}"
-                                                            alt="{{ $slider->name }}">
+                                                            src="{{ \App\Helpers\FileUploadHelper::url($slider->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                            alt="{{ $slider->title ?? 'Slider Image' }}">
                                                         <br>
                                                         <span id="chenge_label2" class="mt-1">Image Size Should Be 968 x
                                                             530 </span>

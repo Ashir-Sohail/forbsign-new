@@ -5,7 +5,7 @@
             <div class="col-lg-6" id="prod-preview-c">
                 <div id="prod-preview">
                     <!-- Display the image stored in the database -->
-                    <img data-preview="" src="{{ asset('storage/' . $product->featured_image) }}"
+                    <img data-preview="" src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) }}"
                         alt="{{ $product->name }} live preview">
                 </div>
             </div>

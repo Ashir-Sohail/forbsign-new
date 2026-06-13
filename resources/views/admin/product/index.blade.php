@@ -35,8 +35,9 @@
                                     @foreach ($products as $product)
                                         <tr id="product-bulk-delete">
                                             <td>
-                                                <img src="{{ Storage::disk('s3')->url($product->featured_image) }}"
-                                                    alt="Image Not Found" width="80">
+                                                <img src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                    alt="{{ $product->name ?? 'Product Image' }}"
+                                                    style="width: 80px; height: auto; object-fit: cover;">
                                             </td>
                                             <td>
                                                 {{ $product->name }}

@@ -35,8 +35,9 @@
                                             <div class="form-group">
                                                 <label for="name">Set Image *</label>
                                                 <br>
-                                                <img class="admin-img" src="{{ Storage::disk('s3')->url($blog->image) }}"
-                                                    alt="{{ $blog->title }}">
+                                                <img class="admin-img"
+                                                    src="{{ \App\Helpers\FileUploadHelper::url($blog->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                    alt="{{ $blog->title ?? 'Blog Image' }}">
                                                 <br>
                                                 <span class="mt-1">Image Size Should Be 708 x 277.</span>
                                             </div>

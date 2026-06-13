@@ -39,9 +39,11 @@
                                     @foreach ($categories as $category)
                                         <tr>
                                             <td>
-                                                <img src="{{ Storage::disk('s3')->url($category->image) }}"
-                                                    alt="Image Not Found">
+                                                <img src="{{ \App\Helpers\FileUploadHelper::url($category->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                    alt="{{ $category->name ?? 'Category Image' }}"
+                                                    style="width: 80px; height: auto; object-fit: cover;">
                                             </td>
+
                                             <td>
                                                 {{ $category->name }}
                                             </td>
@@ -77,7 +79,7 @@
                                                 </div>
                                             </td>
 
-                                            
+
                                             <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
                                                 aria-labelledby="confirm-deleteModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
@@ -103,7 +105,9 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancel</button>
-                                                            <form action="{{ route('admin.category.delete', ['id' => $category->id]) }}" class="d-inline btn-ok" method="get">
+                                                            <form
+                                                                action="{{ route('admin.category.delete', ['id' => $category->id]) }}"
+                                                                class="d-inline btn-ok" method="get">
                                                                 <button type="submit"
                                                                     class="btn btn-danger">Delete</button>
                                                             </form>

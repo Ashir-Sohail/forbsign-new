@@ -7,8 +7,7 @@ use App\Models\Service;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\FileUploadHelper;
 
 class ServiceController extends Controller
 {
@@ -38,11 +37,8 @@ class ServiceController extends Controller
         ]);
 
         $filename = '';
-        if ($request->file('image')) {
-            //  Upload to S3
-            $filename = $request->file('image')->store('service', 's3');
-            // Make file publicly accessible
-            Storage::disk('s3')->setVisibility($filename, 'public');
+        if ($request->hasFile('image')) {
+            $filename = FileUploadHelper::upload($request->file('image'), 'service');
         }
 
         $service = new Service();
@@ -68,20 +64,13 @@ class ServiceController extends Controller
         ]);
         $service = Service::findOrFail($id);
 
-        $filename = '';
         if ($request->hasFile('image')) {
+            FileUploadHelper::delete($service->image);
 
-            //  Optionally delete the old image from S3
-            if ($service->image && Storage::disk('s3')->exists($service->image)) {
-                Storage::disk('s3')->delete($service->image);
-            }
-
-            //  Upload new image
-            $filename = $request->file('image')->store('service', 's3');
-            Storage::disk('s3')->setVisibility($filename, 'public');
-
-            //  Save new image path
-            $service->image = $filename;
+            $service->image = FileUploadHelper::upload(
+                $request->file('image'),
+                'service'
+            );
         }
 
         $service->title = $request->title;
@@ -93,9 +82,8 @@ class ServiceController extends Controller
     public function delete($id): RedirectResponse
     {
         $service = Service::findOrFail($id);
-        // Delete image from S3 if it exists
-        if ($service->image && Storage::disk('s3')->exists($service->image)) {
-            Storage::disk('s3')->delete($service->image);
+        if ($service->image) {
+            FileUploadHelper::delete($service->image);
         }
         $service->delete();
         return redirect()->route('admin.service.index')->with('success', 'Service Delete successfully');

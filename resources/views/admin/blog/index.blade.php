@@ -44,8 +44,9 @@
                                     @foreach ($blogs as $blog)
                                         <tr id="blog-bulk-delete">
                                             <td>
-                                                <img src="{{ Storage::disk('s3')->url($blog->image) }}"
-                                                    alt="Image Not Found">
+                                                <img src="{{ \App\Helpers\FileUploadHelper::url($blog->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                    alt="{{ $blog->title ?? 'Blog Image' }}"
+                                                    style="width: 80px; height: auto; object-fit: cover;">
                                             </td>
                                             <td>
                                                 {{ $blog->title }}

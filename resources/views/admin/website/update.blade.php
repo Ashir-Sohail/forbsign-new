@@ -83,7 +83,7 @@
                                             {{-- <div class="form-group">
                                                 <label for="web_icon">Current Web Icon:</label><br>
                                                 @if ($website->web_icon)
-                                                    <img src="{{ asset('storage/' . $website->web_icon) }}" alt="Web Icon"
+                                                    <img src="{{ \App\Helpers\FileUploadHelper::url($website->web_icon) }}" alt="Web Icon"
                                                         width="100">
                                                 @else
                                                     <img src="https://via.placeholder.com/100" alt="No Icon">

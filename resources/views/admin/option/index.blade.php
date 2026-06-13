@@ -41,9 +41,9 @@
                                     @foreach ($options as $option)
                                         <tr>
                                             {{-- <td>
-                                                <img src="{{ asset('storage/' . $option->image) }}" alt="Image Not Found"
-                                                    width="100">
-
+                                                <img src="{{ \App\Helpers\FileUploadHelper::url($option->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                    alt="{{ $option->name ?? 'Option Image' }}"
+                                                    style="width: 80px; height: auto; object-fit: cover;">
                                             </td> --}}
                                             <td>
                                                 {{ $option->option_name_en }}

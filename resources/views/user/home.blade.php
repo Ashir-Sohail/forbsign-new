@@ -17,7 +17,7 @@
                     @endphp
                     <div class="item" data-hash="{{ $hash }}">
                         <div class="slider-wrapper"
-                            style="background-image: url('{{ Storage::disk('s3')->url($slider->image) }}')">
+                            style="background-image: url('{{ \App\Helpers\FileUploadHelper::url($slider->image) }}')">
                             <div class="slider-text">
                                 <p>{{ $slider->title }}</p>
                                 <h2>{{ $slider->details }}</h2>
@@ -43,7 +43,7 @@
                 @endphp
                 <a class="nav-option {{ $index === 0 ? 'active' : '' }}" href="#{{ $hash }}"
                     data-service-index="{{ $index }}">
-                    <img src="{{ Storage::disk('s3')->url($service->image) }}" alt="{{ $service->title }}" loading="lazy">
+                    <img src="{{ \App\Helpers\FileUploadHelper::url($service->image) }}" alt="{{ $service->title }}" loading="lazy">
                     <h6>{{ $service->title }}</h6>
                 </a>
             @endforeach
@@ -58,8 +58,11 @@
             <div class="col-lg-10 ">
                 <div class="about_con left_img">
                     <div class="img_con">
-                        <img src="{{ optional($home_page_value)->image1 ? Storage::disk('s3')->url($home_page_value->image1) : asset('assets/images/blewbannersection1.jpg') }}"
+                        {{-- @dump($home_page_value->image1) --}}
+                         <img src="{{($home_page_value->image1)}}"
                             alt="YOUR DESIGN" loading="lazy">
+                        {{-- <img src="{{ optional($home_page_value)->image1 ? \App\Helpers\FileUploadHelper::url($home_page_value->image1) : asset('assets/images/blewbannersection1.jpg') }}"
+                            alt="YOUR DESIGN" loading="lazy"> --}}
                     </div>
                     <div class="img_text ">
                         <p>{{ $home_page_value->title1 ?? 'N/A' }}</p>
@@ -92,7 +95,7 @@
                     </div>
                     <div class="img_con">
 
-                        <img src="{{ optional($home_page_value)->image2 ? Storage::disk('s3')->url($home_page_value->image2) : asset('assets/images/blewbannersection2.jpg') }}"
+                        <img src="{{ optional($home_page_value)->image2 ? \App\Helpers\FileUploadHelper::url($home_page_value->image2) : asset('assets/images/blewbannersection2.jpg') }}"
                             alt="YOUR DESIGN" loading="lazy">
                     </div>
 
@@ -149,7 +152,7 @@
                 <div class="text-right col-12 ms-auto text-md-end">
                     <img src="{{ asset('assets/imgs/section.jpg') }}" alt="Handcrafted" loading="lazy"
                         style="max-width: 250px;">
-                    {{-- <img src="{{ optional($home_page_value)->image2 ? Storage::disk('s3')->url($home_page_value->image2) : asset('assets/images/blewbannersection2.jpg') }}"
+                    {{-- <img src="{{ optional($home_page_value)->image2 ? \App\Helpers\FileUploadHelper::url($home_page_value->image2) : asset('assets/images/blewbannersection2.jpg') }}"
                             alt="Handcrafted" loading="lazy" style="max-width: 250px;"> --}}
                 </div>
             </div>
@@ -199,7 +202,7 @@
                                     {{-- @dump($catProducts->toArray()) --}}
                                     <div class="col-sm-6 col-md-4 col-lg-3">
                                         <div class="pro_con">
-                                            <img src="{{ Storage::disk('s3')->url($product->featured_image) }}"
+                                            <img src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) }}"
                                                 alt="Product Image" loading="lazy">
                                             <div class="d-flex flex-column gap-1">
 
@@ -246,7 +249,7 @@
                             <div class="col-6 col-md-3 text-center">
                                 <a class="brand-items"
                                     href="{{ route('category.products', ['slug' => $allActiveCategorie->slug]) }}">
-                                    <img src="{{ Storage::disk('s3')->url($allActiveCategorie->image) }}"
+                                    <img src="{{ \App\Helpers\FileUploadHelper::url($allActiveCategorie->image) }}"
                                         alt="{{ $allActiveCategorie->name }}" loading="lazy">
 
                                     <h6 class="heading-30">{{ $allActiveCategorie->name }}</h6>
@@ -274,7 +277,7 @@
                             <div class="col-6 col-md-3 text-center">
                                 <a class="brand-items"
                                     href="{{ route('user.brand.product', ['slug' => $brand->slug]) }}">
-                                    <img src="{{ Storage::disk('s3')->url($brand->image) }}" alt="{{ $brand->name }}"
+                                    <img src="{{ \App\Helpers\FileUploadHelper::url($brand->image) }}" alt="{{ $brand->name }}"
                                         loading="lazy">
 
                                     <h6 class="heading-30">{{ $brand->name }}</h6>
@@ -327,7 +330,7 @@
                 <h3>{{ $homepreferences['customer_heading'] ?? '' }}</h3>
                 <div class="green_line"></div>
             </div>
-            <img src="{{ optional($footer_value)->image1 ? Storage::disk('s3')->url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
+            <img src="{{ optional($footer_value)->image1 ? \App\Helpers\FileUploadHelper::url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
                 alt="Customer Photos" />
         </div>
     </div>

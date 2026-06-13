@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\FileUploadHelper;
 
 class LoginController extends Controller
 {
@@ -78,16 +78,10 @@ class LoginController extends Controller
         }
 
         $filename = '';
-        if ($request->file('image')) {
-            // Optionally delete the old image from S3
-            if ($admin->image && Storage::disk('s3')->exists($admin->image)) {
-                Storage::disk('s3')->delete($admin->image);
-            }
+        if ($request->hasFile('image')) {
+            FileUploadHelper::delete($admin->image);
 
-            // Upload new image to S3
-            $filename = $request->file('image')->store('admin', 's3');
-            // Set visibility to public
-            Storage::disk('s3')->setVisibility($filename, 'public');
+            $filename = FileUploadHelper::upload($request->file('image'), 'admin');
         } else {
             // If no new image is uploaded, retain the existing image path
             $filename = $admin->image;

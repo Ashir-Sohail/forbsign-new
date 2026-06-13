@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Helpers\FileUploadHelper;
 
 class SubCategoryController extends Controller
 {
@@ -30,8 +31,8 @@ class SubCategoryController extends Controller
             'cat_id' => 'required|exists:categories,id'
         ]);
         $filename = '';
-        if ($request->file('image')) {
-            $filename = $request->file('image')->store('category', 'public');
+        if ($request->hasFile('image')) {
+            $filename = FileUploadHelper::upload($request->file('image'), 'category');
         }
 
         $sub_category = new SubCategory();
@@ -57,13 +58,14 @@ class SubCategoryController extends Controller
         ]);
 
         $sub_category = SubCategory::findOrFail($id);
-        $filename = '';
-        if ($request->file('image')) {
-            $filename = $request->file('image')->store('category', 'public');
-        } else {
-            $filename = $sub_category->image;
+        if ($request->hasFile('image')) {
+            FileUploadHelper::delete($sub_category->image);
+
+            $sub_category->image = FileUploadHelper::upload(
+                $request->file('image'),
+                'category'
+            );
         }
-        $sub_category->image = $filename;
         $sub_category->name = $request->name;
         $sub_category->slug = Str::slug($request->name);
         $sub_category->cat_id = $request->cat_id;
@@ -72,7 +74,11 @@ class SubCategoryController extends Controller
     }
     function delete($id): RedirectResponse
     {
-        SubCategory::findOrFail($id)->delete();
+        $sub_category = SubCategory::findOrFail($id);
+        if ($sub_category->image) {
+            FileUploadHelper::delete($sub_category->image);
+        }
+        $sub_category->delete();
         return redirect()->route('admin.sub-category.index')->with('success', 'SubCategory Delete successfully');
     }
 

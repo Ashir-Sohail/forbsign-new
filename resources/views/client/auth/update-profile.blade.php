@@ -59,7 +59,7 @@
                                                     <label for="name">Current Image</label>
                                                     <div class="col-lg-12 pb-1">
                                                         <img src="{{ Auth::guard('client')->user()->image
-                                                            ? Storage::disk('s3')->url(Auth::guard('client')->user()->image)
+                                                            ? \App\Helpers\FileUploadHelper::url(Auth::guard('client')->user()->image)
                                                             : asset('assets/images/placeholder.png') }}"
                                                             alt="..." class="avatar-img rounded-circle"
                                                             style="width: 70px; height: 70px;">

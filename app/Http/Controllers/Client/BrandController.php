@@ -8,10 +8,9 @@ use App\Models\Brand;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Website;
+use App\Helpers\FileUploadHelper;
 
 class BrandController extends Controller
 {
@@ -31,11 +30,8 @@ class BrandController extends Controller
     {
 
         $filename = '';
-        if ($request->file('image')) {
-            //  Upload to S3
-            $filename = $request->file('image')->store('brand', 's3');
-            // Make file publicly accessible
-            Storage::disk('s3')->setVisibility($filename, 'public');
+        if ($request->hasFile('image')) {
+            $filename = FileUploadHelper::upload($request->file('image'), 'brand');
         }
 
         $brand = new Brand();
@@ -63,20 +59,13 @@ class BrandController extends Controller
     {
         $brand = Brand::findOrFail($id);
 
-        $filename = '';
         if ($request->hasFile('image')) {
+            FileUploadHelper::delete($brand->image);
 
-            //  Optionally delete the old image from S3
-            if ($brand->image && Storage::disk('s3')->exists($brand->image)) {
-                Storage::disk('s3')->delete($brand->image);
-            }
-
-            //  Upload new image
-            $filename = $request->file('image')->store('brand', 's3');
-            Storage::disk('s3')->setVisibility($filename, 'public');
-
-            //  Save new image path
-            $brand->image = $filename;
+            $brand->image = FileUploadHelper::upload(
+                $request->file('image'),
+                'brand'
+            );
         }
 
         $brand->name = $request->name;
@@ -93,12 +82,10 @@ class BrandController extends Controller
     public function delete($id): RedirectResponse
     {
         $brand = Brand::findOrFail($id);
-        // Delete image from S3 if it exists
-        if ($brand->image && Storage::disk('s3')->exists($brand->image)) {
-            Storage::disk('s3')->delete($brand->image);
+        if ($brand->image) {
+            FileUploadHelper::delete($brand->image);
         }
 
-        // Delete the brand record from DB
         $brand->delete();
 
         return redirect()->route('client.brand.index')->with('success', 'Brand Delete successfully');

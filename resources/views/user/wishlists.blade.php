@@ -41,7 +41,7 @@
                                                 <div class="product-item">
                                                     <a class="product-thumb"
                                                         href="{{ route('user.product_details', ['slug' => $wishlist->product->slug]) }}">
-                                                        <img src="{{ Storage::disk('s3')->url($wishlist->product->featured_image) }}"
+                                                        <img src="{{ \App\Helpers\FileUploadHelper::url($wishlist->product->featured_image) }}"
                                                             alt="Product">
 
                                                     </a>

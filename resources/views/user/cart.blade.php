@@ -60,9 +60,9 @@
                                                         value="{{ $id }}">
                                                 </td>
                                                 <td>
-                                                    {{-- <img src="{{ asset('storage/' . $product['featured_image']) }}"
+                                                    {{-- <img src="{{ \App\Helpers\FileUploadHelper::url($product['featured_image']) }}"
                                                             alt="" loading="lazy" class="product-img"> --}}
-                                                    <img src="{{ Storage::disk('s3')->url($product['featured_image']) }}"
+                                                    <img src="{{ \App\Helpers\FileUploadHelper::url($product['featured_image']) }}"
                                                         alt="Product Image" loading="lazy" class="product-img">
 
                                                 </td>

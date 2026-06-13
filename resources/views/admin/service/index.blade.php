@@ -52,8 +52,9 @@
                                 @foreach ($services as $service)
                                     <tr>
                                         <td>
-                                            <img src="{{ Storage::disk('s3')->url($service->image) }}"
-                                                alt="Image Not Found">
+                                            <img src="{{ \App\Helpers\FileUploadHelper::url($service->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                alt="{{ $service->title ?? 'Service Image' }}"
+                                                style="width: 80px; height: auto; object-fit: cover;">
                                         </td>
                                         <td>
                                             {{ $service->title }}

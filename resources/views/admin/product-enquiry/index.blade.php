@@ -48,7 +48,7 @@
                                             <td>{{ Str::limit($enquiry->message, 50) }}</td>
                                             <td>
                                                 @if ($enquiry->file)
-                                                    <a href="{{ Storage::disk('s3')->url($enquiry->file) }}"
+                                                    <a href="{{ \App\Helpers\FileUploadHelper::url($enquiry->file) }}"
                                                         target="_blank">View
                                                         File</a>
                                                 @else

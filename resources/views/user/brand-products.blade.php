@@ -32,7 +32,7 @@
                 @foreach ($products as $product)
                     <div class="col-sm-6 col-md-3 mt-4">
                         <div class="pro_con store p-1 border-0">
-                            <img src="{{ Storage::disk('s3')->url($product->featured_image) }}" alt="Custom Favorite"
+                            <img src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) }}" alt="Custom Favorite"
                                 loading="lazy">
                             <div class="d-flex flex-column gap-1">
                                 <h4 class="title m-0">
@@ -104,7 +104,7 @@
                 <h3>Customer Photos</h3>
                 <div class="green_line"></div>
             </div>
-            <img src="{{ optional($footer_value)->image1 ? Storage::disk('s3')->url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
+            <img src="{{ optional($footer_value)->image1 ? \App\Helpers\FileUploadHelper::url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
                 alt="Customer Photos" />
         </div>
     </div>

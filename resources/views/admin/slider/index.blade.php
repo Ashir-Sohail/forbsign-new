@@ -48,8 +48,9 @@
                                     @foreach ($sliders as $slider)
                                         <tr>
                                             <td>
-                                                <img src="{{ Storage::disk('s3')->url($slider->image) }}"
-                                                    alt="Image Not Found">
+                                                <img src="{{ \App\Helpers\FileUploadHelper::url($slider->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                    alt="{{ $slider->title ?? 'Slider Image' }}"
+                                                    style="width: 80px; height: auto; object-fit: cover;">
                                             </td>
                                             <td>
                                                 {{ $slider->title }}

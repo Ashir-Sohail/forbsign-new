@@ -115,7 +115,7 @@
 
                                                                     @if (!empty($home_page_value->image1))
                                                                         <img class="admin-setting-img"
-                                                                            src="{{ Storage::disk('s3')->url($home_page_value->image1) }}"
+                                                                            src="{{ \App\Helpers\FileUploadHelper::url($home_page_value->image1) }}"
                                                                             alt="Logo">
                                                                     @else
                                                                         <img class="admin-setting-img"
@@ -170,7 +170,7 @@
                                                                     <br>
                                                                     @if (!empty($home_page_value->image2))
                                                                         <img class="admin-setting-img"
-                                                                            src="{{ Storage::disk('s3')->url($home_page_value->image2) }}"
+                                                                            src="{{ \App\Helpers\FileUploadHelper::url($home_page_value->image2) }}"
                                                                             alt="Logo">
                                                                     @else
                                                                         <img class="admin-setting-img"
@@ -268,7 +268,7 @@
                                                                                             <div class="col-lg-12 pb-1">
                                                                                                 @if (!empty($media_value->logo))
                                                                                                     <img class="admin-setting-img"
-                                                                                                        src="{{ Storage::disk('s3')->url($media_value->logo) }}"
+                                                                                                        src="{{ \App\Helpers\FileUploadHelper::url($media_value->logo) }}"
                                                                                                         alt="Logo">
                                                                                                 @else
                                                                                                     <img class="admin-setting-img"
@@ -320,7 +320,7 @@
 
                                                                                                 @if (!empty($media_value->logo))
                                                                                                     <img class="admin-setting-img my-mw-100"
-                                                                                                        src="{{ $media_value?->favicon ? Storage::disk('s3')->url($media_value->favicon) : asset('images/placeholder.png') }}"
+                                                                                                        src="{{ $media_value?->favicon ? \App\Helpers\FileUploadHelper::url($media_value->favicon) : asset('images/placeholder.png') }}"
                                                                                                         alt="No Image Found">
                                                                                                 @else
                                                                                                     <img class="admin-setting-img"
@@ -384,7 +384,7 @@
 
                                                                                                 @if (!empty($media_value->logo))
                                                                                                     <img class="admin-setting-img my-mw-100"
-                                                                                                        src="{{ $media_value?->loader ? asset('storage/' . $media_value->loader) : asset('images/placeholder.png') }}"
+                                                                                                        src="{{ $media_value?->loader ? \App\Helpers\FileUploadHelper::url($media_value->loader) : asset('images/placeholder.png') }}"
                                                                                                         alt="No Image Found">
                                                                                                 @else
                                                                                                     <img class="admin-setting-img"
@@ -491,7 +491,7 @@
 
                                                                                             @if (!empty($footer_value->image1))
                                                                                                 <img class="admin-img"
-                                                                                                    src="{{ Storage::disk('s3')->url($footer_value->image1) }}"
+                                                                                                    src="{{ \App\Helpers\FileUploadHelper::url($footer_value->image1) }}"
                                                                                                     alt="Footer Image">
                                                                                             @else
                                                                                                 <img class="admin-img"
@@ -647,7 +647,7 @@
                                                                     <label for="name">Image 6 *</label>
                                                                     <br>
                                                                     <img class="admin-img"
-                                                                        src="{{ $first_three_column_value?->image1 ? asset('storage/' . $first_three_column_value->image1) : asset('images/placeholder.png') }}"
+                                                                        src="{{ $first_three_column_value?->image1 ? \App\Helpers\FileUploadHelper::url($first_three_column_value->image1) : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
                                                                     <br>
                                                                     <span class="mt-1">Image Size Should Be 496 x
@@ -690,7 +690,7 @@
                                                                     <label for="name">Image 2 *</label>
                                                                     <br>
                                                                     <img class="admin-img"
-                                                                        src="{{ $first_three_column_value?->image2 ? asset('storage/' . $first_three_column_value->image2) : asset('images/placeholder.png') }}"
+                                                                        src="{{ $first_three_column_value?->image2 ? \App\Helpers\FileUploadHelper::url($first_three_column_value->image2) : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
 
                                                                     <br>
@@ -733,7 +733,7 @@
                                                                     <label for="name">Image 3 *</label>
                                                                     <br>
                                                                     <img class="admin-img"
-                                                                        src="{{ $first_three_column_value?->image3 ? asset('storage/' . $first_three_column_value->image3) : asset('images/placeholder.png') }}"
+                                                                        src="{{ $first_three_column_value?->image3 ? \App\Helpers\FileUploadHelper::url($first_three_column_value->image3) : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
 
                                                                     <br>
@@ -800,7 +800,7 @@
                                                                     <label for="name">Image 1 *</label>
                                                                     <br>
                                                                     <img class="admin-img"
-                                                                        src="{{ $second_three_column_value?->image1 ? asset('storage/' . $second_three_column_value->image1) : asset('images/placeholder.png') }}"
+                                                                        src="{{ $second_three_column_value?->image1 ? \App\Helpers\FileUploadHelper::url($second_three_column_value->image1) : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
 
                                                                     <br>
@@ -845,7 +845,7 @@
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $second_three_column_value?->image2
-                                                                            ? asset('storage/' . $second_three_column_value->image2)
+                                                                            ? \App\Helpers\FileUploadHelper::url($second_three_column_value->image2)
                                                                             : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
 
@@ -890,7 +890,7 @@
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $second_three_column_value?->image3
-                                                                            ? asset('storage/' . $second_three_column_value->image3)
+                                                                            ? \App\Helpers\FileUploadHelper::url($second_three_column_value->image3)
                                                                             : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
 
@@ -957,7 +957,7 @@
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $four_three_column_value?->image1
-                                                                            ? asset('storage/' . $four_three_column_value->image1)
+                                                                            ? \App\Helpers\FileUploadHelper::url($four_three_column_value->image1)
                                                                             : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
 
@@ -1003,7 +1003,7 @@
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $four_three_column_value?->image2
-                                                                            ? asset('storage/' . $four_three_column_value->image2)
+                                                                            ? \App\Helpers\FileUploadHelper::url($four_three_column_value->image2)
                                                                             : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
 
@@ -1048,7 +1048,7 @@
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $four_three_column_value?->image3
-                                                                            ? asset('storage/' . $four_three_column_value->image3)
+                                                                            ? \App\Helpers\FileUploadHelper::url($four_three_column_value->image3)
                                                                             : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
 
@@ -1115,7 +1115,7 @@
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $third_two_column_value?->image1
-                                                                            ? asset('storage/' . $third_two_column_value->image1)
+                                                                            ? \App\Helpers\FileUploadHelper::url($third_two_column_value->image1)
                                                                             : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
 
@@ -1161,7 +1161,7 @@
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $third_two_column_value?->image2
-                                                                            ? asset('storage/' . $third_two_column_value->image2)
+                                                                            ? \App\Helpers\FileUploadHelper::url($third_two_column_value->image2)
                                                                             : asset('images/placeholder.png') }}"
                                                                         alt="No Image Found">
 

@@ -7,27 +7,26 @@ use App\Models\Blog;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\FileUploadHelper;
 
 class BlogController extends Controller
 {
 
-    public function uploadImage(Request $request)
-    {
-        if ($request->hasFile('upload')) {
-            $originName = $request->file('upload')->getClientOriginalName();
-            $fileName = pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName . '_' . time() . '.' . $extension;
+    // public function uploadImage(Request $request)
+    // {
+    //     if ($request->hasFile('upload')) {
+    //         $originName = $request->file('upload')->getClientOriginalName();
+    //         $fileName = pathinfo($originName, PATHINFO_FILENAME);
+    //         $extension = $request->file('upload')->getClientOriginalExtension();
+    //         $fileName = $fileName . '_' . time() . '.' . $extension;
 
-            $request->file('upload')->move(public_path('media'), $fileName);
+    //         $request->file('upload')->move(public_path('media'), $fileName);
 
-            $url = asset('media/' . $fileName);
+    //         $url = asset('media/' . $fileName);
 
-            return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
-        }
-    }
+    //         return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
+    //     }
+    // }
 
     public function index(): View
     {
@@ -55,11 +54,14 @@ class BlogController extends Controller
         $blog = new Blog();
 
         $filename = '';
-        if ($request->file('image')) {
-            //  Upload to S3
-            $filename = $request->file('image')->store('blog', 's3');
-            // Make file publicly accessible
-            Storage::disk('s3')->setVisibility($filename, 'public');
+        // if ($request->file('image')) {
+        //     //  Upload to S3
+        //     $filename = $request->file('image')->store('blog', 's3');
+        //     // Make file publicly accessible
+        //     Storage::disk('s3')->setVisibility($filename, 'public');
+        // }
+        if ($request->hasFile('image')) {
+            $filename = FileUploadHelper::upload($request->file('image'), 'blog');
         }
 
         $blog->image = $filename;
@@ -95,14 +97,9 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
 
         if ($request->hasFile('image')) {
-            if ($blog->image && Storage::disk('s3')->exists($blog->image)) {
-                Storage::disk('s3')->delete($blog->image);
-            }
+            FileUploadHelper::delete($blog->image);
 
-            $filename = $request->file('image')->store('blog', 's3');
-            Storage::disk('s3')->setVisibility($filename, 'public');
-
-            $blog->image = $filename;
+            $blog->image = FileUploadHelper::upload($request->file('image'), 'blog');
         }
 
 
@@ -120,8 +117,8 @@ class BlogController extends Controller
     public function delete($id): RedirectResponse
     {
         $blog = Blog::findOrFail($id);
-        if ($blog->image && Storage::disk('s3')->exists($blog->image)) {
-            Storage::disk('s3')->delete($blog->image);
+        if ($blog->image) {
+            FileUploadHelper::delete($blog->image);
         }
 
         $blog->delete();

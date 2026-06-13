@@ -12,7 +12,7 @@
 
         <a href="/" class="logo">
             @if (!empty($media_value->logo))
-                <img src="{{ Storage::disk('s3')->url($media_value->logo) }}" alt="ForbSign Logo" loading="lazy"
+                <img src="{{ \App\Helpers\FileUploadHelper::url($media_value->logo) }}" alt="ForbSign Logo" loading="lazy"
                     class="navbar-brand">
             @else
                 <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Default Logo" class="navbar-brand">
@@ -48,7 +48,7 @@
                     <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="" aria-expanded="false">
                         <div class="avatar-sm avatar avatar-sm">
                             <img src="{{ Auth::guard('admin')->user()->image
-                                ? Storage::disk('s3')->url(Auth::guard('admin')->user()->image)
+                                ? \App\Helpers\FileUploadHelper::url(Auth::guard('admin')->user()->image)
                                 : asset('assets/images/placeholder.png') }}"
                                 alt="..." class="avatar-img rounded-circle">
                         </div>
@@ -58,7 +58,7 @@
                             <div class="user-box py-3">
                                 <div class="avatar-lg">
                                     <img src="{{ Auth::guard('admin')->user()->image
-                                        ? Storage::disk('s3')->url(Auth::guard('admin')->user()->image)
+                                        ? \App\Helpers\FileUploadHelper::url(Auth::guard('admin')->user()->image)
                                         : asset('assets/images/placeholder.png') }}"
                                         alt="..." class="avatar-img rounded-circle">
                                 </div>

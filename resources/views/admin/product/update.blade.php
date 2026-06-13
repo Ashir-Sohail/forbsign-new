@@ -66,7 +66,7 @@
                                     <div class="form-group pb-0 pt-0 mt-0 mb-0">
                                         @if ($product->featured_image)
                                             <img class="admin-img lg"
-                                                src="{{ \Illuminate\Support\Facades\Storage::disk('s3')->url($product->featured_image) }}"
+                                                src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) ?? asset('public/assets/images/placeholder.png') }}"
                                                 @if ($viewMode) disabled @endif>
                                         @endif
                                     </div>
@@ -113,7 +113,7 @@
                                                 @foreach ($imageArray as $img)
                                                     <div class="existing-image-wrapper position-relative"
                                                         data-path="{{ $img }}">
-                                                        <img src="{{ Storage::disk('s3')->url($img) }}" alt="Product Image"
+                                                        <img src="{{ \App\Helpers\FileUploadHelper::url($img) }}" alt="Product Image"
                                                             style="width: 100px; height: 100px; object-fit: cover; border-radius: 5px; border: 2px solid #28a745;">
                                                         <input type="hidden" name="existing_images[]"
                                                             value="{{ $img }}">

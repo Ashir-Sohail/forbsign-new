@@ -9,8 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\FileUploadHelper;
 
 class DashboardController extends Controller
 {
@@ -44,24 +43,13 @@ class DashboardController extends Controller
 
         $user = User::findOrFail(auth()->id());
 
-        // Upload new profile image to S3 (if provided)
         if ($request->hasFile('photo')) {
-            // Delete the old image from S3 if it exists
-            if ($user->photo && Storage::disk('s3')->exists($user->photo)) {
-                Storage::disk('s3')->delete($user->photo);
-            }
+            FileUploadHelper::delete($user->photo);
 
-            // Upload new image to "users/{user_id}/profile.jpg"
-            $path = $request->file('photo')->storeAs(
-                "users/{$user->id}",
-                'profile.jpg',
-                's3'
+            $user->photo = FileUploadHelper::upload(
+                $request->file('photo'),
+                "users/{$user->id}"
             );
-
-            // Make image publicly accessible (optional)
-            Storage::disk('s3')->setVisibility($path, 'public');
-
-            $user->photo = $path;
         }
 
         $user->first_name = $request->first_name;

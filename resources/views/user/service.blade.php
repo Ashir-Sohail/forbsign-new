@@ -31,7 +31,7 @@
                     @if ($services->isNotEmpty())
                         @foreach ($services as $service)
                             <div class="col-sm-6 col-md-4 service p-sm-0">
-                                <img src="{{ Storage::disk('s3')->url($service->image) }}" alt="{{ $service->title }}"
+                                <img src="{{ \App\Helpers\FileUploadHelper::url($service->image) }}" alt="{{ $service->title }}"
                                     loading="lazy">
 
                                 <div class="bg-gr">
@@ -84,7 +84,7 @@
                 <h3>{{ $servicepreferences['customer_heading'] ?? '' }}</h3>
                 <div class="green_line"></div>
             </div>
-              <img src="{{ optional($footer_value)->image1 ? Storage::disk('s3')->url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
+              <img src="{{ optional($footer_value)->image1 ? \App\Helpers\FileUploadHelper::url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
                 alt="Customer Photos" />
         </div>
     </div>

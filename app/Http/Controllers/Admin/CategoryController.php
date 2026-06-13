@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\FileUploadHelper;
 
 class CategoryController extends Controller
 {
@@ -40,13 +40,10 @@ class CategoryController extends Controller
 
         ]);
 
-      
+
         $filename = '';
-        if ($request->file('image')) {
-            //  Upload to S3
-            $filename = $request->file('image')->store('category', 's3');
-            // Make file publicly accessible
-            Storage::disk('s3')->setVisibility($filename, 'public');
+        if ($request->hasFile('image')) {
+            $filename = FileUploadHelper::upload($request->file('image'), 'category');
         }
 
         $category = new Category();
@@ -84,21 +81,12 @@ class CategoryController extends Controller
         ]);
 
         $category = Category::findOrFail($id);
-        
-        $filename = '';
+
         if ($request->hasFile('image')) {
 
-            //  Optionally delete the old image from S3
-            if ($category->image && Storage::disk('s3')->exists($category->image)) {
-                Storage::disk('s3')->delete($category->image);
-            }
+            FileUploadHelper::delete($category->image);
 
-            //  Upload new image
-            $filename = $request->file('image')->store('category', 's3');
-            Storage::disk('s3')->setVisibility($filename, 'public');
-
-            //  Save new image path
-            $category->image = $filename;
+            $category->image = FileUploadHelper::upload($request->file('image'), 'category');
         }
 
         $category->name = $request->name;
@@ -117,9 +105,8 @@ class CategoryController extends Controller
     public function delete($id): RedirectResponse
     {
         $category = Category::findOrFail($id);
-        if ($category->image && Storage::disk('s3')->exists($category->image)) {
-            Storage::disk('s3')->delete($category->image);
-        }
+        // Use the helper to handle deletion dynamically (S3 or local public storage)
+        FileUploadHelper::delete($category->image);
         $category->delete();
         return redirect()->route('admin.category.index')->with('success', 'Category Delete successfully');
     }

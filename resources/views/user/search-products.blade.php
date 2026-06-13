@@ -17,7 +17,7 @@
                 @foreach ($products as $product)
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="pro_con my-4">
-                                  <img src="{{Storage::disk('s3')->url($product->featured_image)}}" alt="Product Image"
+                                  <img src="{{\App\Helpers\FileUploadHelper::url($product->featured_image)}}" alt="Product Image"
                                 loading="lazy">
                             <div class="d-flex flex-column gap-1">
                                 <a href="{{ route('user.product_details', ['slug' => $product->slug]) }}">

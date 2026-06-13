@@ -9,8 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Website;
+use App\Helpers\FileUploadHelper;
 
 class CategoryController extends Controller
 {
@@ -44,11 +44,8 @@ class CategoryController extends Controller
 
 
         $filename = '';
-        if ($request->file('image')) {
-            //  Upload to S3
-            $filename = $request->file('image')->store('category', 's3');
-            // Make file publicly accessible
-            Storage::disk('s3')->setVisibility($filename, 'public');
+        if ($request->hasFile('image')) {
+            $filename = FileUploadHelper::upload($request->file('image'), 'category');
         }
 
         $category = new Category();
@@ -73,7 +70,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $categories = Category::with('children')->whereNull('parent_id')->get();
         $websites = Website::where('client_id', auth()->guard('client')->id())->get();
-        return view('client.category.update', compact('category', 'categories','websites'));
+        return view('client.category.update', compact('category', 'categories', 'websites'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -89,22 +86,13 @@ class CategoryController extends Controller
         ]);
 
         $category = Category::findOrFail($id);
-
-        $filename = '';
         if ($request->hasFile('image')) {
 
-            //  Optionally delete the old image from S3
-            if ($category->image && Storage::disk('s3')->exists($category->image)) {
-                Storage::disk('s3')->delete($category->image);
-            }
+            FileUploadHelper::delete($category->image);
 
-            //  Upload new image
-            $filename = $request->file('image')->store('category', 's3');
-            Storage::disk('s3')->setVisibility($filename, 'public');
-
-            //  Save new image path
-            $category->image = $filename;
+            $category->image = FileUploadHelper::upload($request->file('image'), 'category');
         }
+
         $category->website_id = $request->website_id;
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
@@ -122,9 +110,7 @@ class CategoryController extends Controller
     public function delete($id): RedirectResponse
     {
         $category = Category::findOrFail($id);
-        if ($category->image && Storage::disk('s3')->exists($category->image)) {
-            Storage::disk('s3')->delete($category->image);
-        }
+        FileUploadHelper::delete($category->image);
         $category->delete();
         return redirect()->route('admin.category.index')->with('success', 'Category Delete successfully');
     }

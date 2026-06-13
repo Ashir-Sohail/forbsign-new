@@ -1,6 +1,4 @@
 @php
-    use Illuminate\Support\Facades\Storage;
-
     $media_setting = \App\Models\ManageSite::where('key', 'media')->first();
     $footer_setting = \App\Models\ManageSite::where('key', 'footer')->first();
 
@@ -36,11 +34,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     @php
         $favicon = optional($media_value)->favicon
-            ? Storage::disk('s3')->url($media_value->favicon)
+            ? \App\Helpers\FileUploadHelper::url($media_value->favicon)
             : asset('assets/images/fav-icon.svg');
     @endphp
     <!-- Favicon Icons-->
-    {{-- <link rel="icon" type="image/png" href="{{ asset('storage') }}/{{ $media_value->favicon }}"> --}}
+    {{-- <link rel="icon" type="image/png" href="{{ \App\Helpers\FileUploadHelper::url($media_value->favicon }}"> --}}
     <link rel="icon" type="image/png" href="{{ $favicon }}">
     <link rel="apple-touch-icon" href="{{ $favicon }}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ $favicon }}">
@@ -128,7 +126,7 @@
             <div class="container-fluid bg-white">
                 <a class="logo" href="{{ route('user.home') }}">
                     @if (!empty($media_value->logo))
-                        <img src="{{ Storage::disk('s3')->url($media_value->logo) }}" alt="ForbSign Logo"
+                        <img src="{{ \App\Helpers\FileUploadHelper::url($media_value->logo) }}" alt="ForbSign Logo"
                             loading="lazy">
                     @else
                         <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Default Logo">

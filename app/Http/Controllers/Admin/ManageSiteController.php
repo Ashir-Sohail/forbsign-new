@@ -7,7 +7,7 @@ use App\Models\ManageSite;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\FileUploadHelper;
 
 class ManageSiteController extends Controller
 {
@@ -72,38 +72,26 @@ class ManageSiteController extends Controller
         $manage_site = ManageSite::where('key', $request->key)->first();
 
         // Handle to  upload and manage media files
-        if ($request->file('logo')) {
-            // Delete old logo from S3
-            if ($request->old_logo && Storage::disk('s3')->exists($request->old_logo)) {
-                Storage::disk('s3')->delete($request->old_logo);
-            }
+        if ($request->hasFile('logo')) {
+            FileUploadHelper::delete($request->old_logo);
 
-            $logo = $request->file('logo')->store('media', 's3');
-            Storage::disk('s3')->setVisibility($logo, 'public');
+            $logo = FileUploadHelper::upload($request->file('logo'), 'media');
         } else {
             $logo = $request->old_logo;
         }
 
-        if ($request->file('favicon')) {
-            // Delete old favicon from S3 if it exists
-            if ($request->old_favicon && Storage::disk('s3')->exists($request->old_favicon)) {
-                Storage::disk('s3')->delete($request->old_favicon);
-            }
+        if ($request->hasFile('favicon')) {
+            FileUploadHelper::delete($request->old_favicon);
 
-            $favicon = $request->file('favicon')->store('media', 's3');
-            Storage::disk('s3')->setVisibility($favicon, 'public');
+            $favicon = FileUploadHelper::upload($request->file('favicon'), 'media');
         } else {
             $favicon = $request->old_favicon;
         }
 
-        if ($request->file('loader')) {
-            // Delete old loader image from S3 if it exists
-            if ($request->old_loader && Storage::disk('s3')->exists($request->old_loader)) {
-                Storage::disk('s3')->delete($request->old_loader);
-            }
+        if ($request->hasFile('loader')) {
+            FileUploadHelper::delete($request->old_loader);
 
-            $loader = $request->file('loader')->store('media', 's3');
-            Storage::disk('s3')->setVisibility($loader, 'public');
+            $loader = FileUploadHelper::upload($request->file('loader'), 'media');
         } else {
             $loader = $request->old_loader;
         }
@@ -134,12 +122,9 @@ class ManageSiteController extends Controller
         $manage_site = ManageSite::where('key', $request->key)->first();
 
         $filename1 = $request->old_image1;
-        if ($request->file('image1')) {
-            if ($request->old_image1 && Storage::disk('s3')->exists($request->old_image1)) {
-                Storage::disk('s3')->delete($request->old_image1);
-            }
-            $filename1 = $request->file('image1')->store('footer', 's3');
-            Storage::disk('s3')->setVisibility($filename1, 'public');
+        if ($request->hasFile('image1')) {
+            FileUploadHelper::delete($request->old_image1);
+            $filename1 = FileUploadHelper::upload($request->file('image1'), 'footer');
         }
 
         $value = [
@@ -204,22 +189,16 @@ class ManageSiteController extends Controller
         // dd($request->all());
         // Handle image1
         $filename1 = $request->old_image1;
-        if ($request->file('image1')) {
-            if ($request->old_image1 && Storage::disk('s3')->exists($request->old_image1)) {
-                Storage::disk('s3')->delete($request->old_image1);
-            }
-            $filename1 = $request->file('image1')->store('home_page', 's3');
-            Storage::disk('s3')->setVisibility($filename1, 'public');
+        if ($request->hasFile('image1')) {
+            FileUploadHelper::delete($request->old_image1);
+            $filename1 = FileUploadHelper::upload($request->file('image1'), 'home_page');
         }
 
         // Handle image2
         $filename2 = $request->old_image2;
-        if ($request->file('image2')) {
-            if ($request->old_image2 && Storage::disk('s3')->exists($request->old_image2)) {
-                Storage::disk('s3')->delete($request->old_image2);
-            }
-            $filename2 = $request->file('image2')->store('home_page', 's3');
-            Storage::disk('s3')->setVisibility($filename2, 'public');
+        if ($request->hasFile('image2')) {
+            FileUploadHelper::delete($request->old_image2);
+            $filename2 = FileUploadHelper::upload($request->file('image2'), 'home_page');
         }
 
         $value = [
@@ -243,21 +222,24 @@ class ManageSiteController extends Controller
     {
         $manage_site = ManageSite::where('key', $request->key)->first();
         $filename1 = '';
-        if ($request->file('image1')) {
-            $filename1 = $request->file('image1')->store('home_page', 'public');
+        if ($request->hasFile('image1')) {
+            FileUploadHelper::delete($request->old_image1);
+            $filename1 = FileUploadHelper::upload($request->file('image1'), 'home_page');
         } else {
             $filename1 = $request->old_image1;
         }
 
         $filename2 = '';
-        if ($request->file('image2')) {
-            $filename2 = $request->file('image2')->store('home_page', 'public');
+        if ($request->hasFile('image2')) {
+            FileUploadHelper::delete($request->old_image2);
+            $filename2 = FileUploadHelper::upload($request->file('image2'), 'home_page');
         } else {
             $filename2 = $request->old_image2;
         }
         $filename3 = '';
-        if ($request->file('image3')) {
-            $filename3 = $request->file('image3')->store('home_page', 'public');
+        if ($request->hasFile('image3')) {
+            FileUploadHelper::delete($request->old_image3);
+            $filename3 = FileUploadHelper::upload($request->file('image3'), 'home_page');
         } else {
             $filename3 = $request->old_image3;
         }
@@ -283,21 +265,24 @@ class ManageSiteController extends Controller
     {
         $manage_site = ManageSite::where('key', $request->key)->first();
         $filename1 = '';
-        if ($request->file('image1')) {
-            $filename1 = $request->file('image1')->store('home_page', 'public');
+        if ($request->hasFile('image1')) {
+            FileUploadHelper::delete($request->old_image1);
+            $filename1 = FileUploadHelper::upload($request->file('image1'), 'home_page');
         } else {
             $filename1 = $request->old_image1;
         }
 
         $filename2 = '';
-        if ($request->file('image2')) {
-            $filename2 = $request->file('image2')->store('home_page', 'public');
+        if ($request->hasFile('image2')) {
+            FileUploadHelper::delete($request->old_image2);
+            $filename2 = FileUploadHelper::upload($request->file('image2'), 'home_page');
         } else {
             $filename2 = $request->old_image2;
         }
         $filename3 = '';
-        if ($request->file('image3')) {
-            $filename3 = $request->file('image3')->store('home_page', 'public');
+        if ($request->hasFile('image3')) {
+            FileUploadHelper::delete($request->old_image3);
+            $filename3 = FileUploadHelper::upload($request->file('image3'), 'home_page');
         } else {
             $filename3 = $request->old_image3;
         }
@@ -323,15 +308,17 @@ class ManageSiteController extends Controller
     {
         $manage_site = ManageSite::where('key', $request->key)->first();
         $filename1 = '';
-        if ($request->file('image1')) {
-            $filename1 = $request->file('image1')->store('home_page', 'public');
+        if ($request->hasFile('image1')) {
+            FileUploadHelper::delete($request->old_image1);
+            $filename1 = FileUploadHelper::upload($request->file('image1'), 'home_page');
         } else {
             $filename1 = $request->old_image1;
         }
 
         $filename2 = '';
-        if ($request->file('image2')) {
-            $filename2 = $request->file('image2')->store('home_page', 'public');
+        if ($request->hasFile('image2')) {
+            FileUploadHelper::delete($request->old_image2);
+            $filename2 = FileUploadHelper::upload($request->file('image2'), 'home_page');
         } else {
             $filename2 = $request->old_image2;
         }
@@ -353,21 +340,24 @@ class ManageSiteController extends Controller
     {
         $manage_site = ManageSite::where('key', $request->key)->first();
         $filename1 = '';
-        if ($request->file('image1')) {
-            $filename1 = $request->file('image1')->store('home_page', 'public');
+        if ($request->hasFile('image1')) {
+            FileUploadHelper::delete($request->old_image1);
+            $filename1 = FileUploadHelper::upload($request->file('image1'), 'home_page');
         } else {
             $filename1 = $request->old_image1;
         }
 
         $filename2 = '';
-        if ($request->file('image2')) {
-            $filename2 = $request->file('image2')->store('home_page', 'public');
+        if ($request->hasFile('image2')) {
+            FileUploadHelper::delete($request->old_image2);
+            $filename2 = FileUploadHelper::upload($request->file('image2'), 'home_page');
         } else {
             $filename2 = $request->old_image2;
         }
         $filename3 = '';
-        if ($request->file('image3')) {
-            $filename3 = $request->file('image3')->store('home_page', 'public');
+        if ($request->hasFile('image3')) {
+            FileUploadHelper::delete($request->old_image3);
+            $filename3 = FileUploadHelper::upload($request->file('image3'), 'home_page');
         } else {
             $filename3 = $request->old_image3;
         }

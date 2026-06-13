@@ -3,7 +3,7 @@
         {{-- @dump($products->toArray()) --}}
             <div class="col-sm-6 col-md-4">
                 <div class="pro_con store p-1 border-0">
-                    <img src="{{Storage::disk('s3')->url($product->featured_image)}}" alt="Custom Favorite" loading="lazy">
+                    <img src="{{\App\Helpers\FileUploadHelper::url($product->featured_image)}}" alt="Custom Favorite" loading="lazy">
                     <div class="d-flex flex-column gap-1">
                         <h4 class="title m-0">
                             {{-- @dump($product->name) --}}

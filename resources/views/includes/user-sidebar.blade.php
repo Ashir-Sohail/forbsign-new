@@ -4,8 +4,8 @@
             <div class="user-avatar">
 
                 @if (Auth::user()->photo != 'null')
-                    {{-- <img id="avater_photo_view" src="{{ asset('storage') }}/{{ Auth::user()->photo }}" /> --}}
-                    <img id="avater_photo_view" src="{{ Storage::disk('s3')->url(Auth::user()->photo) }}" />
+                    {{-- <img id="avater_photo_view" src="{{ \App\Helpers\FileUploadHelper::url(Auth::user()->photo }}" /> --}}
+                    <img id="avater_photo_view" src="{{ \App\Helpers\FileUploadHelper::url(Auth::user()->photo) }}" />
                 @else
                     <img id="avater_photo_view"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"

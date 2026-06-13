@@ -16,10 +16,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use App\Models\ProductOption;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Helpers\FileUploadHelper;
 
 class ProductController extends Controller
 {
@@ -59,14 +58,14 @@ class ProductController extends Controller
         $folder = 'products/' . $slug;
 
         $filename = '';
-        if ($request->file('featured_image')) {
-            $filename = $request->file('featured_image')->store($folder, 's3');
+        if ($request->hasFile('featured_image')) {
+            $filename = FileUploadHelper::upload($request->file('featured_image'), $folder);
         }
 
         $multipleImages = [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $img) {
-                $path = $img->store($folder, 's3');
+                $path = FileUploadHelper::upload($img, $folder);
                 $multipleImages[] = $path;
             }
         }
@@ -207,13 +206,10 @@ class ProductController extends Controller
         $folder = 'products/' . $slug;
 
         // ---------- FEATURED IMAGE ----------
-        if ($request->file('featured_image')) {
-            if ($product->featured_image && Storage::disk('s3')->exists($product->featured_image)) {
-                Storage::disk('s3')->delete($product->featured_image);
-            }
+        if ($request->hasFile('featured_image')) {
+            FileUploadHelper::delete($product->featured_image);
 
-            $filename = $request->file('featured_image')->store($folder, 's3');
-            Storage::disk('s3')->setVisibility($filename, 'public');
+            $filename = FileUploadHelper::upload($request->file('featured_image'), $folder);
         } else {
             $filename = $product->featured_image;
         }
@@ -224,18 +220,15 @@ class ProductController extends Controller
         $imagesToDelete = array_diff($previousImages, $existingImages);
         $newImages = [];
 
-        // Delete removed images from S3
+        // Delete removed images
         foreach ($imagesToDelete as $imgPath) {
-            if (Storage::disk('s3')->exists($imgPath)) {
-                Storage::disk('s3')->delete($imgPath);
-            }
+            FileUploadHelper::delete($imgPath);
         }
 
-        // Upload new images to S3
+        // Upload new images
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $img) {
-                $path = $img->store($folder, 's3');
-                Storage::disk('s3')->setVisibility($path, 'public');
+                $path = FileUploadHelper::upload($img, $folder);
                 $newImages[] = $path;
             }
         }
@@ -337,19 +330,16 @@ class ProductController extends Controller
         if ($hasOrder) {
             return redirect()->back()->with('error', 'Cannot delete: this product is associated with one or more orders.');
         }
-        // Delete featured image from S3
-        if ($product->featured_image && Storage::disk('s3')->exists($product->featured_image)) {
-            Storage::disk('s3')->delete($product->featured_image);
+        if ($product->featured_image) {
+            FileUploadHelper::delete($product->featured_image);
         }
 
-        // Delete gallery images from S3
+        // Delete gallery images
         if ($product->images) {
             $images = json_decode($product->images, true);
             if (is_array($images)) {
                 foreach ($images as $img) {
-                    if (Storage::disk('s3')->exists($img)) {
-                        Storage::disk('s3')->delete($img);
-                    }
+                    FileUploadHelper::delete($img);
                 }
             }
         }

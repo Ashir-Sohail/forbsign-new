@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Helpers\FileUploadHelper;
 
 class ProfileController extends Controller
 {
@@ -27,11 +28,11 @@ class ProfileController extends Controller
         ]);
 
         $admin = Admin::findOrFail(Auth::guard('admin')->user()->id);
-        $filename = '';
-        if ($request->file('image')) {
-            $filename = $request->file('image')->store('admin/profile/image', 'public');
-        } else {
-            $filename = $admin->image;
+        $filename = $admin->image;
+        if ($request->hasFile('image')) {
+            FileUploadHelper::delete($admin->image);
+
+            $filename = FileUploadHelper::upload($request->file('image'), 'admin/profile/image');
         }
 
         $admin->username = $request->username;

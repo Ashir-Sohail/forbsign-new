@@ -13,7 +13,7 @@
                 <div class="row gy-4 floating_lables">
                     <div class="col-12 mb-md-5 mb-3">
                         {{-- @if (!empty($media_value->logo))
-                            <img src="{{ Storage::disk('s3')->url($media_value->logo) }}" alt="ForbSign Logo" loading="lazy" style="width:190px">
+                            <img src="{{ \App\Helpers\FileUploadHelper::url($media_value->logo) }}" alt="ForbSign Logo" loading="lazy" style="width:190px">
                         @else --}}
                             <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Default Logo"
                                 style="width:60px;height:70px">

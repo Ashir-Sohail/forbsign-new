@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProductEnquiry;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\FileUploadHelper;
 
 class ProductEnquiryController extends Controller
 {
@@ -26,9 +26,8 @@ class ProductEnquiryController extends Controller
 
         $enquiry = ProductEnquiry::findOrFail($id);
 
-        // Delete the file from S3 if it exists
-        if ($enquiry->file && Storage::disk('s3')->exists($enquiry->file)) {
-            Storage::disk('s3')->delete($enquiry->file);
+        if ($enquiry->file) {
+            FileUploadHelper::delete($enquiry->file);
         }
 
         $enquiry->delete();

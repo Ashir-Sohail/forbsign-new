@@ -40,8 +40,9 @@
                                     @foreach ($sub_categories as $category)
                                         <tr>
                                             <td>
-                                                <img src="{{ asset('storage') }}/{{ $category->image }}"
-                                                    alt="Image Not Found">
+                                                <img src="{{ \App\Helpers\FileUploadHelper::url($category->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                    alt="{{ $category->name ?? 'Sub Category Image' }}"
+                                                    style="width: 80px; height: auto; object-fit: cover;">
                                             </td>
                                             <td>
                                                 {{ $category->name }}

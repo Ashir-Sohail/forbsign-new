@@ -37,8 +37,8 @@
                                                 <label for="name">Current Image *</label>
                                                 <br>
                                                  <img class="admin-img"
-                                                        src="{{ Storage::disk('s3')->url($service->image) }}"
-                                                        alt="{{ $service->name }}">
+                                                        src="{{ \App\Helpers\FileUploadHelper::url($service->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                        alt="{{ $service->title ?? 'Service Image' }}">
                                                 <br>
                                                 <span class="mt-1">Image Size Should Be 65 x 65.</span>
                                             </div>

@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Helpers\FileUploadHelper;
 
 class ProfileController extends Controller
 {
@@ -30,9 +31,10 @@ class ProfileController extends Controller
         ]);
         $user = User::findOrFail(auth()->id());
 
-        $filename = '';
-        if ($request->file('image')) {
-            $filename = $request->file('image')->store('users', 'public');
+        if ($request->hasFile('image')) {
+            FileUploadHelper::delete($user->image);
+
+            $filename = FileUploadHelper::upload($request->file('image'), 'users');
         } else {
             $filename = $user->image;
         }

@@ -37,8 +37,8 @@
                                                 <br>
                                                 @if ($sub_category->image)
                                                     <img class="admin-img"
-                                                        src="{{ asset('storage') }}/{{ $sub_category->image }}"
-                                                        alt="{{ $sub_category->name }}">
+                                                        src="{{ \App\Helpers\FileUploadHelper::url($sub_category->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                        alt="{{ $sub_category->name ?? 'Sub Category Image' }}">
                                                 @else
                                                     <img class="admin-img"
                                                         src="{{ asset('assets/images/placeholder.png') }}"

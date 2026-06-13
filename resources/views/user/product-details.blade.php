@@ -80,7 +80,7 @@
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
                             <div class="pro_img">
-                                <img src="{{ Storage::disk('s3')->url($product->featured_image) }}" alt="Product Image"
+                                <img src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) }}" alt="Product Image"
                                     loading="lazy">
 
                             </div>
@@ -94,7 +94,7 @@
 
                                     @foreach ($imageArray as $image)
                                         <div class="item">
-                                            <img src="{{ Storage::disk('s3')->url($image) }}" alt="product image"
+                                            <img src="{{ \App\Helpers\FileUploadHelper::url($image) }}" alt="product image"
                                                 loading="lazy">
                                         </div>
                                     @endforeach
@@ -104,7 +104,7 @@
 
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="image-preview-box">
-                                <img id="selectedImage" src="{{ Storage::disk('s3')->url($product->featured_image) }}"
+                                <img id="selectedImage" src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) }}"
                                     alt="Preview">
                                 <div id="overlayText" class="overlay-text">
                                     <div id="overlaycontent" class="w-100">
@@ -534,7 +534,7 @@
                             <div class="product-card">
                                 <div class="product-thumb">
 
-                                    <img src="{{ Storage::disk('s3')->url($product1->featured_image) }}"
+                                    <img src="{{ \App\Helpers\FileUploadHelper::url($product1->featured_image) }}"
                                         alt="Product Image" loading="lazy">
                                     <div class="product-button-group">
                                         @if (Auth::user() && Auth::user()->id)

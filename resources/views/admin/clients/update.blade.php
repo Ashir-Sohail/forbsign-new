@@ -38,8 +38,8 @@
                                                 <label for="image">Profile Image</label><br>
                                                 @if ($client->image)
                                                     <img class="admin-img"
-                                                        src="{{ Storage::disk('s3')->url($client->image) }}"
-                                                        alt="{{ $client->name }}" width="100">
+                                                        src="{{ \App\Helpers\FileUploadHelper::url($client->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                        alt="{{ $client->name ?? 'Client Image' }}" width="100">
                                                 @else
                                                     <img class="admin-img" src="https://via.placeholder.com/100"
                                                         alt="No Image Found">

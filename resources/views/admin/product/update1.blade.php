@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="form-group pb-0 pt-0 mt-0 mb-0">
                                         <img class="admin-img lg"
-                                            src="{{ asset('storage') }}/{{ $product->featured_image }}"
+                                            src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) }}"
                                             @if ($viewMode) disabled @endif>
                                     </div>
                                     <div class="form-group position-relative ">
@@ -93,7 +93,7 @@
                                         @if ($imageArray)
                                             @foreach ($imageArray as $img)
                                                 <div>
-                                                    <img src="{{ asset('storage/' . $img) }}" alt="Product Image"
+                                                    <img src="{{ \App\Helpers\FileUploadHelper::url($img) }}" alt="Product Image"
                                                         style="width: 100px; height: auto; border-radius: 5px; aspect-ratio:2/2;">
                                                 </div>
                                             @endforeach

@@ -4,8 +4,6 @@
 @endsection
 @section('content')
     @php
-        use Illuminate\Support\Facades\Storage;
-
         $media_setting = \App\Models\ManageSite::where('key', 'media')->first();
         $footer_setting = \App\Models\ManageSite::where('key', 'footer')->first();
 
@@ -179,7 +177,7 @@
                 <h3>Customer Photos</h3>
                 <div class="green_line"></div>
             </div>
-            <img src="{{ optional($footer_value)->image1 ? Storage::disk('s3')->url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
+            <img src="{{ optional($footer_value)->image1 ? \App\Helpers\FileUploadHelper::url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
                 alt="Customer Photos" />
         </div>
     </div>

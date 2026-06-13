@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductEnquiry;
 use App\Mail\ProductEnquiryMail;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\FileUploadHelper;
 
 class ProductEnquiryController extends Controller
 {
@@ -28,8 +28,7 @@ class ProductEnquiryController extends Controller
 
         if ($request->hasFile('file')) {
             try {
-                $filePath = $request->file('file')->store('product_enquiriy', 's3');
-                Storage::disk('s3')->setVisibility($filePath, 'public');
+                $filePath = FileUploadHelper::upload($request->file('file'), 'product_enquiriy');
             } catch (\Exception $e) {
                 dd('S3 upload error: ' . $e->getMessage());
             }

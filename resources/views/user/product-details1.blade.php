@@ -48,7 +48,7 @@
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
                             <div class="pro_img">
-                                <img src="{{ asset('storage/' . $product->featured_image) }}" alt="{{ $product->name }}"
+                                <img src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) }}" alt="{{ $product->name }}"
                                     loading="lazy">
 
                             </div>
@@ -62,7 +62,7 @@
 
                                     @foreach ($imageArray as $image)
                                         <div class="item">
-                                            <img src="{{ asset('storage/' . $image) }}" alt="product image" loading="lazy">
+                                            <img src="{{ \App\Helpers\FileUploadHelper::url($image) }}" alt="product image" loading="lazy">
                                         </div>
                                     @endforeach
                                 </div>
@@ -85,7 +85,7 @@
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="w-100" id="prod-preview-c">
                                 <div id="prod-preview">
-                                    <img src="{{ asset('storage/' . $product->featured_image) }}" alt="{{ $product->name }}"
+                                    <img src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) }}" alt="{{ $product->name }}"
                                         loading="lazy" id="customizableImagePreview">
                                     <div id="dynamicTextOverlay"
                                         style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 30px; white-space: nowrap;">
@@ -844,7 +844,7 @@
                                 <div class="product-thumb">
 
                                     <img class="lazy"
-                                        data-src="{{ asset('storage') }}/{{ $product1->featured_image }}"
+                                        data-src="{{ \App\Helpers\FileUploadHelper::url($product1->featured_image) }}"
                                         alt="Product">
                                     <div class="product-button-group">
                                         {{-- @if (Auth::user() && Auth::user()->id)

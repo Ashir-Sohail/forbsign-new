@@ -38,7 +38,7 @@
                 <div class="entry">
                     <div class="entry-thumb"><a
                             href="{{ route('user.product_details', ['slug'=>$cart->product->slug]) }}"><img
-                                src="{{ asset('storage') }}/{{ $cart->product->featured_image }}"
+                                src="{{ \App\Helpers\FileUploadHelper::url($cart->product->featured_image) }}"
                                 alt="Product"></a></div>
                     <div class="entry-content">
                         <h4 class="entry-title"><a

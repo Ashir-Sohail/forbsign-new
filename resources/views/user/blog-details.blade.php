@@ -13,7 +13,7 @@
 
 @section('content')
     <div class="container my-4">
-        <img src="{{ Storage::disk('s3')->url($blog->image) }}" alt="{{ $blog->name }}" class="rounded-4 img-fluid" style="max-height: 600px">
+        <img src="{{ \App\Helpers\FileUploadHelper::url($blog->image) }}" alt="{{ $blog->name }}" class="rounded-4 img-fluid" style="max-height: 600px">
     </div>
     <section id="aboutUs">
         <div class="container">
@@ -62,7 +62,7 @@
                 <h3>Customer Photos</h3>
                 <div class="green_line"></div>
             </div>
-            <img src="{{ Storage::disk('s3')->url($footer_value->image1) }}" alt="Customer Photos" />
+            <img src="{{ \App\Helpers\FileUploadHelper::url($footer_value->image1) }}" alt="Customer Photos" />
         </div>
     </div>
 @endsection

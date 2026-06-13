@@ -38,8 +38,8 @@
                                                 <br>
                                                 @if ($category->image)
                                                     <img class="admin-img"
-                                                        src="{{ Storage::disk('s3')->url($category->image) }}"
-                                                        alt="{{ $category->name }}">
+                                                        src="{{ \App\Helpers\FileUploadHelper::url($category->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                        alt="{{ $category->name ?? 'Category Image' }}">
                                                 @else
                                                     <img class="admin-img"
                                                         src="{{ asset('assets/images/placeholder.png') }}"

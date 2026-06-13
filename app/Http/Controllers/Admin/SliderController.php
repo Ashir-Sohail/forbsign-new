@@ -7,8 +7,7 @@ use App\Models\Slider;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\FileUploadHelper;
 
 class SliderController extends Controller
 {
@@ -42,11 +41,8 @@ class SliderController extends Controller
         ]);
 
         $filename = '';
-        if ($request->file('image')) {
-            // Upload to S3
-            $filename = $request->file('image')->store('slider', 's3');
-            // Make file publicly accessible
-            Storage::disk('s3')->setVisibility($filename, 'public');
+        if ($request->hasFile('image')) {
+            $filename = FileUploadHelper::upload($request->file('image'), 'slider');
         }
 
         $slider = new Slider();
@@ -77,20 +73,13 @@ class SliderController extends Controller
         ]);
 
         $slider = Slider::findOrFail($id);
-        $filename = '';
         if ($request->hasFile('image')) {
+            FileUploadHelper::delete($slider->image);
 
-            //  Optionally delete the old image from S3
-            if ($slider->image && Storage::disk('s3')->exists($slider->image)) {
-                Storage::disk('s3')->delete($slider->image);
-            }
-
-            //  Upload new image
-            $filename = $request->file('image')->store('slider', 's3');
-            Storage::disk('s3')->setVisibility($filename, 'public');
-
-            //  Save new image path
-            $slider->image = $filename;
+            $slider->image = FileUploadHelper::upload(
+                $request->file('image'),
+                'slider'
+            );
         }
 
         $slider->url = $request->url;
@@ -103,10 +92,8 @@ class SliderController extends Controller
     public function delete($id): RedirectResponse
     {
         $slider = Slider::findOrFail($id);
-        $path = public_path('storage\\' . $slider->image);
-        // Delete image from S3 if it exists
-        if ($slider->image && Storage::disk('s3')->exists($slider->image)) {
-            Storage::disk('s3')->delete($slider->image);
+        if ($slider->image) {
+            FileUploadHelper::delete($slider->image);
         }
 
         $slider->delete();

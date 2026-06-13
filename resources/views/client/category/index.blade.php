@@ -40,8 +40,9 @@
                                     @foreach ($categories as $category)
                                         <tr>
                                             <td>
-                                                <img src="{{ Storage::disk('s3')->url($category->image) }}"
-                                                    alt="Image Not Found">
+                                                <img src="{{ \App\Helpers\FileUploadHelper::url($category->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                    alt="{{ $category->name ?? 'Category Image' }}"
+                                                    style="width: 80px; height: auto; object-fit: cover;">
                                             </td>
                                             <td>
                                                 {{ $category->name }}

@@ -66,7 +66,7 @@
                 <h3>{{ $aboutpreferences['customer_heading'] ?? '' }}</h3>
                 <div class="green_line"></div>
             </div>
-            <img src="{{ optional($footer_value)->image1 ? Storage::disk('s3')->url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
+            <img src="{{ optional($footer_value)->image1 ? \App\Helpers\FileUploadHelper::url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
                 alt="Customer Photos" />
         </div>
     </div>

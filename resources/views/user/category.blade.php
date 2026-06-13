@@ -24,7 +24,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
 
                     <a class="brand-items" href="{{ route('category.products', ['slug' => $category->slug]) }}">
-                        <img class="img-fluid" src="{{ Storage::disk('s3')->url($category->image) }}"
+                        <img class="img-fluid" src="{{ \App\Helpers\FileUploadHelper::url($category->image) }}"
                             alt="{{ $category->name }}" title="Adidas">
                         <h5 class="header30_gray">{{ $category->name }}</h5>
                     </a>
@@ -66,7 +66,7 @@
                 <h3>{{ $categoriespreferences['customer_heading'] ?? '' }}</h3>
                 <div class="green_line"></div>
             </div>
-            <img src="{{ optional($footer_value)->image1 ? Storage::disk('s3')->url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
+            <img src="{{ optional($footer_value)->image1 ? \App\Helpers\FileUploadHelper::url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
                 alt="Customer Photos" />
         </div>
     </div>

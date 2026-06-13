@@ -44,11 +44,12 @@
                                     @foreach ($brands as $brand)
                                         <tr>
                                             {{-- <td>
-                                                <img src="{{ asset('storage') }}/{{ $brand->image }}" alt="Image Not Found">
+                                                <img src="{{ \App\Helpers\FileUploadHelper::url($brand->image }}" alt="Image Not Found">
                                             </td> --}}
                                             <td>
-                                                <img src="{{ Storage::disk('s3')->url($brand->image) }}"
-                                                    alt="Image Not Found">
+                                                <img src="{{ \App\Helpers\FileUploadHelper::url($brand->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                    alt="{{ $brand->name ?? 'Brand Image' }}"
+                                                    style="width: 80px; height: auto; object-fit: cover;">
                                             </td>
 
                                             <td>

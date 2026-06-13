@@ -51,7 +51,7 @@
 
 
                                         <td>
-                                            <img src="{{ asset('storage/' . $cart->product->featured_image) }}"
+                                            <img src="{{ \App\Helpers\FileUploadHelper::url($cart->product->featured_image) }}"
                                                 alt="" loading="lazy" style="min-width: 100px;">
                                         </td>
                                         <td>

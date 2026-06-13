@@ -37,11 +37,11 @@
                                                 <label for="name">Set Image *</label>
                                                 <br>
                                                 @if ($brand->image)
-                                                    {{-- <img class="admin-img" src="{{ asset('storage') }}/{{ $brand->image }}"
+                                                    {{-- <img class="admin-img" src="{{ \App\Helpers\FileUploadHelper::url($brand->image }}"
                                                         alt="{{ $brand->name }}"> --}}
                                                     <img class="admin-img"
-                                                        src="{{ Storage::disk('s3')->url($brand->image) }}"
-                                                        alt="{{ $brand->name }}">
+                                                        src="{{ \App\Helpers\FileUploadHelper::url($brand->image) ?? asset('public/assets/images/placeholder.png') }}"
+                                                        alt="{{ $brand->name ?? 'Brand Image' }}">
                                                 @else
                                                     <img class="admin-img"
                                                         src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/placeholder.png"
