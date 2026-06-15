@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->text('text');
-            $table->text('meta_keyword');
-            $table->text('meta_description');
+            // $table->text('meta_keyword');
+            // $table->text('meta_description');
             $table->integer('status')->default(1);
             $table->timestamps();
         });

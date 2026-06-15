@@ -51,28 +51,6 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-
-
-                                            {{-- <div class="form-group">
-                                                <label for="meta_keywords">Meta Keywords
-                                                </label>
-                                                <input type="text" name="meta_keyword" class="tags" id="meta_keywords"
-                                                    placeholder="Enter Meta Keywords" value="">
-                                                @error('meta_keyword')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="meta_description">Meta Description
-                                                </label>
-                                                <textarea name="meta_description" id="meta_description" class="form-control" rows="5"
-                                                    placeholder="Enter Meta Description"></textarea>
-                                                @error('meta_description')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div> --}}
-
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-secondary ">Submit</button>
                                             </div>
