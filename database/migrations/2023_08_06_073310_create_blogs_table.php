@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('title');
             $table->foreignId('cat_id')->constrained('blog_categories')->cascadeOnDelete();
             $table->longText('description');
-            $table->json('tags');
             $table->text('meta_keyword');
             $table->longText('meta_description');
             $table->timestamps();

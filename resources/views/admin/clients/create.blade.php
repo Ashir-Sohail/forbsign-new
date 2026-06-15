@@ -100,24 +100,6 @@
                                                     id="password_confirmation" placeholder="Confirm password">
                                             </div>
 
-                                            <!-- Status -->
-                                            {{-- <div class="form-group">
-                                                <label for="status">Status *</label>
-                                                <select name="status" id="status" class="form-control">
-                                                    <option value="pending"
-                                                        {{ old('status') == 'pending' ? 'selected' : '' }}>Pending</option>
-                                                    <option value="approved"
-                                                        {{ old('status') == 'approved' ? 'selected' : '' }}>Approved
-                                                    </option>
-                                                    <option value="rejected"
-                                                        {{ old('status') == 'rejected' ? 'selected' : '' }}>Rejected
-                                                    </option>
-                                                </select>
-                                                @error('status')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div> --}}
-
                                             <!-- Submit -->
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-secondary">Submit</button>

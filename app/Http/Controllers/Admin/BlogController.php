@@ -45,7 +45,6 @@ class BlogController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg|max:2096',
             'title' => 'required',
             'description' => 'required',
-            // 'tags' => 'required',
             'meta_title' => 'required',
             'meta_keywords' => 'required',
             'meta_description' => 'required',
@@ -54,12 +53,6 @@ class BlogController extends Controller
         $blog = new Blog();
 
         $filename = '';
-        // if ($request->file('image')) {
-        //     //  Upload to S3
-        //     $filename = $request->file('image')->store('blog', 's3');
-        //     // Make file publicly accessible
-        //     Storage::disk('s3')->setVisibility($filename, 'public');
-        // }
         if ($request->hasFile('image')) {
             $filename = FileUploadHelper::upload($request->file('image'), 'blog');
         }
@@ -67,7 +60,6 @@ class BlogController extends Controller
         $blog->image = $filename;
         $blog->title = $request->title;
         $blog->description = $request->description;
-        // $blog->tags = $request->tags;
         $blog->meta_title = $request->meta_title;
         $blog->meta_keyword = $request->meta_keywords;
         $blog->meta_description = $request->meta_description;
@@ -88,7 +80,6 @@ class BlogController extends Controller
             'image' => 'image|mimes:jpg,png,jpeg|max:2096',
             'title' => 'required',
             'description' => 'required',
-            // 'tags' => 'required',
             'meta_title' => 'required',
             'meta_keywords' => 'required',
             'meta_description' => 'required',
@@ -105,7 +96,6 @@ class BlogController extends Controller
 
         $blog->title = $request->title;
         $blog->description = $request->description;
-        $blog->tags = $request->tags ?? null;
         $blog->meta_title = $request->meta_title;
         $blog->meta_keyword = $request->meta_keywords;
         $blog->meta_description = $request->meta_description;

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('post_code');
             $table->string('password');
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
