@@ -48,13 +48,11 @@ class LoginController extends Controller
 
     function update_profile(Request $request)
     {
-
         $request->validate([
-            'username' => 'required|alpha',
+            'username' => 'required',
             'email' => 'required|email',
             'phone' => [
                 'required',
-                'regex:/^\+?[1-9]\d{1,14}$/',  // E.164 international phone number format
                 'unique:users,phone',
             ],
 

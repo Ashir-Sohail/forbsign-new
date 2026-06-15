@@ -21,7 +21,7 @@ class BrandRequest extends FormRequest
 
         return [
             'name' => 'required|unique:brands,name,' . $brandId,
-            'website_id'=>'required|exists:websites,id',
+            // 'website_id'=>'required|exists:websites,id',
             'image' => $this->isMethod('post')
                 ? 'image|mimes:jpg,png,jpeg|max:2096'
                 : 'nullable|image|mimes:jpg,png,jpeg|max:2096',

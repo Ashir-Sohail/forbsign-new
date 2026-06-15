@@ -31,10 +31,7 @@
                                         <th>Image</th>
                                         <th>Name</th>
                                         <th>Status</th>
-                                        <th>Title</th>
                                         <th>Keywoard</th>
-                                        <th>SEO URL</th>
-                                        <th>Description</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -68,8 +65,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>{{ $brand->title }}</td>
-                                            {{-- <td>{{$brand->meta_keyword}}</td> --}}
+
                                             <td>
                                                 @if ($brand->meta_keyword)
                                                     @php
@@ -84,8 +80,7 @@
                                                     <div class="text-center">N/A</div>
                                                 @endif
                                             </td>
-                                            <td>{{ $brand->url }}</td>
-                                            <td>{{ $brand->meta_description }}</td>
+
                                             <td>
                                                 <div class="action-list">
                                                     <a class="btn btn-secondary btn-sm "

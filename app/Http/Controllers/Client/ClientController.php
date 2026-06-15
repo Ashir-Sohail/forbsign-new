@@ -40,11 +40,15 @@ class ClientController extends Controller
             'password_login.min' => 'The password must be at least 8 characters long.',
         ]);
         $user = Auth::guard('client')->attempt(['email' => $request->email_login, 'password' => $request->password_login, 'status' => 1]);
+        // dd($user);
         if ($user) {
             return redirect()->route('client.dashboard')->with('success', 'Login successfully');
-        } else {
-            dd('not login');
         }
+        return back()
+            ->withInput()
+            ->withErrors([
+                'email_login' => 'Invalid email, password, or inactive account.'
+            ]);
     }
 
     public function profile_view()
@@ -83,21 +87,6 @@ class ClientController extends Controller
             }
         }
 
-        // $filename = '';
-        // if ($request->file('image')) {
-        //     // Optionally delete the old image from S3
-        //     if ($client->image && Storage::disk('s3')->exists($client->image)) {
-        //         Storage::disk('s3')->delete($client->image);
-        //     }
-
-        //     // Upload new image to S3
-        //     $filename = $request->file('image')->store('admin', 's3');
-        //     // Set visibility to public
-        //     Storage::disk('s3')->setVisibility($filename, 'public');
-        // } else {
-        //     // If no new image is uploaded, retain the existing image path
-        //     $filename = $client->image;
-        // }
         $client->name = $request->username;
         $client->email = $request->email;
         $client->phone = $request->phone;

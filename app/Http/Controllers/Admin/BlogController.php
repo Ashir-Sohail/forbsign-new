@@ -105,7 +105,7 @@ class BlogController extends Controller
 
         $blog->title = $request->title;
         $blog->description = $request->description;
-        // $blog->tags = $request->tags;
+        $blog->tags = $request->tags ?? null;
         $blog->meta_title = $request->meta_title;
         $blog->meta_keyword = $request->meta_keywords;
         $blog->meta_description = $request->meta_description;
