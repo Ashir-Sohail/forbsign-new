@@ -287,8 +287,8 @@ Route::prefix('admin')->group(function () {
 
         // Prefrences
         Route::controller(PreferencesController::class)->group(function () {
-            Route::get('/hom/preferences', 'home_preferences')->name('admin.home.preferences');
-            Route::post('/hom/store/preferences', 'home_store')->name('admin.home.store.preferences');
+            Route::get('/home/preferences', 'home_preferences')->name('admin.home.preferences');
+            Route::post('/home/store/preferences', 'home_store')->name('admin.home.store.preferences');
             Route::get('/about/preferences', 'about_preferences')->name('admin.about.preferences');
             Route::post('/about/store/preferences', 'about_store')->name('admin.about.store.preferences');
             Route::get('/service/preferences', 'service_preferences')->name('admin.service.preferences');

@@ -250,13 +250,6 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.client.index') }}">
-                        <i class="fas fa-users"></i>
-                        <p>Clients</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
                     <a href="{{ route('admin.email.index') }}">
                         <i class="fas fa-envelope"></i>
                         <p>Email Template</p>
@@ -315,6 +308,12 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.client.index') }}">
+                        <i class="fas fa-users"></i>
+                        <p>Clients</p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.website.index') }}">
