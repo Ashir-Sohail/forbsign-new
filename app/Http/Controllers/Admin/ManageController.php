@@ -13,6 +13,7 @@ class ManageController extends Controller
 {
     public function index(): View
     {
+        $orders = Order::with('transactions')->latest()->get();
         return view('admin.order.all-order', compact('orders'));
     }
 

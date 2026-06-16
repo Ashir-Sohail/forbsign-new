@@ -43,10 +43,6 @@ class HomeController extends Controller
     public function index(): View
     {
         $homepreferences = HomePreference::pluck('value', 'name')->toArray();
-        $productsCategories = Category::where('status', 1)
-            ->whereNull('parent_id')
-            ->get();
-
         $categories = Category::with('children') // Eager load child categories
             ->where('status', 1)
             ->whereNull('parent_id')
@@ -67,6 +63,7 @@ class HomeController extends Controller
         $sliders = Slider::take(4)->get();
 
         // Load custom sections from ManageSite
+        $productsCategories = $categories; // Reuse the categories already fetched
         $home_page_value = json_decode(optional(ManageSite::where('key', 'home_page')->first())->value);
         $footer_value = json_decode(optional(ManageSite::where('key', 'footer')->first())->value);
 
@@ -81,7 +78,6 @@ class HomeController extends Controller
             'categories',
             'allActiveCategories',
             'products',
-            'products',
             'footer_value',
         ));
     }
@@ -89,12 +85,7 @@ class HomeController extends Controller
 
     function add_to_wishlist($id): RedirectResponse
     {
-        // instead of this
-        $wishlist = Wishlist::where("user_id", auth()->id())->where("product_id", $id)->first();
-        $wishlist = Wishlist::where(["user_id" => auth()->id(), "product_id" => $id])->first();
-
-        // do this
-        $wishlist = Wishlist::whereUserIdAndProductId(auth()->id(), $id)->first();
+        $wishlist = Wishlist::where('user_id', auth()->id())->where('product_id', $id)->first();
 
         if ($wishlist) {
             return redirect()->back()->with('success', 'Product is already in wishlist');
@@ -103,7 +94,7 @@ class HomeController extends Controller
                 'user_id' => auth()->id(),
                 'product_id' => $id
             ]);
-            return redirect()->back()->with('success', 'Product added to successfully wishlist');
+            return redirect()->back()->with('success', 'Product added to wishlist successfully');
         }
     }
 
@@ -138,7 +129,6 @@ class HomeController extends Controller
         $text = $requestData['text'];
         $textStyle = $requestData['textStyle'];
         $top = $requestData['top'];
-        $bottom = $requestData['bottom'];
         $bottom = $requestData['bottom'];
         $product = Product::findOrFail($product_id);
         // $cart = Cart::whereUserIdAndProductId(auth()->id(), $product_id)->first();
@@ -192,7 +182,7 @@ class HomeController extends Controller
                 'qty' => 1,
             ]);
 
-            return response()->json(['success' => true, 'message' => 'Produsdsct added to cart successfully']);
+            return response()->json(['success' => true, 'message' => 'Product added to cart successfully']);
         }
 
         // dd(Cart::whereUserId(auth()->id())->latest()->get());
