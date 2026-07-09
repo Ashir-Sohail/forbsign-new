@@ -85,16 +85,16 @@
         }
 
         #home-banner .item .slider-wrapper {
-            background-image: url("{{ asset('assets/imgs/banner.jpg') }}");
+            background-color: #f5f5f5;
         }
 
         #qualityhelpinstall {
-            background-image: url("{{ asset('assets/imgs/image8.jpg') }}");
+            background: linear-gradient(89.9deg, #3FB5DC 4.98%, #DBDD55 96.89%);
         }
 
         #footer {
             min-height: 450px;
-            background: #15212d url("{{ asset('assets/imgs/footer.jpg') }}") center center / cover no-repeat;
+            background: #15212d;
         }
     </style>
     <style>
@@ -280,7 +280,7 @@
                         <li><a href="{{ route('user.delivery') }}">Delivery Information</a></li>
                         <li><a href="{{ route('user.terms') }}">Terms and Condition</a></li>
                         <li><a href="{{ route('user.trackorder') }}">Track Order</a></li>
-                        <li><a href="#">Custom Designs</a></li>
+                        {{-- <li><a href="#">Custom Designs</a></li> --}}
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-3">

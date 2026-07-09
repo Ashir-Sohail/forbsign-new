@@ -31,7 +31,7 @@ class ManageSitesTableSeeder extends Seeder
             [
                 'id' => 3,
                 'key' => 'home_page',
-                'value' => '{"image1":"home_page/z6gzMRqEGtmY4Q3GB9Gr2RKiDO1dNRhm56PDlpik.jpg","image2":"home_page/Gp3ogKfZjoaiQfFbOXfMmIU8WZ9GVIcVNSZNdtDx.jpg","title1":"Amet earum sunt Nam","title2":"Numquam placeat qua","sub_title1":"Dolore magni et accu","sub_title2":"Qui modi quidem aliq","url1":"Quo totam eiusmod ir","url2":"Ut dolore aut ipsam"}',
+                'value' => '{"image1":null,"image2":null,"title1":"Amet earum sunt Nam","title2":"Numquam placeat qua","sub_title1":"Dolore magni et accu","sub_title2":"Qui modi quidem aliq","url1":"Quo totam eiusmod ir","url2":"Ut dolore aut ipsam"}',
                 'created_at' => '2023-08-30 18:47:59',
                 'updated_at' => '2023-08-30 19:01:34',
             ],

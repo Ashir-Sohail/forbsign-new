@@ -18,22 +18,6 @@ class WishListController extends Controller
         return view('user.wishlists', compact('wishlists'));
     }
 
-    // public function addToWishlist($id)
-    // {
-    //     dd($id);
-    //     $userId = auth()->id();
-
-    //     if (Wishlist::where('user_id', $userId)->where('product_id', $id)->exists()) {
-    //         return redirect()->back()->with('message', 'Product already in wishlist.');
-    //     }
-
-    //     Wishlist::create([
-    //         'user_id' => $userId,
-    //         'product_id' => $id,
-    //     ]);
-
-    //     return redirect()->back()->with('message', 'Product added to wishlist.');
-    // }
 
     public function addToWishlist($rawId)
     {

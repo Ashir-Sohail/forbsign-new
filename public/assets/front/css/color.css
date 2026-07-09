@@ -31,6 +31,7 @@
 .a2a_kit a
 {
     background : #FF6A00  !important;
+    color: #FFFFFF !important;
 }
 
 .site-header .toolbar .toolbar-item > a > div > .compare-icon > .count-label, .site-header .toolbar .toolbar-item > a > div > .cart-icon > .count-label,

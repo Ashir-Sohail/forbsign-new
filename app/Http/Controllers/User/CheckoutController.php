@@ -25,6 +25,11 @@ use App\Models\Website;
 
 class CheckoutController extends Controller
 {
+    public const ORDER_STATUS_PENDING = 'pending';
+    public const ORDER_STATUS_PROCESSING = 'processing';
+    public const PAYMENT_STATUS_PAID = 'paid';
+    public const PAYMENT_STATUS_UNPAID = 'unpaid';
+    public const PAYMENT_STATUS_SUCCEEDED = 'succeeded';
 
     public function index()
     {
@@ -127,7 +132,7 @@ class CheckoutController extends Controller
                 'user_id'            => Auth::id(),
                 'website_id'         => $webid,
                 'billing_address_id' => $billing->id,
-                'order_status'       => 'pending',
+                'order_status'       => self::ORDER_STATUS_PENDING,
                 'total'              => 0,
             ]);
 
@@ -235,13 +240,13 @@ class CheckoutController extends Controller
                 'order_id'         => $order->id,
                 'user_id'          => Auth::id(),
                 'total_amount'     => $cartTotal,
-                'payment_status'   => 'paid',
+                'payment_status'   => self::PAYMENT_STATUS_PAID,
                 'payment_method'   => 'stripe',
                 'stripe_charge_id' => $charge->id,
             ]);
 
             // 7. Update Order Status
-            $order->update(['order_status' => 'processing']);
+            $order->update(['order_status' => self::ORDER_STATUS_PROCESSING]);
 
 
 
@@ -368,16 +373,16 @@ class CheckoutController extends Controller
         $order->transaction_id = 'null';
         $order->user_id = auth()->id();
         $order->total_amount = $total_amount;
-        $order->payment_status = 'unpaid';
-        $order->order_status = 'pending';
+        $order->payment_status = self::PAYMENT_STATUS_UNPAID;
+        $order->order_status = self::ORDER_STATUS_PENDING;
         $order->product_id = json_encode($product_ids);
         $order->payment_method = $request->payment_method;
         $order->save();
 
         $transaction->order_id = $order->uuid;
         $transaction->user_id = auth()->id();
-        $transaction->payment_status = 'unpaid';
-        $transaction->order_status = 'pending';
+        $transaction->payment_status = self::PAYMENT_STATUS_UNPAID;
+        $transaction->order_status = self::ORDER_STATUS_PENDING;
         $transaction->total_amount = $total_amount;
         $transaction->save();
 
@@ -402,16 +407,16 @@ class CheckoutController extends Controller
         $order->transaction_id = 'askldfja12312';
         $order->user_id = auth()->id();
         $order->total_amount = $total_amount;
-        $order->payment_status = 'succeeded';
-        $order->order_status = 'pending';
+        $order->payment_status = self::PAYMENT_STATUS_SUCCEEDED;
+        $order->order_status = self::ORDER_STATUS_PENDING;
         $order->product_id = json_encode($product_ids);
         $order->payment_method = $request->payment_method;
         $order->save();
 
         $transaction->order_id = $order->uuid;
         $transaction->user_id = auth()->id();
-        $transaction->payment_status = 'succeeded';
-        $transaction->order_status = 'pending';
+        $transaction->payment_status = self::PAYMENT_STATUS_SUCCEEDED;
+        $transaction->order_status = self::ORDER_STATUS_PENDING;
         $transaction->total_amount = $total_amount;
         $transaction->save();
 
@@ -433,16 +438,16 @@ class CheckoutController extends Controller
         $order->transaction_id = $request->transaction;
         $order->user_id = auth()->id();
         $order->total_amount = $total_amount;
-        $order->payment_status = 'unpaid';
-        $order->order_status = 'pending';
+        $order->payment_status = self::PAYMENT_STATUS_UNPAID;
+        $order->order_status = self::ORDER_STATUS_PENDING;
         $order->product_id = json_encode($product_ids);
         $order->payment_method = $request->payment_method;
         $order->save();
 
         $transaction->order_id = $order->uuid;
         $transaction->user_id = auth()->id();
-        $transaction->payment_status = 'unpaid';
-        $transaction->order_status = 'pending';
+        $transaction->payment_status = self::PAYMENT_STATUS_UNPAID;
+        $transaction->order_status = self::ORDER_STATUS_PENDING;
         $transaction->total_amount = $total_amount;
         $transaction->save();
 

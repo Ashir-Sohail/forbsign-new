@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @php
     use Illuminate\Support\Str;
+    $imagePlaceholder = asset('assets/imgs/placeholder.png');
 @endphp
 @section('title')
     Home
@@ -16,8 +17,12 @@
                         $hash = preg_replace('/[^A-Za-z0-9]/', '', strtolower($slider->title));
                     @endphp
                     <div class="item" data-hash="{{ $hash }}">
+                        @php
+                            $sliderImage = \App\Helpers\FileUploadHelper::url($slider->image);
+                            $sliderBg = $sliderImage ?: asset('assets/front/imgs/HomeSigns.svg');
+                        @endphp
                         <div class="slider-wrapper"
-                            style="background-image: url('{{ \App\Helpers\FileUploadHelper::url($slider->image) }}')">
+                            style="background-image: url('{{ $sliderBg }}')">
                             <div class="slider-text">
                                 <p>{{ $slider->title }}</p>
                                 <h2>{{ $slider->details }}</h2>
@@ -43,7 +48,8 @@
                 @endphp
                 <a class="nav-option {{ $index === 0 ? 'active' : '' }}" href="#{{ $hash }}"
                     data-service-index="{{ $index }}">
-                    <img src="{{ \App\Helpers\FileUploadHelper::url($service->image) }}" alt="{{ $service->title }}" loading="lazy">
+                    <img src="{{ \App\Helpers\FileUploadHelper::url($service->image) ?? $imagePlaceholder }}"
+                        alt="{{ $service->title }}" loading="lazy">
                     <h6>{{ $service->title }}</h6>
                 </a>
             @endforeach
@@ -58,11 +64,8 @@
             <div class="col-lg-10 ">
                 <div class="about_con left_img">
                     <div class="img_con">
-                        {{-- @dump($home_page_value->image1) --}}
-                         <img src="{{($home_page_value->image1)}}"
-                            alt="YOUR DESIGN" loading="lazy">
-                        {{-- <img src="{{ optional($home_page_value)->image1 ? \App\Helpers\FileUploadHelper::url($home_page_value->image1) : asset('assets/images/blewbannersection1.jpg') }}"
-                            alt="YOUR DESIGN" loading="lazy"> --}}
+                        <img src="{{ optional($home_page_value)->image1 ? \App\Helpers\FileUploadHelper::url($home_page_value->image1) : $imagePlaceholder }}"
+                            alt="{{ $home_page_value->title1 ?? 'YOUR DESIGN' }}" loading="lazy">
                     </div>
                     <div class="img_text ">
                         <p>{{ $home_page_value->title1 ?? 'N/A' }}</p>
@@ -72,7 +75,7 @@
                         </h4>
                         <div class="d-inline-block">
                             <a class="btn primery_btn" href="{{ $home_page_value->url1 ?? '#' }}" target="_blank">
-                                {{ $homepreferences['image_one_button'] ?? '' }}
+                                {{ $homepreferences['image_one_button'] ?? 'Learn More' }}
                             </a>
                         </div>
 
@@ -89,14 +92,14 @@
                         </h4>
                         <div class="d-inline-block">
                             <a class="btn primery_btn" href="{{ $home_page_value->url2 ?? '#' }}" target="_blank">
-                                {{ $homepreferences['image_two_button'] ?? '' }}
+                                {{ $homepreferences['image_two_button'] ?? 'Learn More' }}
                             </a>
                         </div>
                     </div>
                     <div class="img_con">
 
-                        <img src="{{ optional($home_page_value)->image2 ? \App\Helpers\FileUploadHelper::url($home_page_value->image2) : asset('assets/images/blewbannersection2.jpg') }}"
-                            alt="YOUR DESIGN" loading="lazy">
+                        <img src="{{ optional($home_page_value)->image2 ? \App\Helpers\FileUploadHelper::url($home_page_value->image2) : $imagePlaceholder }}"
+                            alt="{{ $home_page_value->title2 ?? 'YOUR DESIGN' }}" loading="lazy">
                     </div>
 
                 </div>
@@ -108,7 +111,7 @@
         <div class="container">
             <div class="row justify-content-center align-items-center gy-4">
                 <div class="icon_text col-sm-6 col-lg-3 col">
-                    <img src="{{ asset('media/icon.svg') }}" alt="" loading="lazy">
+                    <img src="{{ asset('media/icon1.svg') }}" alt="" loading="lazy">
                     <div class="d-flex flex-column">
                         <p> {{ $homepreferences['title1'] ?? '' }}</p>
                         <p>{{ $homepreferences['title2'] ?? '' }}</p>
@@ -152,8 +155,6 @@
                 <div class="text-right col-12 ms-auto text-md-end">
                     <img src="{{ asset('assets/imgs/section.jpg') }}" alt="Handcrafted" loading="lazy"
                         style="max-width: 250px;">
-                    {{-- <img src="{{ optional($home_page_value)->image2 ? \App\Helpers\FileUploadHelper::url($home_page_value->image2) : asset('assets/images/blewbannersection2.jpg') }}"
-                            alt="Handcrafted" loading="lazy" style="max-width: 250px;"> --}}
                 </div>
             </div>
             <div class="col-md-6">
@@ -202,8 +203,8 @@
                                     {{-- @dump($catProducts->toArray()) --}}
                                     <div class="col-sm-6 col-md-4 col-lg-3">
                                         <div class="pro_con">
-                                            <img src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) }}"
-                                                alt="Product Image" loading="lazy">
+                                            <img src="{{ \App\Helpers\FileUploadHelper::url($product->featured_image) ?? $imagePlaceholder }}"
+                                                alt="{{ $product->name ?? 'Product Image' }}" loading="lazy">
                                             <div class="d-flex flex-column gap-1">
 
                                                 <a href="{{ route('user.product_details', ['slug' => $product->slug]) }}">
@@ -230,8 +231,8 @@
 
             @if ($products->count() > 0)
                 <div class="text-center">
-                    <a class="btn primery_btn mx-auto  px-5" href="{{ route('user.store') }}" style="width: 10%">
-                        {{ $homepreferences['visit_store'] ?? '' }}
+                    <a class="btn primery_btn mx-auto px-5" href="{{ route('user.store') }}">
+                        {{ $homepreferences['visit_store'] ?? 'Visit Store' }}
                     </a>
                 </div>
             @endif
@@ -249,7 +250,7 @@
                             <div class="col-6 col-md-3 text-center">
                                 <a class="brand-items"
                                     href="{{ route('category.products', ['slug' => $allActiveCategorie->slug]) }}">
-                                    <img src="{{ \App\Helpers\FileUploadHelper::url($allActiveCategorie->image) }}"
+                                    <img src="{{ \App\Helpers\FileUploadHelper::url($allActiveCategorie->image) ?? $imagePlaceholder }}"
                                         alt="{{ $allActiveCategorie->name }}" loading="lazy">
 
                                     <h6 class="heading-30">{{ $allActiveCategorie->name }}</h6>
@@ -261,7 +262,7 @@
                 @if ($allActiveCategories->isNotEmpty())
                     <div class="text-center">
                         <a class="btn primery_btn mx-auto py-2 d-inline-block" href="{{ route('user.categories') }}">
-                             {{ $homepreferences['categories_button'] ?? '' }}
+                             {{ $homepreferences['categories_button'] ?? 'View Categories' }}
                         </a>
                     </div>
                 @endif
@@ -277,7 +278,8 @@
                             <div class="col-6 col-md-3 text-center">
                                 <a class="brand-items"
                                     href="{{ route('user.brand.product', ['slug' => $brand->slug]) }}">
-                                    <img src="{{ \App\Helpers\FileUploadHelper::url($brand->image) }}" alt="{{ $brand->name }}"
+                                    <img src="{{ \App\Helpers\FileUploadHelper::url($brand->image) ?? $imagePlaceholder }}"
+                                        alt="{{ $brand->name }}"
                                         loading="lazy">
 
                                     <h6 class="heading-30">{{ $brand->name }}</h6>
@@ -289,7 +291,7 @@
                 @if ($brands->isNotEmpty())
                     <div class="text-center">
                         <a class="btn primery_btn mx-auto py-2 d-inline-block" href="{{ route('user.brand') }}">
-                             {{ $homepreferences['brands_button'] ?? '' }}
+                             {{ $homepreferences['brands_button'] ?? 'View Brands' }}
                         </a>
                     </div>
                 @endif
@@ -297,7 +299,7 @@
 
         </div>
     </div>
-    <div id="qualityhelpinstall" class="my-5" style=" background-image: url({{ asset('media/image8.jpg') }});">
+    <div id="qualityhelpinstall" class="my-5">
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="qhi col-md-4">
@@ -330,7 +332,7 @@
                 <h3>{{ $homepreferences['customer_heading'] ?? '' }}</h3>
                 <div class="green_line"></div>
             </div>
-            <img src="{{ optional($footer_value)->image1 ? \App\Helpers\FileUploadHelper::url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
+             <img src="{{ optional($footer_value)->image1 ? \App\Helpers\FileUploadHelper::url($footer_value->image1) : asset('assets/images/CustomerPhotos.png') }}"
                 alt="Customer Photos" />
         </div>
     </div>

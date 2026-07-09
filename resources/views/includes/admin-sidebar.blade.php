@@ -42,6 +42,11 @@
                                 </a>
                             </li>
                             <li>
+                                <a class="sub-link" href="{{ route('admin.category.index') }}">
+                                    <span class="sub-item">Categories</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.product.create') }}">
                                     <span class="sub-item">Add Product</span>
                                 </a>
@@ -51,11 +56,7 @@
                                     <span class="sub-item">All Products</span>
                                 </a>
                             </li>
-                            <li>
-                                <a class="sub-link" href="{{ route('admin.category.index') }}">
-                                    <span class="sub-item">Categories</span>
-                                </a>
-                            </li>
+
                             <li>
                                 <a class="sub-link" href="{{ route('admin.option.index') }}">
                                     <span class="sub-item">Options</span>
