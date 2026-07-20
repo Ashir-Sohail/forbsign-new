@@ -75,7 +75,6 @@ a.list-group-item::before, .list-group-item-action::before
 .shopping-cart .product-item .product-title > a:hover,
 .wishlist-table .product-item .product-title > a:hover,
 .order-table .product-item .product-title > a:hover,
-.list-group-item.active,
 a.list-group-item:hover,
  a.list-group-item:focus, a.list-group-item:active,
  .list-group-item-action:hover,
@@ -113,14 +112,34 @@ a.list-group-item:hover,
 .pagination li span:hover,
 .pagination li.active span,
 .pagination li.active a,
-.nav-tabs .nav-link.active:hover,
-.btn
+.nav-tabs .nav-link.active:hover
 {
     color : #fff !important;
 }
 
+.btn.primary_btn,
+a.btn.primary_btn,
+button.btn.primary_btn {
+    color: #fff !important;
+}
+
+.btn.primary_btn:hover,
+a.btn.primary_btn:hover,
+button.btn.primary_btn:hover,
+.btn.primary_btn:active,
+a.btn.primary_btn:active,
+button.btn.primary_btn:active {
+    color: #fff !important;
+}
+
 .shop-view>a.active{
     color: #fff !important;
+}
+
+.list-group-item.active {
+    background-color: #FF6A00 !important;
+    border-color: #FF6A00 !important;
+    color: #FFFFFF !important;
 }
 
 .category-scroll::-webkit-scrollbar-thumb {

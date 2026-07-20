@@ -74,7 +74,7 @@
 
                         </h4>
                         <div class="d-inline-block">
-                            <a class="btn primery_btn" href="{{ $home_page_value->url1 ?? '#' }}" target="_blank">
+                            <a class="btn primary_btn" href="{{ $home_page_value->url1 ?? '#' }}" target="_blank">
                                 {{ $homepreferences['image_one_button'] ?? 'Learn More' }}
                             </a>
                         </div>
@@ -91,7 +91,7 @@
 
                         </h4>
                         <div class="d-inline-block">
-                            <a class="btn primery_btn" href="{{ $home_page_value->url2 ?? '#' }}" target="_blank">
+                            <a class="btn primary_btn" href="{{ $home_page_value->url2 ?? '#' }}" target="_blank">
                                 {{ $homepreferences['image_two_button'] ?? 'Learn More' }}
                             </a>
                         </div>
@@ -231,7 +231,7 @@
 
             @if ($products->count() > 0)
                 <div class="text-center">
-                    <a class="btn primery_btn mx-auto px-5" href="{{ route('user.store') }}">
+                    <a class="btn primary_btn mx-auto px-5" href="{{ route('user.store') }}">
                         {{ $homepreferences['visit_store'] ?? 'Visit Store' }}
                     </a>
                 </div>
@@ -261,7 +261,7 @@
                 @endif
                 @if ($allActiveCategories->isNotEmpty())
                     <div class="text-center">
-                        <a class="btn primery_btn mx-auto py-2 d-inline-block" href="{{ route('user.categories') }}">
+                        <a class="btn primary_btn mx-auto py-2 d-inline-block" href="{{ route('user.categories') }}">
                              {{ $homepreferences['categories_button'] ?? 'View Categories' }}
                         </a>
                     </div>
@@ -290,7 +290,7 @@
                 @endif
                 @if ($brands->isNotEmpty())
                     <div class="text-center">
-                        <a class="btn primery_btn mx-auto py-2 d-inline-block" href="{{ route('user.brand') }}">
+                        <a class="btn primary_btn mx-auto py-2 d-inline-block" href="{{ route('user.brand') }}">
                              {{ $homepreferences['brands_button'] ?? 'View Brands' }}
                         </a>
                     </div>

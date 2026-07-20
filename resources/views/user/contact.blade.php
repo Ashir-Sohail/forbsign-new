@@ -52,7 +52,7 @@
                                     <textarea name="message" placeholder="Message" rows="5" class="input" required></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn primery_btn col-sm-7 col-md-5">
+                                    <button type="submit" class="btn primary_btn col-sm-7 col-md-5">
                                         Send Message
                                     </button>
                                 </div>
@@ -97,7 +97,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <button type="submit" class="btn primery_btn col-sm-7 col-md-5">
+                                    <button type="submit" class="btn primary_btn col-sm-7 col-md-5">
                                         Send Message
                                     </button>
                                 </div>

@@ -287,7 +287,7 @@
                     <h5 class="mb-4">Contact</h5>
                     <ul>
                         <li><a href="#">{{ $footer_value->address ?? '' }}</a></li>
-                        <li><a class="btn primery_btn" href="{{ $footer_value->google_maps_url ?? '#' }}"
+                        <li><a class="btn primary_btn" href="{{ $footer_value->google_maps_url ?? '#' }}"
                                 target="_blank">Directions</a></li>
                         <li><a href="tel:{{ $footer_value->phone ?? 'N\A' }}"><strong>Phone:</strong>
                                 {{ $footer_value->phone ?? '' }}</a></li>

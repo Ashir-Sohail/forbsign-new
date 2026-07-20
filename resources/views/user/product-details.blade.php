@@ -183,13 +183,13 @@
                                     </div>
 
                                     <div id="alignmentControls" class="btn-group w-100 mb-3">
-                                        <button class="align-btn btn primery_btn" data-align="left">
+                                        <button class="align-btn btn primary_btn" data-align="left">
                                             <i class="fas fa-align-left"></i> Left
                                         </button>
-                                        <button class="align-btn btn primery_btn" data-align="center">
-                                            <i class="fas fa-align-center primery_btn"></i> Center
+                                        <button class="align-btn btn primary_btn" data-align="center">
+                                            <i class="fas fa-align-center primary_btn"></i> Center
                                         </button>
-                                        <button class="align-btn btn primery_btn" data-align="right"><i
+                                        <button class="align-btn btn primary_btn" data-align="right"><i
                                                 class="fas fa-align-right"></i> Right </button>
                                     </div>
 
@@ -497,7 +497,7 @@
                         <div class="row mt-4">
                             <div class="col-md-12">
                                 <button type="submit"
-                                    class="btn primery_btn w-100 d-flex justify-content-center align-items-center"
+                                    class="btn primary_btn w-100 d-flex justify-content-center align-items-center"
                                     id="submit-btn">
                                     <span id="btn-text">Send</span>
                                     <span class="spinner-border spinner-border-sm ms-2 d-none" role="status"

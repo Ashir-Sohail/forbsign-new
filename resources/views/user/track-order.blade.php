@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn primery_btn w-100 rounded-0">Check Order Status</button>
+                            <button type="submit" class="btn primary_btn w-100 rounded-0">Check Order Status</button>
                         </div>
                     </div>
                 </form>

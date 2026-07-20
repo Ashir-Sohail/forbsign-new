@@ -148,17 +148,16 @@ img {
     z-index: 1;
 }
 
-.primery_btn {
-    background-color: #EE903B;
+.primary_btn {
+    background-color: #EE903B !important;
     color: #FFFFFF !important;
     border: 1px solid #EE903B;
     z-index: 1;
 }
 
-a.btn.primery_btn,
-button.btn.primery_btn {
+a.btn.primary_btn,
+button.btn.primary_btn {
     color: #FFFFFF !important;
-    background: purple;
 }
 
 .btn:is(:hover, :active)::before {
@@ -175,23 +174,20 @@ button.btn.primery_btn {
     border-color: #EE903B;
 }
 
-.primery_btn:is(:hover, :active) {
-    color: #EE903B !important;
-    border: 1px solid #EE903B;
-     background: purple;
+/* Keep solid orange + white text on hover (avoid white-on-white from ::before invert) */
+.btn.primary_btn:is(:hover, :active),
+a.btn.primary_btn:is(:hover, :active),
+button.btn.primary_btn:is(:hover, :active) {
+    background-color: #d97828 !important;
+    color: #FFFFFF !important;
+    border-color: #d97828 !important;
 }
 
-.primery_btn:is(:hover, :active)::before {
-    background-color: #FFFFFF;
-    color: #EE903B;
-     background: purple;
-
-}
-
-.primary_btn{
-    background-color: #EE903B !important;
-    color: #FFFFFF;
-    border:none;
+.btn.primary_btn:is(:hover, :active)::before,
+a.btn.primary_btn:is(:hover, :active)::before,
+button.btn.primary_btn:is(:hover, :active)::before {
+    top: 110%;
+    background-color: transparent;
 }
 
 .header nav {

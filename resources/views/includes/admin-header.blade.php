@@ -10,7 +10,7 @@
             }
         @endphp
 
-        <a href="/" class="logo">
+        <a href="{{route('user.home')}}" class="logo" target="_blank">
             @if (!empty($media_value->logo))
                 <img src="{{ \App\Helpers\FileUploadHelper::url($media_value->logo) }}" alt="ForbSign Logo" loading="lazy"
                     class="navbar-brand">

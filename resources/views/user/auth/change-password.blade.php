@@ -48,7 +48,7 @@
 
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn primery_btn w-100 rounded-0">Update Password</button>
+                                <button type="submit" class="btn primary_btn w-100 rounded-0">Update Password</button>
                             </div>
                         </form>
                     </div>

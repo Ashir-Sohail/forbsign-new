@@ -80,7 +80,7 @@
                             <div class="col-12">
                                 <hr class="mt-2 mb-3">
                                 <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                    <button class="btn_black margin-right-none" type="submit"><span>Update
+                                    <button class="btn primary_btn margin-right-none" type="submit"><span>Update
                                             Profile</span></button>
                                 </div>
                             </div>

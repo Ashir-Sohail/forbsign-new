@@ -4,8 +4,9 @@
             <div class="user-avatar">
 
                 @if (Auth::user()->photo != 'null')
-                    {{-- <img id="avater_photo_view" src="{{ \App\Helpers\FileUploadHelper::url(Auth::user()->photo }}" /> --}}
-                    <img id="avater_photo_view" src="{{ \App\Helpers\FileUploadHelper::url(Auth::user()->photo) }}" />
+                    <img id="avater_photo_view"
+                        src="{{ \App\Helpers\FileUploadHelper::url(Auth::user()->photo) ?? asset('assets/imgs/HomeEssentials.svg') }}"
+                        alt="{{ Auth::user()->name ?? 'User' }}" />
                 @else
                     <img id="avater_photo_view"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
@@ -52,9 +53,9 @@
                     <p>Do you remove you account?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="https://geniusdevs.com/codecanyon/omnimart40/admin/remove/account" type="button"
-                        class="btn btn-danger">Remove Account</a>
+                    <button type="button" class="btn primary_btn" data-bs-dismiss="modal">Close</button>
+                    <a href="https://geniusdevs.com/codecanyon/omnimart40/admin/remove/account"
+                        class="btn primary_btn">Remove Account</a>
                 </div>
             </div>
         </div>
@@ -80,10 +81,10 @@
 
             <!-- Footer -->
             <div class="modal-footer">
-                <button type="button" class="primary_btn p-2 rounded-3" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn primary_btn" data-bs-dismiss="modal">Cancel</button>
                 <form action="{{ route('user.logout') }}" method="POST" class="d-inline">
                     @csrf
-                    <button type="submit" class="primary_btn p-2 rounded-3">Logout</button>
+                    <button type="submit" class="btn primary_btn">Logout</button>
                 </form>
             </div>
 

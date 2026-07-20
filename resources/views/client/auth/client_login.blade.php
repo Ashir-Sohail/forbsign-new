@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn primery_btn w-100 rounded-0">Sign in</button>
+                            <button type="submit" class="btn primary_btn w-100 rounded-0">Sign in</button>
                             {{-- <a href="" class="orang_btn w-100 rounded-0 mt-3">Create Account</a> --}}
                         </div>
                          <a href="{{route('passwordforgot')}}" class="text-center mt-3">Forgot Password?</a>

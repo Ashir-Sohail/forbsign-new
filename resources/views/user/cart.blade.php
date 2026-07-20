@@ -18,15 +18,22 @@
     </div> --}}
     <section id="cart" class="my-5">
         <div class="container">
-            <div class="row cart_con">
-                <div class="col-lg-8 ps-xl-4 pe-xl-5 pe-lg-3 py-3 cart_left">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center w-100">
-                        <h5>{{ $cartpreferences['card_heading'] ?? '' }}</h5>
-                    </div>
-                    <div class="row gy-3 w-100 mx-auto">
-                        <div class="col-12 border py-2">
-
-                            @if (session()->has('cart') && count(session('cart')) > 0)
+            @php $total = 0; @endphp
+            
+            @if (session('cart') && count(session('cart')) > 0)
+                {{-- Cart has items - show existing cart functionality --}}
+                @php
+                    foreach(session('cart') as $item) {
+                        $total += $item['current_price'] * $item['quantity'];
+                    }
+                @endphp
+                <div class="row cart_con">
+                    <div class="col-lg-8 ps-xl-4 pe-xl-5 pe-lg-3 py-3 cart_left">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center w-100">
+                            <h5>{{ $cartpreferences['card_heading'] ?? '' }}</h5>
+                        </div>
+                        <div class="row gy-3 w-100 mx-auto">
+                            <div class="col-12 border py-2">
                                 <div class="d-flex justify-content-between align-items-center w-100">
                                     <div class="d-flex align-items-center gap-2">
                                         <input type="checkbox" id="check_input" class="check_box" />
@@ -38,45 +45,29 @@
                                         <img src="./assets/imgs/trash.svg" alt="Trash" loading="lazy">
                                     </button>
                                 </div>
-                            @else
-                                <p class="alert alert-danger text-center">Your cart is empty</p>
-                            @endif
-                        </div>
+                            </div>
 
-
-                        <div class="col-12 cart2 py-2 py-lg-3 table-responsive px-0">
-                            <table class="w-100">
-                                <tbody>
-                                    @php $total = 0; @endphp
-                                    @if (session('cart') && count(session('cart')) > 0)
+                            <div class="col-12 cart2 py-2 py-lg-3 table-responsive px-0">
+                                <table class="w-100">
+                                    <tbody>
                                         @foreach (session('cart') as $id => $product)
-                                            @php
-                                                $total += $product['current_price'] * $product['quantity'];
-                                            @endphp
-
                                             <tr data-id="{{ $id }}">
                                                 <td>
                                                     <input type="checkbox" class="check_item" name="cart_ids[]"
                                                         value="{{ $id }}">
                                                 </td>
                                                 <td>
-                                                    {{-- <img src="{{ \App\Helpers\FileUploadHelper::url($product['featured_image']) }}"
-                                                            alt="" loading="lazy" class="product-img"> --}}
                                                     <img src="{{ \App\Helpers\FileUploadHelper::url($product['featured_image']) }}"
                                                         alt="Product Image" loading="lazy" class="product-img">
-
                                                 </td>
                                                 <td>
-
                                                     <div
                                                         class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                                                         <div
                                                             class="d-flex justify-content-between align-items-center gap-3 w-100">
                                                             <h6 class="heading_18">{{ $product['name'] }}</h6>
                                                             <h5 class="m-0 heading_24 text-orang">
-                                                                {{-- {{ config('app.currency.symbol') }}{{ number_format($product['current_price'], 2) }} --}}
                                                                 {{ config('app.currency.symbol') }}{{ number_format($product['current_price'] * $product['quantity'], 2) }}
-
                                                             </h5>
                                                         </div>
                                                         <div
@@ -89,8 +80,6 @@
                                                     <div class="d-flex justify-content-end align-items-center gap-2">
                                                         <a href="{{ route('user.wishlist.add', $id) }}"
                                                             class="del_btn wishlist">
-
-
                                                             <svg width="20" height="20" viewBox="0 0 20 20"
                                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path
@@ -103,95 +92,101 @@
                                                                 <img src="./assets/imgs/trash.svg" alt="Trash"
                                                                     loading="lazy" style="width: 18px;">
                                                             </a>
-                                                    </div>
-                                                    <div class="number mt-3">
-                                                        <span class="minus"><img
-                                                                src="./assets/imgs/minus-square-Regular.svg"
-                                                                alt=""></span>
-                                                        {{-- <input type="text" class="num_input" value="1"
-                                                                disabled=""> --}}
-                                                        <input type="text" class="num_input"
-                                                            value="{{ $product['quantity'] }}" disabled>
+                                                        </div>
+                                                        <div class="number mt-3">
+                                                            <span class="minus"><img
+                                                                    src="./assets/imgs/minus-square-Regular.svg"
+                                                                    alt=""></span>
+                                                            <input type="text" class="num_input"
+                                                                value="{{ $product['quantity'] }}" disabled>
+                                                            <span class="plus"><img
+                                                                    src="./assets/imgs/plus-square-Regular.svg"
+                                                                    alt=""></span>
+                                                        </div>
 
-                                                        <span class="plus"><img
-                                                                src="./assets/imgs/plus-square-Regular.svg"
-                                                                alt=""></span>
-                                                    </div>
-
-                                                    <input type="hidden" name="quantity[{{ $id }}]"
-                                                        value="{{ $product['quantity'] }}" class="quantity_input">
-                                                    <input type="hidden" name="subtotal_price[{{ $id }}]"
-                                                        value="{{ $product['current_price'] * $product['quantity'] }}">
-
-                                                </td>
+                                                        <input type="hidden" name="quantity[{{ $id }}]"
+                                                            value="{{ $product['quantity'] }}" class="quantity_input">
+                                                        <input type="hidden" name="subtotal_price[{{ $id }}]"
+                                                            value="{{ $product['current_price'] * $product['quantity'] }}">
+                                                    </td>
                                             </tr>
                                         @endforeach
-                                    @endif
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex align-items-center justify-content-between gap-3 w-100 mt-3">
-                                <a href="{{ route('user.store') }}" class="btn_back float-start">
-                                    <img src="./assets/imgs/arrow-right.svg" alt="ForbSign" loading="lazy">{{ $cartpreferences['card_button1'] ?? '' }}
-                                </a>
-                                {{-- <button class="btn_black shippingToCart">Continue to Shipping</button> --}}
-                                <button class="btn_black ms-auto shippingToCart">{{ $cartpreferences['card_button2'] ?? '' }}</button>
-
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex align-items-center justify-content-between gap-3 w-100 mt-3">
+                                    <a href="{{ route('user.store') }}" class="btn_back float-start">
+                                        <img src="./assets/imgs/arrow-right.svg" alt="ForbSign" loading="lazy">{{ $cartpreferences['card_button1'] ?? '' }}
+                                    </a>
+                                    <button class="btn_black ms-auto shippingToCart">{{ $cartpreferences['card_button2'] ?? '' }}</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 cart_right py-3 mb-3">
-                    <div class="d-flex flex-wrap justify-content-between align-items-baseline w-100 ">
-                        <h5 class="heading_24">{{ $cartpreferences['order_heading'] ?? '' }}</h5>
-                    </div>
-                    <div class="d-flex flex-wrap justify-content-between align-items-baseline w-100 ">
-                        <table class="cart_prodet w-100">
-                            <tr>
-                                <td>{{ $cartpreferences['card_subtotal'] ?? '' }}</td>
-                                <td class="text-orang text-end">
-                                    <h6>{{ config('app.currency.symbol') }}{{ number_format($total ?? 0, 0) }}
-                                    </h6>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>{{ $cartpreferences['card_shipping'] ?? '' }}</td>
-                                <td class="text-orang text-end">Free</td>
-                                <!-- You can make this dynamic as well -->
-                            </tr>
-                        </table>
-                        <hr class="w-100">
-                        <table class="cart_prodet w-100">
-                            <tr>
-                                <td>Total</td>
-                                <td class="heading_24 fw-bold text-end">
-                                    {{ config('app.currency.symbol') }}{{ number_format($total, 0) }}</td>
-                                <!-- Total can be dynamic based on shipping -->
-                            </tr>
-                        </table>
-                        <hr class="w-100">
-                        {{-- <button class="btn_black mt-4 ms-auto shippingToCart">Proceed to Checkout</button> --}}
+                    <div class="col-lg-4 cart_right py-3 mb-3">
+                        <div class="d-flex flex-wrap justify-content-between align-items-baseline w-100 ">
+                            <h5 class="heading_24">{{ $cartpreferences['order_heading'] ?? '' }}</h5>
+                        </div>
+                        <div class="d-flex flex-wrap justify-content-between align-items-baseline w-100 ">
+                            <table class="cart_prodet w-100">
+                                <tr>
+                                    <td>{{ $cartpreferences['card_subtotal'] ?? '' }}</td>
+                                    <td class="text-orang text-end">
+                                        <h6>{{ config('app.currency.symbol') }}{{ number_format($total, 0) }}
+                                        </h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $cartpreferences['card_shipping'] ?? '' }}</td>
+                                    <td class="text-orang text-end">Free</td>
+                                </tr>
+                            </table>
+                            <hr class="w-100">
+                            <table class="cart_prodet w-100">
+                                <tr>
+                                    <td>Total</td>
+                                    <td class="heading_24 fw-bold text-end">
+                                        {{ config('app.currency.symbol') }}{{ number_format($total, 0) }}</td>
+                                </tr>
+                            </table>
+                            <hr class="w-100">
+                        </div>
                     </div>
                 </div>
-                {{-- <h6 class="heading_18">
-                    {{ $product['name'] ?? 'Custom Neon Sign' }}
-                </h6> --}}
-
-                {{-- <p class="des">
-                    @if (isset($product['custom_data']))
-                        <strong>Text:</strong> {{ $product['custom_data']['custom_text'] }}<br>
-                        <strong>Font:</strong> {{ $product['custom_data']['font'] }}<br>
-                        <strong>Color:</strong> {{ $product['custom_data']['color'] }}<br>
-                        <strong>Size:</strong> {{ $product['custom_data']['size'] }}<br>
-                        <strong>Usage:</strong> {{ ucfirst($product['custom_data']['usage_type']) }}<br>
-                        <strong>Alignment:</strong> {{ ucfirst($product['custom_data']['alignment']) }}
-                    @else
-                        {{ $product['description'] }}
-                    @endif
-                </p> --}}
-
-            </div>
+            @else
+                {{-- Cart is empty - show empty cart UI --}}
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8 col-12">
+                        <div class="text-center py-5">
+                            {{-- Shopping Cart Icon --}}
+                            <div class="empty-cart-icon mb-4">
+                                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-muted">
+                                    <path d="M2.99999 2H4.99999L6.29599 14.98L5.74999 16C5.74999 16 5.77999 16.5 6.29999 16.5H18.5L19.5 4.5H5.99999" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2.5 2H3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.5 7.5C7.5 8.32843 6.82843 9 6 9C5.17157 9 4.5 8.32843 4.5 7.5C4.5 6.67157 5.17157 6 6 6C6.82843 6 7.5 6.67157 7.5 7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5 7.5C16.5 8.32843 15.8284 9 15 9C14.1716 9 13.5 8.32843 13.5 7.5C13.5 6.67157 14.1716 6 15 6C15.8284 6 16.5 6.67157 16.5 7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9 21C9.55228 21 10 20.5523 10 20C10 19.4477 9.55228 19 9 19C8.44772 19 8 19.4477 8 20C8 20.5523 8.44772 21 9 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16 21C16.5523 21 17 20.5523 17 20C17 19.4477 16.5523 19 16 19C15.4477 19 15 19.4477 15 20C15 20.5523 15.4477 21 16 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            
+                            {{-- Empty Cart Heading --}}
+                            <h2 class="mb-3" style="font-weight: 600; color: #2c3e50;">Your Cart is Empty</h2>
+                            
+                            {{-- Description --}}
+                            <p class="text-muted mb-4" style="font-size: 1.05rem; max-width: 450px; margin: 0 auto 1.5rem auto;">
+                                Looks like you haven't added any products to your cart yet.
+                            </p>
+                            
+                            {{-- Continue Shopping Button --}}
+                            <a href="{{ route('user.store') }}" class="btn btn-dark btn-lg px-5 py-2.5" style="background-color: #41416E; min-width: 200px;">
+                                Continue Shopping
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </section>
     <div id="qualityhelpinstall" class="store_footer_top">
