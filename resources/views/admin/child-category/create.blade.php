@@ -33,7 +33,7 @@
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">Name *</label>
+                                                <label for="name">Name <span class="req-star">*</span></label>
                                                 <input type="text" name="name" class="form-control item-name"
                                                     id="name" placeholder="Enter Name" value="">
                                                 @error('name')
@@ -42,7 +42,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="slug">Category *</label>
+                                                <label for="slug">Category <span class="req-star">*</span></label>
                                                 <select name="cat_id" id="cat_id" class="form-control">
                                                     <option value="">Select Category</option>
                                                     @foreach ($categories as $category)
@@ -55,7 +55,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="slug">Sub Category *</label>
+                                                <label for="slug">Sub Category <span class="req-star">*</span></label>
                                                 <select name="sub_cat_id" id="sub_cat_id" class="form-control">
                                                     <option value="">Select Category</option>
                                                 </select>

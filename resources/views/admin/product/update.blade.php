@@ -45,7 +45,7 @@
                                     <div class="form-group">
                                         <input type="hidden" name="product_id" value="{{ $product->id ?? '' }}">
 
-                                        <label for="name">Name *</label>
+                                        <label for="name">Name <span class="req-star">*</span></label>
                                         <input type="text" name="name" class="form-control item-name" id="name"
                                             placeholder="Enter Name" value="{{ $product->name }}"
                                             @if ($viewMode) readonly @endif>
@@ -61,7 +61,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="form-group pb-0  mb-0">
-                                        <label class="d-block">Featured Image *</label>
+                                        <label class="d-block">Featured Image <span class="req-star">*</span></label>
                                     </div>
                                     <div class="form-group pb-0 pt-0 mt-0 mb-0">
                                         @if ($product->featured_image)
@@ -93,7 +93,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="form-group pb-0 mb-0">
-                                        <label class="d-block">Additional Product Images *</label>
+                                        <label class="d-block">Additional Product Images <span class="req-star">*</span></label>
                                         <small class="text-muted">You can upload up to 10 images total</small>
                                     </div>
 
@@ -174,7 +174,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="sort_details">Short Description *</label>
+                                        <label for="sort_details">Short Description <span class="req-star">*</span></label>
                                         <textarea name="short_description" id="sort_details" class="form-control" placeholder="Short Description"
                                             @if ($viewMode) readonly @endif>{{ $product->short_description }}</textarea>
                                         @error('short_description')
@@ -183,7 +183,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="details">Description *</label>
+                                        <label for="details">Description <span class="req-star">*</span></label>
                                         <textarea name="description" id="description" class="form-control text-editor" rows="6"
                                             placeholder="Enter Description" @if ($viewMode) readonly @endif>{{ $product->description }}</textarea>
                                         @error('description')
@@ -197,7 +197,7 @@
                                 <div class="card-body">
 
                                     <div class="form-group">
-                                        <label for="meta_title">Meta Title *
+                                        <label for="meta_title">Meta Title <span class="req-star">*</span>
                                         </label>
                                         <input type="text" name="meta_title" class="form-control" id="meta_title"
                                             placeholder="Enter Meta Title" value="{{ $product->meta_title }}"
@@ -208,7 +208,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">SEO URL *</label>
+                                        <label for="title">SEO URL <span class="req-star">*</span></label>
                                         <input type="text" name="meta_url" class="form-control" id="urls"
                                             placeholder="Enter Meta Link" value="{{ $product->meta_url }}"
                                             @if ($viewMode) readonly @endif>
@@ -224,7 +224,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="meta_keywords">Meta Keywords *
+                                        <label for="meta_keywords">Meta Keywords <span class="req-star">*</span>
                                         </label>
                                         <input type="text" name="meta_keyword" class="tags" id="meta_keywords"
                                             placeholder="Enter Meta Keywords" value="{{ $product->meta_keyword }}"
@@ -235,7 +235,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="meta_description">Meta Description *
+                                        <label for="meta_description">Meta Description <span class="req-star">*</span>
                                         </label>
                                         <textarea name="meta_description" id="meta_description" class="form-control" rows="5"
                                             placeholder="Enter Meta Description" @if ($viewMode) readonly @endif>{{ $product->meta_description }}</textarea>
@@ -257,7 +257,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="discount_price">Current Price
-                                            *</label>
+                                            <span class="req-star">*</span></label>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">{{ config('app.currency.symbol') }}</span>
@@ -296,21 +296,6 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="points">Points</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">#</span>
-                                            </div>
-                                            <input type="number" id="points" name="points" class="form-control"
-                                                placeholder="Enter Points" min="1" step="1"
-                                                value="{{ old('points', $product->points ?? '') }}">
-                                        </div>
-                                        @error('points')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group">
                                         <label for="weight">Weight</label>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -331,7 +316,7 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <label for="category_id" class="fw-bold">Select Category *</label>
+                                    <label for="category_id" class="fw-bold">Select Category <span class="req-star">*</span></label>
 
                                     <div id="subcategory-wrapper">
                                         @php
@@ -380,7 +365,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="brand_id">Select Brand *</label>
+                                        <label for="brand_id">Select Brand <span class="req-star">*</span></label>
                                         <select name="brand_id" id="brand_id" class="form-control"
                                             {{ $viewMode ? 'disabled' : '' }}>
                                             <option value="" selected>Select Brand</option>
@@ -400,7 +385,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="stock">Total in stock
-                                            *</label>
+                                            <span class="req-star">*</span></label>
                                         <div class="input-group mb-3">
                                             <input type="number" id="stock" name="total_stock" class="form-control"
                                                 placeholder="Total in stock" value="{{ $product->total_stock }}"
@@ -416,7 +401,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="informative">Informative Product *</label>
+                                        <label for="informative">Informative Product <span class="req-star">*</span></label>
 
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="informative"
@@ -522,7 +507,6 @@
                                                                 <th>Quantity</th>
                                                                 <th>Subtract</th>
                                                                 <th>Price</th>
-                                                                <th>Points</th>
                                                                 <th>Weight</th>
                                                                 <th>Action</th>
                                                             </tr>
@@ -591,25 +575,6 @@
                                                                                 value="{{ $pov->price }}"
                                                                                 class="form-control mt-1"
                                                                                 placeholder="Price">
-                                                                        </td>
-
-                                                                        {{-- Points --}}
-                                                                        <td>
-                                                                            <select
-                                                                                name="product_option[{{ $optionId }}][product_option_value][{{ $index }}][points_prefix]"
-                                                                                class="form-control">
-                                                                                <option value="+"
-                                                                                    {{ $pov->points_prefix == '+' ? 'selected' : '' }}>
-                                                                                    +</option>
-                                                                                <option value="-"
-                                                                                    {{ $pov->points_prefix == '-' ? 'selected' : '' }}>
-                                                                                    -</option>
-                                                                            </select>
-                                                                            <input type="number"
-                                                                                name="product_option[{{ $optionId }}][product_option_value][{{ $index }}][points]"
-                                                                                value="{{ $pov->points }}"
-                                                                                class="form-control mt-1"
-                                                                                placeholder="Points">
                                                                         </td>
 
                                                                         {{-- Weight --}}
@@ -759,7 +724,6 @@
                                                     <th>Quantity</th>
                                                     <th>Subtract</th>
                                                     <th>Price</th>
-                                                    <th>Points</th>
                                                     <th>Weight</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -887,13 +851,6 @@
                     <input type="number" name="product_option[${optionId}][product_option_value][${index}][price]" class="form-control" placeholder="Price" value="${existingValue.price || ''}">
                 </td>
                 <td>
-                    <select name="product_option[${optionId}][product_option_value][${index}][points_prefix]" class="form-control">
-                        <option value="+"${existingValue.points_prefix == '+' ? ' selected' : ''}>+</option>
-                        <option value="-"${existingValue.points_prefix == '-' ? ' selected' : ''}>-</option>
-                    </select>
-                    <input type="number" name="product_option[${optionId}][product_option_value][${index}][points]" class="form-control" placeholder="Points" value="${existingValue.points || ''}">
-                </td>
-                <td>
                     <select name="product_option[${optionId}][product_option_value][${index}][weight_prefix]" class="form-control">
                         <option value="+"${existingValue.weight_prefix == '+' ? ' selected' : ''}>+</option>
                         <option value="-"${existingValue.weight_prefix == '-' ? ' selected' : ''}>-</option>
@@ -921,7 +878,7 @@
 
                     if (data.length === 0) {
                         tbody.append(
-                            `<tr><td colspan="7" class="text-center">No option values.</td></tr>`
+                            `<tr><td colspan="6" class="text-center">No option values.</td></tr>`
                         );
                     } else {
                         // First, add rows for existing values

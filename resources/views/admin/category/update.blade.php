@@ -34,7 +34,7 @@
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">Set Image *</label>
+                                                <label for="name">Set Image <span class="req-star">*</span></label>
                                                 <br>
                                                 @if ($category->image)
                                                     {{-- <img class="admin-img"
@@ -65,7 +65,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="name">Name *</label>
+                                                <label for="name">Name <span class="req-star">*</span></label>
                                                 <input type="text" name="name" class="form-control item-name"
                                                     id="name" placeholder="Enter Name" value="{{ $category->name }}">
                                                 @error('name')
@@ -73,7 +73,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="parent_id">Select Parent Category *</label>
+                                                <label for="parent_id">Select Parent Category <span class="req-star">*</span></label>
                                                 <select name="parent_id" id="parent_id" class="form-control">
                                                     <option value="">-- No Parent (Top-Level Category) --</option>
                                                     @include(
@@ -88,7 +88,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="meta_title">Meta Title *
+                                                <label for="meta_title">Meta Title <span class="req-star">*</span>
                                                 </label>
                                                 <input type="text" name="meta_title" class="form-control" id="meta_title"
                                                     placeholder="Enter Meta Title" value="{{ $category->meta_title }}">
@@ -99,7 +99,7 @@
 
 
                                             {{-- <div class="form-group">
-                                                <label for="slug">Slug *</label>
+                                                <label for="slug">Slug <span class="req-star">*</span></label>
                                                 <input type="text" name="slug" class="form-control" id="slug"
                                                     placeholder="Enter Slug" value="{{ $category->slug }}">
                                                 @error('slug')
@@ -108,7 +108,7 @@
                                             </div> --}}
 
                                             <div class="form-group">
-                                                <label for="meta_keywords">Meta Keywords *
+                                                <label for="meta_keywords">Meta Keywords <span class="req-star">*</span>
                                                 </label>
                                                 <input type="text" name="meta_keyword" class="tags" id="meta_keywords"
                                                     placeholder="Enter Meta Keywords"
@@ -119,7 +119,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="title">SEO URL *</label>
+                                                <label for="title">SEO URL <span class="req-star">*</span></label>
                                                 <input type="text" name="meta_url" class="form-control" id="urls"
                                                     placeholder="Enter Meta Link" value="{{ $category->meta_url }}">
                                                 @error('meta_url')
@@ -128,7 +128,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="meta_description">Meta Description *
+                                                <label for="meta_description">Meta Description <span class="req-star">*</span>
                                                 </label>
                                                 <textarea name="meta_description" id="meta_description" class="form-control" rows="5"
                                                     placeholder="Enter Meta Description">{{ $category->meta_description }}</textarea>
@@ -138,7 +138,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="serial">Sort *</label>
+                                                <label for="serial">Sort <span class="req-star">*</span></label>
                                                 <input type="number" name="serial" class="form-control" id="serial"
                                                     placeholder="Enter Serial Number" value="{{ $category->serial }}">
                                                 @error('serial')

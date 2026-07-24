@@ -33,7 +33,7 @@
                                             id="option-form" action="{{ route('admin.option.store') }}">
                                             @csrf
                                             {{-- <div class="form-group">
-                                                <label for="name">Set Image *</label>
+                                                <label for="name">Set Image <span class="req-star">*</span></label>
 
                                                 <br>
                                                 <img class="admin-img" src="{{ asset('public/admin/dummy.jpg') }}"
@@ -55,7 +55,7 @@
                                             </div> --}}
 
                                             <div class="form-group">
-                                                <label for="name">Option Name 1 (English)*</label>
+                                                <label for="name">Option Name 1 (English)<span class="req-star">*</span></label>
                                                 <input type="text" name="option_name_en" class="form-control item-name"
                                                     id="option_name_en" placeholder="Enter Name"
                                                     value="{{ old('option_name_en') }}" required>
@@ -64,7 +64,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="name">Option Name 2 (Arabic)*</label>
+                                                <label for="name">Option Name 2 (Arabic)<span class="req-star">*</span></label>
                                                 <input type="text" name="option_name_ar" class="form-control item-name"
                                                     id="option_name_ar" placeholder="Enter Name"
                                                     value="{{ old('option_name_ar') }}" required>
@@ -74,7 +74,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="title">Type *</label>
+                                                <label for="title">Type <span class="req-star">*</span></label>
                                                 <select name="input_type" id="input-type" class="form-control" required>
 
                                                     <option value="" disabled
@@ -132,7 +132,7 @@
 
                                             </div>
                                             <div class="form-group">
-                                                <label for="serial">Sort *</label>
+                                                <label for="serial">Sort <span class="req-star">*</span></label>
                                                 <input type="number" name="serial" class="form-control" id="serial"
                                                     placeholder="Enter Serial Number" value="0" required>
                                                 @error('serial')

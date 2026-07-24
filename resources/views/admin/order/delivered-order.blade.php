@@ -41,7 +41,7 @@
                                             </td>
 
                                             <td>
-                                                ${{ $order->total }}
+                                                {{ config('app.currency.symbol') }}{{ $order->total }}
                                             </td>
 
                                             <td>

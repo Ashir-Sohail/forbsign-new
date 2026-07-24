@@ -105,6 +105,9 @@
 
     <!-- Load CKEditor -->
     <script src="https://cdn.ckeditor.com/4.22.1/standard-all/ckeditor.js"></script>
+    <script>
+        CKEDITOR.config.versionCheck = false;
+    </script>
 
 
 

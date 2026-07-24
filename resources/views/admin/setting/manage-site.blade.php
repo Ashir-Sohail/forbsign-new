@@ -62,7 +62,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-9 col-lg-9">
-                                            <div class="">
+                                            <div>
                                                 <div id="tabs">
                                                     <!-- Tab panes -->
                                                     <div class="tab-content">
@@ -73,7 +73,7 @@
                                                                 <div class="row justify-content-center">
                                                                     <div class="col-lg-8">
                                                                         <div class="form-group">
-                                                                            <label for="title">App Name *</label>
+                                                                            <label for="title">App Name <span class="req-star">*</span></label>
                                                                             <input type="text" name="app_name"
                                                                                 value="{{ $basic_value->app_name ?? '' }}"
                                                                                 class="form-control" id="app_name"
@@ -87,7 +87,7 @@
                                                                     <div class="col-lg-8">
                                                                         <div class="form-group">
                                                                             <label for="home_page_title">Home Page Title
-                                                                                *</label>
+                                                                                <span class="req-star">*</span></label>
                                                                             <input type="text" name="home_page_title"
                                                                                 class="form-control" id="home_page_title"
                                                                                 value="{{ $basic_value->home_page_title ?? '' }}"
@@ -107,10 +107,9 @@
                                                             <form action="{{ route('admin.manage-site.home_page') }}"
                                                                 method="post" enctype="multipart/form-data">
                                                                 @csrf
-                                                                <input type="hidden" name="key" value="home_page"
-                                                                    id="">
+                                                                <input type="hidden" name="key" value="home_page">
                                                                 <div class="form-group">
-                                                                    <label for="name">Image 1 *</label>
+                                                                    <label for="name">Image 1 <span class="req-star">*</span></label>
                                                                     <br>
 
                                                                     @if (!empty($home_page_value->image1))
@@ -143,7 +142,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title1"
                                                                         class="form-control" id="title1"
                                                                         placeholder="Enter Title"
@@ -157,7 +156,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $home_page_value->sub_title1 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 1 *</label>
+                                                                    <label for="url1">URL 1 <span class="req-star">*</span></label>
                                                                     <input type="url" name="url1"
                                                                         class="form-control" id="url1"
                                                                         placeholder="Enter Url" required
@@ -166,7 +165,7 @@
 
                                                                 <hr>
                                                                 <div class="form-group">
-                                                                    <label for="name">Image 1 *</label>
+                                                                    <label for="name">Image 1 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     @if (!empty($home_page_value->image2))
                                                                         <img class="admin-setting-img"
@@ -197,7 +196,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title2"
                                                                         class="form-control" id="title2"
                                                                         placeholder="Enter Title" required
@@ -210,7 +209,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $home_page_value->sub_title2 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 2 *</label>
+                                                                    <label for="url1">URL 2 <span class="req-star">*</span></label>
                                                                     <input type="url" name="url2"
                                                                         class="form-control" id="url2"
                                                                         placeholder="Enter Url" required
@@ -218,11 +217,9 @@
                                                                 </div>
 
                                                                 <input type="hidden" name="old_image1"
-                                                                    value="{{ $home_page_value->image1 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $home_page_value->image1 ?? '' }}">
                                                                 <input type="hidden" name="old_image2"
-                                                                    value="{{ $home_page_value->image2 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $home_page_value->image2 ?? '' }}">
                                                                 <div class="form-group d-flex justify-content-center">
                                                                     <button type="submit"
                                                                         class="btn btn-secondary ">Submit</button>
@@ -234,8 +231,7 @@
                                                             <form action="{{ route('admin.manage-site.media') }}"
                                                                 method="post" enctype="multipart/form-data">
                                                                 @csrf
-                                                                <input type="hidden" name="key" value="media"
-                                                                    id="">
+                                                                <input type="hidden" name="key" value="media">
                                                                 <div class="row justify-content-center">
                                                                     <div class="col-lg-8">
                                                                         <ul
@@ -283,8 +279,7 @@
                                                                                         </div>
                                                                                         <input type="hidden"
                                                                                             name="old_logo"
-                                                                                            value="{{ $media_value->logo ?? '' }}"
-                                                                                            id="">
+                                                                                            value="{{ $media_value->logo ?? '' }}">
 
                                                                                         <div
                                                                                             class="form-group position-relative ">
@@ -335,8 +330,7 @@
                                                                                         </div>
                                                                                         <input type="hidden"
                                                                                             name="old_favicon"
-                                                                                            value="{{ $media_value->favicon ?? '' }}"
-                                                                                            id="">
+                                                                                            value="{{ $media_value->favicon ?? '' }}">
                                                                                         <div
                                                                                             class="form-group position-relative ">
                                                                                             <label class="file">
@@ -396,8 +390,7 @@
                                                                                         </div>
                                                                                         <input type="hidden"
                                                                                             name="old_loader"
-                                                                                            value="{{ $media_value->loader ?? '' }}"
-                                                                                            id="">
+                                                                                            value="{{ $media_value->loader ?? '' }}">
                                                                                         <div
                                                                                             class="form-group position-relative ">
                                                                                             <label class="file">
@@ -431,12 +424,12 @@
                                                                 method="post" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <div class="row justify-content-center">
-                                                                    <input type="hidden" name="key" id=""
+                                                                    <input type="hidden" name="key"
                                                                         value="seo">
                                                                     <div class="col-lg-8">
                                                                         <div class="form-group">
                                                                             <label for="meta_keywords">Site Meta Keywords
-                                                                                *</label>
+                                                                                <span class="req-star">*</span></label>
                                                                             <input type="text" name="meta_keyword"
                                                                                 class="tags" id="meta_keyword"
                                                                                 placeholder="Site Meta Keywords"
@@ -446,7 +439,7 @@
                                                                         <div class="form-group">
                                                                             <label for="meta_description">Site Meta
                                                                                 Description
-                                                                                *</label>
+                                                                                <span class="req-star">*</span></label>
                                                                             <textarea name="meta_description" id="meta_description" class="form-control" rows="5"
                                                                                 placeholder="Enter Site Meta Description">{{ $seo_value->meta_description ?? '' }}</textarea>
                                                                         </div>
@@ -469,7 +462,7 @@
                                                                 <div class="row justify-content-center">
                                                                     <div class="col-lg-8">
                                                                         <input type="hidden" name="key"
-                                                                            value="footer" id="">
+                                                                            value="footer">
                                                                         <div class="tab-content">
 
                                                                             <div id="footer_basic"
@@ -479,7 +472,7 @@
                                                                                     <div class="col-lg-12">
                                                                                         <div class="form-group">
                                                                                             <label for="image1">
-                                                                                                Image* <span>This image will
+                                                                                                Image<span class="req-star">*</span> <span>This image will
                                                                                                     show above footer.
                                                                                                     (Customer Photos)</span>
                                                                                             </label>
@@ -509,7 +502,7 @@
                                                                                         <div class="form-group">
                                                                                             <label
                                                                                                 for="footer_address">Store
-                                                                                                Address *</label>
+                                                                                                Address <span class="req-star">*</span></label>
                                                                                             <input type="text"
                                                                                                 name="address"
                                                                                                 class="form-control"
@@ -522,7 +515,7 @@
                                                                                             <label
                                                                                                 for="footer_address">Google
                                                                                                 Maps Address URL
-                                                                                                *</label>
+                                                                                                <span class="req-star">*</span></label>
                                                                                             <input type="text"
                                                                                                 name="google_maps_url"
                                                                                                 class="form-control"
@@ -533,7 +526,7 @@
 
                                                                                         <div class="form-group">
                                                                                             <label for="phone">Store
-                                                                                                Phone Number *</label>
+                                                                                                Phone Number <span class="req-star">*</span></label>
                                                                                             <input type="text"
                                                                                                 name="phone"
                                                                                                 class="form-control"
@@ -545,7 +538,7 @@
 
                                                                                         <div class="form-group">
                                                                                             <label for="email">Store
-                                                                                                Email *</label>
+                                                                                                Email <span class="req-star">*</span></label>
                                                                                             <input type="email"
                                                                                                 name="email"
                                                                                                 class="form-control"
@@ -555,7 +548,7 @@
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="facebook">Store
-                                                                                                Facebook *</label>
+                                                                                                Facebook <span class="req-star">*</span></label>
                                                                                             <input type="url"
                                                                                                 name="facebook"
                                                                                                 class="form-control"
@@ -565,7 +558,7 @@
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="twitter">Store
-                                                                                                Twitter/X *</label>
+                                                                                                Twitter/X <span class="req-star">*</span></label>
                                                                                             <input type="url"
                                                                                                 name="twitter"
                                                                                                 class="form-control"
@@ -576,7 +569,7 @@
 
                                                                                         <div class="form-group">
                                                                                             <label for="instagram">Store
-                                                                                                Instagram *</label>
+                                                                                                Instagram <span class="req-star">*</span></label>
                                                                                             <input type="url"
                                                                                                 name="instagram"
                                                                                                 class="form-control"
@@ -587,7 +580,7 @@
 
                                                                                         <div class="form-group">
                                                                                             <label for="youtube">Store
-                                                                                                Youtube *</label>
+                                                                                                Youtube <span class="req-star">*</span></label>
                                                                                             <input type="url"
                                                                                                 name="youtube"
                                                                                                 class="form-control"
@@ -598,7 +591,7 @@
 
                                                                                         <div class="form-group">
                                                                                             <label for="pinterest">Store
-                                                                                                Pinterest *</label>
+                                                                                                Pinterest <span class="req-star">*</span></label>
                                                                                             <input type="url"
                                                                                                 name="pinterest"
                                                                                                 class="form-control"
@@ -610,13 +603,12 @@
                                                                                         <div class="form-group">
                                                                                             <label
                                                                                                 for="copy_right">Copyright
-                                                                                                *</label>
+                                                                                                <span class="req-star">*</span></label>
                                                                                             <textarea name="copyright" id="copyright" class="form-control" rows="3" placeholder="Copyright">{{ $footer_value->copyright ?? '' }}</textarea>
                                                                                         </div>
                                                                                         <input type="hidden"
                                                                                             name="old_image1"
-                                                                                            value="{{ $footer_value->image1 ?? '' }}"
-                                                                                            id="">
+                                                                                            value="{{ $footer_value->image1 ?? '' }}">
 
 
                                                                                     </div>
@@ -644,7 +636,7 @@
                                                                 method="post" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <div class="form-group">
-                                                                    <label for="name">Image 6 *</label>
+                                                                    <label for="name">Image 6 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $first_three_column_value?->image1 ? \App\Helpers\FileUploadHelper::url($first_three_column_value->image1) : asset('images/placeholder.png') }}"
@@ -665,7 +657,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title1"
                                                                         class="form-control" id="title1"
                                                                         placeholder="Enter Title"
@@ -678,7 +670,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $first_three_column_value->sub_title1 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 1 *</label>
+                                                                    <label for="url1">URL 1 <span class="req-star">*</span></label>
                                                                     <input type="text" name="url1"
                                                                         class="form-control" id="url1"
                                                                         placeholder="Enter Url"
@@ -687,7 +679,7 @@
 
                                                                 <hr>
                                                                 <div class="form-group">
-                                                                    <label for="name">Image 2 *</label>
+                                                                    <label for="name">Image 2 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $first_three_column_value?->image2 ? \App\Helpers\FileUploadHelper::url($first_three_column_value->image2) : asset('images/placeholder.png') }}"
@@ -709,7 +701,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title2"
                                                                         class="form-control" id="title2"
                                                                         placeholder="Enter Title"
@@ -722,7 +714,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $first_three_column_value->sub_title2 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 2 *</label>
+                                                                    <label for="url1">URL 2 <span class="req-star">*</span></label>
                                                                     <input type="url" name="url2"
                                                                         class="form-control" id="url2"
                                                                         placeholder="Enter Url"
@@ -730,7 +722,7 @@
                                                                 </div>
                                                                 <hr>
                                                                 <div class="form-group">
-                                                                    <label for="name">Image 3 *</label>
+                                                                    <label for="name">Image 3 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $first_three_column_value?->image3 ? \App\Helpers\FileUploadHelper::url($first_three_column_value->image3) : asset('images/placeholder.png') }}"
@@ -752,7 +744,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title3"
                                                                         class="form-control" id="title3"
                                                                         placeholder="Enter Title"
@@ -765,7 +757,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $first_three_column_value->sub_title3 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 3 *</label>
+                                                                    <label for="url1">URL 3 <span class="req-star">*</span></label>
                                                                     <input type="text" name="url3"
                                                                         class="form-control" id="url3"
                                                                         placeholder="Enter Url"
@@ -773,14 +765,11 @@
                                                                 </div>
 
                                                                 <input type="hidden" name="old_image1"
-                                                                    value="{{ $first_three_column_value->image1 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $first_three_column_value->image1 ?? '' }}">
                                                                 <input type="hidden" name="old_image2"
-                                                                    value="{{ $first_three_column_value->image2 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $first_three_column_value->image2 ?? '' }}">
                                                                 <input type="hidden" name="old_image3"
-                                                                    value="{{ $first_three_column_value->image2 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $first_three_column_value->image2 ?? '' }}">
                                                                 <div class="form-group d-flex justify-content-center">
                                                                     <button type="submit"
                                                                         class="btn btn-secondary ">Submit</button>
@@ -796,8 +785,8 @@
                                                                 @csrf
                                                                 <div class="form-group">
                                                                     <input type="hidden" name="key"
-                                                                        value="second_three_column" id="">
-                                                                    <label for="name">Image 1 *</label>
+                                                                        value="second_three_column">
+                                                                    <label for="name">Image 1 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $second_three_column_value?->image1 ? \App\Helpers\FileUploadHelper::url($second_three_column_value->image1) : asset('images/placeholder.png') }}"
@@ -819,7 +808,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title1"
                                                                         class="form-control" id="title1"
                                                                         placeholder="Enter Title"
@@ -832,7 +821,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $second_three_column_value->sub_title1 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 1 *</label>
+                                                                    <label for="url1">URL 1 <span class="req-star">*</span></label>
                                                                     <input type="text" name="url1"
                                                                         class="form-control" id="url1"
                                                                         placeholder="Enter Url"
@@ -841,7 +830,7 @@
 
                                                                 <hr>
                                                                 <div class="form-group">
-                                                                    <label for="name">Image 2 *</label>
+                                                                    <label for="name">Image 2 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $second_three_column_value?->image2
@@ -865,7 +854,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title2"
                                                                         class="form-control" id="title2"
                                                                         placeholder="Enter Title"
@@ -878,7 +867,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $second_three_column_value->sub_title2 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 2 *</label>
+                                                                    <label for="url1">URL 2 <span class="req-star">*</span></label>
                                                                     <input type="url" name="url2"
                                                                         class="form-control" id="url2"
                                                                         placeholder="Enter Url"
@@ -886,7 +875,7 @@
                                                                 </div>
                                                                 <hr>
                                                                 <div class="form-group">
-                                                                    <label for="name">Image 3 *</label>
+                                                                    <label for="name">Image 3 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $second_three_column_value?->image3
@@ -910,7 +899,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title3"
                                                                         class="form-control" id="title3"
                                                                         placeholder="Enter Title"
@@ -923,7 +912,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $second_three_column_value->sub_title3 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 3 *</label>
+                                                                    <label for="url1">URL 3 <span class="req-star">*</span></label>
                                                                     <input type="text" name="url3"
                                                                         class="form-control" id="url3"
                                                                         placeholder="Enter Url"
@@ -931,14 +920,11 @@
                                                                 </div>
 
                                                                 <input type="hidden" name="old_image1"
-                                                                    value="{{ $second_three_column_value->image1 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $second_three_column_value->image1 ?? '' }}">
                                                                 <input type="hidden" name="old_image2"
-                                                                    value="{{ $second_three_column_value->image2 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $second_three_column_value->image2 ?? '' }}">
                                                                 <input type="hidden" name="old_image3"
-                                                                    value="{{ $second_three_column_value->image2 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $second_three_column_value->image2 ?? '' }}">
                                                                 <div class="form-group d-flex justify-content-center">
                                                                     <button type="submit"
                                                                         class="btn btn-secondary ">Submit</button>
@@ -952,8 +938,8 @@
                                                                 @csrf
                                                                 <div class="form-group">
                                                                     <input type="hidden" name="key"
-                                                                        value="four_three_column" id="">
-                                                                    <label for="name">Image 1 *</label>
+                                                                        value="four_three_column">
+                                                                    <label for="name">Image 1 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $four_three_column_value?->image1
@@ -977,7 +963,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title1"
                                                                         class="form-control" id="title1"
                                                                         placeholder="Enter Title"
@@ -990,7 +976,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $four_three_column_value->sub_title1 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 1 *</label>
+                                                                    <label for="url1">URL 1 <span class="req-star">*</span></label>
                                                                     <input type="text" name="url1"
                                                                         class="form-control" id="url1"
                                                                         placeholder="Enter Url"
@@ -999,7 +985,7 @@
 
                                                                 <hr>
                                                                 <div class="form-group">
-                                                                    <label for="name">Image 2 *</label>
+                                                                    <label for="name">Image 2 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $four_three_column_value?->image2
@@ -1023,7 +1009,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title2"
                                                                         class="form-control" id="title2"
                                                                         placeholder="Enter Title"
@@ -1036,7 +1022,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $four_three_column_value->sub_title2 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 2 *</label>
+                                                                    <label for="url1">URL 2 <span class="req-star">*</span></label>
                                                                     <input type="url" name="url2"
                                                                         class="form-control" id="url2"
                                                                         placeholder="Enter Url"
@@ -1044,7 +1030,7 @@
                                                                 </div>
                                                                 <hr>
                                                                 <div class="form-group">
-                                                                    <label for="name">Image 3 *</label>
+                                                                    <label for="name">Image 3 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $four_three_column_value?->image3
@@ -1068,7 +1054,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title3"
                                                                         class="form-control" id="title3"
                                                                         placeholder="Enter Title"
@@ -1081,7 +1067,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $four_three_column_value->sub_title3 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 3 *</label>
+                                                                    <label for="url1">URL 3 <span class="req-star">*</span></label>
                                                                     <input type="text" name="url3"
                                                                         class="form-control" id="url3"
                                                                         placeholder="Enter Url"
@@ -1089,14 +1075,11 @@
                                                                 </div>
 
                                                                 <input type="hidden" name="old_image1"
-                                                                    value="{{ $four_three_column_value->image1 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $four_three_column_value->image1 ?? '' }}">
                                                                 <input type="hidden" name="old_image2"
-                                                                    value="{{ $four_three_column_value->image2 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $four_three_column_value->image2 ?? '' }}">
                                                                 <input type="hidden" name="old_image3"
-                                                                    value="{{ $four_three_column_value->image2 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $four_three_column_value->image2 ?? '' }}">
                                                                 <div class="form-group d-flex justify-content-center">
                                                                     <button type="submit"
                                                                         class="btn btn-secondary ">Submit</button>
@@ -1110,8 +1093,8 @@
                                                                 @csrf
                                                                 <div class="form-group">
                                                                     <input type="hidden" name="key"
-                                                                        value="third_two_column" id="">
-                                                                    <label for="name">Image 1 *</label>
+                                                                        value="third_two_column">
+                                                                    <label for="name">Image 1 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $third_two_column_value?->image1
@@ -1135,7 +1118,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title1"
                                                                         class="form-control" id="title1"
                                                                         placeholder="Enter Title"
@@ -1148,7 +1131,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $third_two_column_value->sub_title1 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 1 *</label>
+                                                                    <label for="url1">URL 1 <span class="req-star">*</span></label>
                                                                     <input type="text" name="url1"
                                                                         class="form-control" id="url1"
                                                                         placeholder="Enter Url"
@@ -1157,7 +1140,7 @@
 
                                                                 <hr>
                                                                 <div class="form-group">
-                                                                    <label for="name">Image 2 *</label>
+                                                                    <label for="name">Image 2 <span class="req-star">*</span></label>
                                                                     <br>
                                                                     <img class="admin-img"
                                                                         src="{{ $third_two_column_value?->image2
@@ -1181,7 +1164,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title1">Title *</label>
+                                                                    <label for="title1">Title <span class="req-star">*</span></label>
                                                                     <input type="text" name="title2"
                                                                         class="form-control" id="title2"
                                                                         placeholder="Enter Title"
@@ -1194,7 +1177,7 @@
                                                                         placeholder="Enter Subtitle"value="{{ $third_two_column_value->sub_title2 ?? '' }}">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="url1">URL 2 *</label>
+                                                                    <label for="url1">URL 2 <span class="req-star">*</span></label>
                                                                     <input type="url" name="url2"
                                                                         class="form-control" id="url2"
                                                                         placeholder="Enter Url"
@@ -1202,11 +1185,9 @@
                                                                 </div>
 
                                                                 <input type="hidden" name="old_image1"
-                                                                    value="{{ $third_two_column_value->image1 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $third_two_column_value->image1 ?? '' }}">
                                                                 <input type="hidden" name="old_image2"
-                                                                    value="{{ $third_two_column_value->image2 ?? '' }}"
-                                                                    id="">
+                                                                    value="{{ $third_two_column_value->image2 ?? '' }}">
                                                                 <div class="form-group d-flex justify-content-center">
                                                                     <button type="submit"
                                                                         class="btn btn-secondary ">Submit</button>

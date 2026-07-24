@@ -81,7 +81,6 @@ class ProductController extends Controller
         $product->meta_url = $request->meta_url;
         $product->current_price = $request->current_price;
         $product->previous_price = $request->previous_price;
-        $product->points = $request->points;
         $product->weight = $request->weight;
         $product->cat_id = $request->cat_id;
         $product->brand_id = $request->brand_id;
@@ -113,8 +112,6 @@ class ProductController extends Controller
                             'subtract' => $value['subtract'],
                             'price_prefix' => $value['price_prefix'],
                             'price' => $value['price'],
-                            'points_prefix' => $value['points_prefix'],
-                            'points' => $value['points'],
                             'weight_prefix' => $value['weight_prefix'],
                             'weight' => $value['weight'],
                         ]);
@@ -245,7 +242,6 @@ class ProductController extends Controller
         $product->meta_description = $request->meta_description;
         $product->current_price = $request->current_price;
         $product->previous_price = $request->previous_price;
-        $product->points = $request->points;
         $product->weight = $request->weight;
         //  Properly assign last selected category
         $catIds = $request->cat_ids;
@@ -280,8 +276,6 @@ class ProductController extends Controller
                             'subtract' => $value['subtract'],
                             'price_prefix' => $value['price_prefix'],
                             'price' => $value['price'],
-                            'points_prefix' => $value['points_prefix'],
-                            'points' => $value['points'],
                             'weight_prefix' => $value['weight_prefix'],
                             'weight' => $value['weight'],
                         ]);

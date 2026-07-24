@@ -56,7 +56,7 @@
                                         <!-- Contact Section Tab -->
                                         <div class="tab-pane fade show active" id="contact" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="contact_title">Title*</label>
+                                                <label for="contact_title">Title<span class="req-star">*</span></label>
                                                 <input type="text" name="contact_title" class="form-control"
                                                     id="contact_title"
                                                     value="{{ old('contact_title', $contactpreferences['contact_title'] ?? '') }}"
@@ -68,7 +68,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="contact_heading">Heading*</label>
+                                                <label for="contact_heading">Heading<span class="req-star">*</span></label>
                                                 <input type="text" name="contact_heading" class="form-control"
                                                     id="contact_heading"
                                                     value="{{ old('contact_heading', $contactpreferences['contact_heading'] ?? '') }}"
@@ -84,7 +84,7 @@
                                         <!-- Body Tab -->
                                         <div class="tab-pane fade" id="body" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="body_heading">Heading*</label>
+                                                <label for="body_heading">Heading<span class="req-star">*</span></label>
                                                 <input type="text" name="body_heading" class="form-control"
                                                     id="body_heading"
                                                     value="{{ old('body_heading', $contactpreferences['body_heading'] ?? '') }}"
@@ -96,7 +96,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-check">
-                                                <label for="form_heading">Form Heading*</label>
+                                                <label for="form_heading">Form Heading<span class="req-star">*</span></label>
                                                 <input type="text" class="form-control" name="form_heading"
                                                     id="form_heading"
                                                     value="{{ old('form_heading', $contactpreferences['form_heading'] ?? '') }}"
@@ -109,7 +109,7 @@
                                             @enderror
 
                                             <div class="form-check">
-                                                <label for="form_button">Form Button*</label>
+                                                <label for="form_button">Form Button<span class="req-star">*</span></label>
                                                 <input type="text" class="form-control" name="form_button"
                                                     id="form_button"
                                                     value="{{ old('form_button', $contactpreferences['form_button'] ?? '') }}"
@@ -122,7 +122,7 @@
                                             @enderror
 
                                             <div class="form-check">
-                                                <label for="address_heading">Address Heading*</label>
+                                                <label for="address_heading">Address Heading<span class="req-star">*</span></label>
                                                 <input type="text" class="form-control" name="address_heading"
                                                     id="address_heading"
                                                     value="{{ old('address_heading', $contactpreferences['address_heading'] ?? '') }}"
@@ -135,7 +135,7 @@
                                             @enderror
 
                                             <div class="form-check">
-                                                <label for="address">Address*</label>
+                                                <label for="address">Address<span class="req-star">*</span></label>
                                                 <input type="text" class="form-control" name="address" id="address"
                                                     value="{{ old('address', $contactpreferences['address'] ?? '') }}"
                                                     required>
@@ -147,7 +147,7 @@
                                             @enderror
 
                                             <div class="form-check">
-                                                <label for="direction_button">Direction Button*</label>
+                                                <label for="direction_button">Direction Button<span class="req-star">*</span></label>
                                                 <input type="text" class="form-control" name="direction_button"
                                                     id="direction_button"
                                                     value="{{ old('direction_button', $contactpreferences['direction_button'] ?? '') }}"
@@ -160,7 +160,7 @@
                                             @enderror
 
                                             <div class="form-check">
-                                                <label for="address_contact_heading">Contact Heading*</label>
+                                                <label for="address_contact_heading">Contact Heading<span class="req-star">*</span></label>
                                                 <input type="text" class="form-control" name="address_contact_heading"
                                                     id="address_contact_heading"
                                                     value="{{ old('address_contact_heading', $contactpreferences['address_contact_heading'] ?? '') }}"
@@ -173,7 +173,7 @@
                                             @enderror
 
                                             <div class="form-check">
-                                                <label for="phone">Phone*</label>
+                                                <label for="phone">Phone<span class="req-star">*</span></label>
                                                 <input type="text" class="form-control" name="phone" id="phone"
                                                     value="{{ old('phone', $contactpreferences['phone'] ?? '') }}"
                                                     required>
@@ -185,7 +185,7 @@
                                             @enderror
 
                                             <div class="form-check">
-                                                <label for="email">Email*</label>
+                                                <label for="email">Email<span class="req-star">*</span></label>
                                                 <input type="email" class="form-control" name="email" id="email"
                                                     value="{{ old('email', $contactpreferences['email'] ?? '') }}"
                                                     required>
@@ -197,7 +197,7 @@
                                             @enderror
 
                                             <div class="form-check">
-                                                <label for="social_heading">Social Heading*</label>
+                                                <label for="social_heading">Social Heading<span class="req-star">*</span></label>
                                                 <input type="text" class="form-control" name="social_heading"
                                                     id="social_heading"
                                                     value="{{ old('social_heading', $contactpreferences['social_heading'] ?? '') }}"
@@ -213,7 +213,7 @@
                                         {{-- Information --}}
                                         <div class="tab-pane fade" id="information" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="information_icon1">Icon1*</label>
+                                                <label for="information_icon1">Icon1<span class="req-star">*</span></label>
                                                 <textarea name="information_icon1" class="form-control" id="information_icon1" required>{{ old('information_icon1', $contactpreferences['information_icon1'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon1')
@@ -222,7 +222,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading1">Heading1*</label>
+                                                <label for="information_heading1">Heading1<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading1" class="form-control"
                                                     id="information_heading1"
                                                     value="{{ old('information_heading1', $contactpreferences['information_heading1'] ?? '') }}"
@@ -234,7 +234,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_description1">Description1*</label>
+                                                <label for="information_description1">Description1<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_description1" class="form-control" id="information_description1"
                                                     required>{{ old('information_description1', $contactpreferences['information_description1'] ?? '') }}</textarea>
                                             </div>
@@ -245,7 +245,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_icon2">Icon2*</label>
+                                                <label for="information_icon2">Icon2<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_icon2" class="form-control" id="information_icon2" required>{{ old('information_icon2', $contactpreferences['information_icon2'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon2')
@@ -254,7 +254,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading2">Heading2*</label>
+                                                <label for="information_heading2">Heading2<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading2" class="form-control"
                                                     id="information_heading2"
                                                     value="{{ old('information_heading2', $contactpreferences['information_heading2'] ?? '') }}"
@@ -267,7 +267,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_description2">Description2*</label>
+                                                <label for="information_description2">Description2<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_description2" class="form-control" id="information_description2"
                                                     required>{{ old('information_description2', $contactpreferences['information_description2'] ?? '') }}</textarea>
                                             </div>
@@ -278,7 +278,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_icon3">Icon3*</label>
+                                                <label for="information_icon3">Icon3<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_icon3" class="form-control" id="information_icon3" required>{{ old('information_icon3', $contactpreferences['information_icon3'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon3')
@@ -287,7 +287,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading3">Heading3*</label>
+                                                <label for="information_heading3">Heading3<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading3" class="form-control"
                                                     id="information_heading3"
                                                     value="{{ old('information_heading3', $contactpreferences['information_heading3'] ?? '') }}"
@@ -299,7 +299,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_Description3">Description3*</label>
+                                                <label for="information_Description3">Description3<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_Description3" class="form-control" id="information_Description3"
                                                     required>{{ old('information_Description3', $contactpreferences['information_Description3'] ?? '') }}</textarea>
                                             </div>
@@ -313,7 +313,7 @@
                                         {{-- customer --}}
                                         <div class="tab-pane fade" id="customer" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="customer_heading">Customer Heading*</label>
+                                                <label for="customer_heading">Customer Heading<span class="req-star">*</span></label>
                                                 <input type="text" name="customer_heading" class="form-control"
                                                     id="customer_heading"
                                                     value="{{ old('customer_heading', $contactpreferences['customer_heading'] ?? '') }}"

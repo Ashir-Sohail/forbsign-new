@@ -53,8 +53,8 @@ class RegisterController extends Controller
 
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            // Redirect back to original page (e.g., checkout) or fallback to home
-            $redirectUrl = $request->input('redirect_to', route('user.home'));
+            // Keep checkout (or other) return URL when present; otherwise go to dashboard
+            $redirectUrl = $request->input('redirect_to') ?: route('user.dashboard');
 
             return redirect()->to($redirectUrl)->with('success', 'Registration and login successful');
         }

@@ -10,7 +10,7 @@
                     @csrf
                     <div class="row gy-4 floating_lables">
                         <div class="col-12 mb-4">
-                            <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Fobsign logo" class=""
+                            <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Fobsign logo"
                                 loading="lazy" style="width: 230px; max-width: 100%; height: auto;">
                         </div>
                         <div class="col-12">
@@ -30,14 +30,18 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="form-floating">
+                            <div class="form-floating password-field">
                                 <input class="form-control" type="password" name="password_login" placeholder="Password"
-                                    id="login-pass">
-                                @error('password_login')
-                                    <p class="text-danger text-start">{{ $message }}</p>
-                                @enderror
-                                <label for="password ">Password</label>
+                                    id="login-pass" autocomplete="current-password">
+                                <label for="login-pass">Password</label>
+                                <button type="button" class="password-toggle" data-target="login-pass"
+                                    aria-label="Show password">
+                                    <i class="bi bi-eye"></i>
+                                </button>
                             </div>
+                            @error('password_login')
+                                <p class="text-danger text-start">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn primary_btn w-100 rounded-0">Sign in</button>
@@ -73,7 +77,7 @@
             box-sizing: border-box;
         }
 
-        @media (max-width: 400px) {
+            @media (max-width: 400px) {
             #login .login_box {
                 padding-left: 1rem;
                 padding-right: 1rem;
@@ -87,7 +91,55 @@
                 padding-right: 1rem;
             }
         }
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-field .form-control {
+            padding-right: 3rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 0.85rem;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            color: #6c757d;
+            padding: 0;
+            line-height: 1;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .password-toggle:hover,
+        .password-toggle:focus {
+            color: #EE903B;
+            outline: none;
+        }
+
+        .password-toggle i {
+            font-size: 1.15rem;
+        }
     </style>
+    <script>
+        document.querySelectorAll('.password-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const input = document.getElementById(btn.getAttribute('data-target'));
+                if (!input) return;
+                const icon = btn.querySelector('i');
+                const show = input.type === 'password';
+                input.type = show ? 'text' : 'password';
+                btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+                if (icon) {
+                    icon.classList.toggle('bi-eye', !show);
+                    icon.classList.toggle('bi-eye-slash', show);
+                }
+            });
+        });
+    </script>
     <div id="qualityhelpinstall" class="store_footer_top">
         <div class="container">
             <div class="row justify-content-between align-items-center">

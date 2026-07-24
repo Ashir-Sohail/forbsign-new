@@ -88,11 +88,12 @@
                                                                     fill-opacity="{{ in_array($product['id'], $wishlistProductIds) ? '1' : '0.2' }}">
                                                                 </path>
                                                             </svg>
-                                                            <a type="button" class="del_btn delete-selected">
-                                                                <img src="./assets/imgs/trash.svg" alt="Trash"
-                                                                    loading="lazy" style="width: 18px;">
-                                                            </a>
-                                                        </div>
+                                                        </a>
+                                                        <a type="button" class="del_btn delete-selected">
+                                                            <img src="./assets/imgs/trash.svg" alt="Trash"
+                                                                loading="lazy" style="width: 18px;">
+                                                        </a>
+                                                    </div>
                                                         <div class="number mt-3">
                                                             <span class="minus"><img
                                                                     src="./assets/imgs/minus-square-Regular.svg"
@@ -180,7 +181,7 @@
                             </p>
                             
                             {{-- Continue Shopping Button --}}
-                            <a href="{{ route('user.store') }}" class="btn btn-dark btn-lg px-5 py-2.5" style="background-color: #41416E; min-width: 200px;">
+                            <a href="{{ route('user.store') }}" class="btn btn-dark btn-lg px-5 py-2.5" style="background-color: #41416E; min-width: 200px;border:none">
                                 Continue Shopping
                             </a>
                         </div>

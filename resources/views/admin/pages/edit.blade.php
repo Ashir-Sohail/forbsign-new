@@ -35,7 +35,7 @@
                                             @csrf
 
                                             <div class="form-group">
-                                                <label for="name">Title *</label>
+                                                <label for="name">Title <span class="req-star">*</span></label>
                                                 <input type="text" name="title" class="form-control item-name"
                                                     id="title" placeholder="Enter Title" value="{{ $page->title }}">
                                                 @error('title')
@@ -44,7 +44,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="meta_description">Description *
+                                                <label for="meta_description">Description <span class="req-star">*</span>
                                                 </label>
                                                 <textarea name="description" id="description" class="form-control" rows="5" placeholder="Enter Description">{{ $page->description }}</textarea>
                                                 @error('description')
@@ -53,7 +53,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="meta_title">Meta Title *</label>
+                                                <label for="meta_title">Meta Title <span class="req-star">*</span></label>
                                                 <input type="text" name="meta_title" class="form-control" id="meta_title"
                                                     placeholder="Enter Meta Title" value="{{ $page->meta_title }}">
                                                 @error('meta_title')
@@ -62,7 +62,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="meta_keywords">Meta Keywords *</label>
+                                                <label for="meta_keywords">Meta Keywords <span class="req-star">*</span></label>
                                                 <input type="text" name="meta_keywords" class="tags" id="meta_keywords"
                                                     placeholder="Enter Meta Keywords" value="{{ $page->meta_keywords }}">
                                                 @error('meta_keywords')
@@ -71,7 +71,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="title">SEO URL *</label>
+                                                <label for="title">SEO URL <span class="req-star">*</span></label>
                                                 <input type="text" name="meta_url" class="form-control" id="urls"
                                                     placeholder="Enter Meta Link" value="{{ $page->meta_url }}">
                                                 @error('meta_url')
@@ -80,7 +80,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="meta_description">Meta Description *</label>
+                                                <label for="meta_description">Meta Description <span class="req-star">*</span></label>
                                                 <textarea name="meta_description" id="meta_description" class="form-control" rows="5"
                                                     placeholder="Enter Meta Description">{{ $page->meta_description }}</textarea>
                                                 @error('meta_description')

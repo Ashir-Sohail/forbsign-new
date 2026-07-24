@@ -33,7 +33,7 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">Name *</label>
+                                                <label for="name">Name <span class="req-star">*</span></label>
                                                 <input type="text" name="name" class="form-control item-name"
                                                     id="name" placeholder="Enter Name" value="{{ $faq_category->name }}">
                                                 @error('name')
@@ -52,8 +52,8 @@
                                             </div>
 
 
-                                            <div class="form-group">
-                                                {{-- <label for="meta_keywords">Meta Keywords
+                                            {{-- <div class="form-group">
+                                                <label for="meta_keywords">Meta Keywords
                                                 </label>
                                                 <input type="text" name="meta_keyword" class="tags" id="meta_keywords"
                                                     placeholder="Enter Meta Keywords" value="{{ $faq_category->meta_keyword }}">

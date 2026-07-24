@@ -43,7 +43,7 @@
                                             <td>{{ $size->name }}</td>
 
                                             {{-- Extra Price --}}
-                                            <td>Rs {{ number_format($size->extra_price, 2) }}</td>
+                                            <td>{{ config('app.currency.symbol') }}{{ number_format($size->extra_price, 2) }}</td>
 
                                             {{-- Serial --}}
                                             <td>{{ $size->serial }}</td>

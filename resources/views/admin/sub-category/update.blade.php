@@ -33,7 +33,7 @@
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">Set Image *</label>
+                                                <label for="name">Set Image <span class="req-star">*</span></label>
                                                 <br>
                                                 @if ($sub_category->image)
                                                     <img class="admin-img"
@@ -61,7 +61,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="name">Name *</label>
+                                                <label for="name">Name <span class="req-star">*</span></label>
                                                 <input type="text" name="name" class="form-control item-name"
                                                     id="name" placeholder="Enter Name" value="{{ $sub_category->name }}">
                                                 @error('name')
@@ -70,7 +70,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="slug">Parent Category *</label>
+                                                <label for="slug">Parent Category <span class="req-star">*</span></label>
                                                 <select name="cat_id" id="cat_id" class="form-control">
                                                     <option value="">Select Category</option>
                                                     @foreach ($categories as $category)

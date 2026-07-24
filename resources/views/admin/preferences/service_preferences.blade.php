@@ -56,7 +56,7 @@
                                         <!-- Service Section Tab -->
                                         <div class="tab-pane fade show active" id="service" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="service_title">Title*</label>
+                                                <label for="service_title">Title<span class="req-star">*</span></label>
                                                 <input type="text" name="service_title" class="form-control"
                                                     id="service_title"
                                                     value="{{ old('service_title', $servicepreferences['service_title'] ?? '') }}"
@@ -68,7 +68,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="service_heading">Heading*</label>
+                                                <label for="service_heading">Heading<span class="req-star">*</span></label>
                                                 <input type="text" name="service_heading" class="form-control"
                                                     id="service_heading"
                                                     value="{{ old('service_heading', $servicepreferences['service_heading'] ?? '') }}"
@@ -84,7 +84,7 @@
                                         <!-- Body Tab -->
                                         <div class="tab-pane fade" id="body" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="body_heading">Heading1*</label>
+                                                <label for="body_heading">Heading1<span class="req-star">*</span></label>
                                                 <input type="text" name="body_heading" class="form-control"
                                                     id="body_heading"
                                                     value="{{ old('body_heading', $servicepreferences['body_heading'] ?? '') }}"
@@ -96,7 +96,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-check">
-                                                <label for="body_description">Description*</label>
+                                                <label for="body_description">Description<span class="req-star">*</span></label>
                                                 <textarea class="form-control" name="body_description" id="body_description" required>{{ old('body_description', $servicepreferences['body_description'] ?? '') }}</textarea>
                                             </div>
                                             @error('body_description')
@@ -109,7 +109,7 @@
                                         {{-- Information --}}
                                         <div class="tab-pane fade" id="information" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="information_icon1">Icon1*</label>
+                                                <label for="information_icon1">Icon1<span class="req-star">*</span></label>
                                                 <textarea name="information_icon1" class="form-control" id="information_icon1" required>{{ old('information_icon1', $servicepreferences['information_icon1'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon1')
@@ -118,7 +118,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading1">Heading1*</label>
+                                                <label for="information_heading1">Heading1<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading1" class="form-control"
                                                     id="information_heading1"
                                                     value="{{ old('information_heading1', $servicepreferences['information_heading1'] ?? '') }}"
@@ -130,7 +130,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_description1">Description1*</label>
+                                                <label for="information_description1">Description1<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_description1" class="form-control" id="information_description1" required>{{ old('information_description1', $servicepreferences['information_description1'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_description1')
@@ -140,7 +140,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_icon2">Icon2*</label>
+                                                <label for="information_icon2">Icon2<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_icon2" class="form-control" id="information_icon2" required>{{ old('information_icon2', $servicepreferences['information_icon2'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon2')
@@ -149,7 +149,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading2">Heading2*</label>
+                                                <label for="information_heading2">Heading2<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading2" class="form-control"
                                                     id="information_heading2"
                                                     value="{{ old('information_heading2', $servicepreferences['information_heading2'] ?? '') }}"
@@ -162,7 +162,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_description2">Description2*</label>
+                                                <label for="information_description2">Description2<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_description2" class="form-control" id="information_description2"
                                                     required>{{ old('information_description2', $servicepreferences['information_description2'] ?? '') }}</textarea>
                                             </div>
@@ -173,7 +173,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_icon3">Icon3*</label>
+                                                <label for="information_icon3">Icon3<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_icon3" class="form-control" id="information_icon3" required>{{ old('information_icon3', $servicepreferences['information_icon3'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon3')
@@ -182,7 +182,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading3">Heading3*</label>
+                                                <label for="information_heading3">Heading3<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading3" class="form-control"
                                                     id="information_heading3"
                                                     value="{{ old('information_heading3', $servicepreferences['information_heading3'] ?? '') }}"
@@ -194,7 +194,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_Description3">Description3*</label>
+                                                <label for="information_Description3">Description3<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_Description3" class="form-control" id="information_Description3"
                                                     required>{{ old('information_Description3', $servicepreferences['information_Description3'] ?? '') }}</textarea>
                                             </div>
@@ -208,7 +208,7 @@
                                         {{-- customer --}}
                                         <div class="tab-pane fade" id="customer" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="customer_heading">Customer Heading*</label>
+                                                <label for="customer_heading">Customer Heading<span class="req-star">*</span></label>
                                                 <input type="text" name="customer_heading" class="form-control"
                                                     id="customer_heading"
                                                     value="{{ old('customer_heading', $servicepreferences['customer_heading'] ?? '') }}"

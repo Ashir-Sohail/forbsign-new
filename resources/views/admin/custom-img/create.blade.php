@@ -33,7 +33,7 @@
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">Set Image *</label>
+                                                <label for="name">Set Image <span class="req-star">*</span></label>
                                                 <br>
                                                 <img class="admin-img w-50" src="{{ asset('assets/imgs/dummy-img.png') }}"
                                                     alt="No Image Found">
@@ -53,7 +53,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="name">Name *</label>
+                                                <label for="name">Name <span class="req-star">*</span></label>
                                                 <input type="text" name="name" class="form-control item-name"
                                                     id="name" placeholder="Enter Name" value="{{ old('name') }}">
                                                 @error('name')
@@ -62,7 +62,7 @@
                                             </div>
                                             {{-- Per Character Price --}}
                                             <div class="form-group">
-                                                <label for="per_character_price">Per Character Price (Rs) *</label>
+                                                <label for="per_character_price">Per Character Price (Rs) <span class="req-star">*</span></label>
                                                 <input type="number" step="0.01" name="per_character_price"
                                                     class="form-control" id="per_character_price"
                                                     placeholder="Enter per character price"

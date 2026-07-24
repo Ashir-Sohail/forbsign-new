@@ -65,7 +65,7 @@
                                                 <p class="badge badge-primary">{{ $transaction->payment_status }}</p>
                                             </td>
                                             <td>
-                                                ${{ number_format($transaction->total_amount, 2) }}
+                                                {{ config('app.currency.symbol') }}{{ number_format($transaction->total_amount, 2) }}
 
                                             </td>
                                             {{-- <td>

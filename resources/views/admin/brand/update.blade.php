@@ -34,7 +34,7 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">Set Image *</label>
+                                                <label for="name">Set Image <span class="req-star">*</span></label>
                                                 <br>
                                                 @if ($brand->image)
 
@@ -63,7 +63,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="name">Name *</label>
+                                                <label for="name">Name <span class="req-star">*</span></label>
                                                 <input type="text" name="name" class="form-control item-name"
                                                     id="name" placeholder="Enter Name" value="{{ $brand->name }}">
                                                 @error('name')
@@ -72,7 +72,7 @@
                                             </div>
                                             {{-- 
                                             <div class="form-group">
-                                                <label for="title">Meta Title *</label>
+                                                <label for="title">Meta Title <span class="req-star">*</span></label>
                                                 <input type="text" name="title" class="form-control" id="title"
                                                     placeholder="Enter Title" value="{{ $brand->title }}">
                                                 @error('title')
@@ -100,7 +100,7 @@
                                             </div>
 
                                             {{-- <div class="form-group">
-                                                <label for="slider-link">SEO URL *</label>
+                                                <label for="slider-link">SEO URL <span class="req-star">*</span></label>
                                                 <input type="text" name="url" class="form-control" id="slider-link"
                                                     placeholder="Enter Link" value="{{ $brand->url }}">
                                                 @error('url')
@@ -108,7 +108,7 @@
                                                 @enderror
                                             </div> --}}
                                             <div class="form-group">
-                                                <label for="title">SEO URL *</label>
+                                                <label for="title">SEO URL <span class="req-star">*</span></label>
                                                 <input type="text" name="meta_url" class="form-control" id="urls"
                                                     placeholder="Enter Meta Link" value="{{ $brand->meta_url }}">
                                                 @error('meta_url')

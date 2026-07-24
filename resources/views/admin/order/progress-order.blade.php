@@ -34,7 +34,7 @@
                             <div class="row mb-4 justify-content-center">
                                 <div class="col-md-6 col-sm-6 col-lg-4">
                                     <div class="form-group p-0">
-                                        <label for="start_date">Start Date *</label>
+                                        <label for="start_date">Start Date <span class="req-star">*</span></label>
                                         <input type="text" name="start_date" id="datepicker"
                                             class="form-control datepicker" id="start_date" placeholder="Start Date"
                                             value="">
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-4">
                                     <div class="form-group  p-0">
-                                        <label for="end_date">End Date *</label>
+                                        <label for="end_date">End Date <span class="req-star">*</span></label>
                                         <input type="text" name="end_date" id="datepicker1"
                                             class="form-control datepicker" id="end_date" placeholder="End Date"
                                             value="">
@@ -78,7 +78,7 @@
                                             </td>
 
                                             <td>
-                                                ${{ $order->total }}
+                                                {{ config('app.currency.symbol') }}{{ $order->total }}
                                             </td>
 
                                             <td>

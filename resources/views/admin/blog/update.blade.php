@@ -3,7 +3,6 @@
     Update Blog
 @endsection
 @section('content')
-    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
     <div class="content">
         <div class="page-inner">
             <div class="container-fluid">
@@ -33,7 +32,7 @@
                                             @csrf
 
                                             <div class="form-group">
-                                                <label for="name">Set Image *</label>
+                                                <label for="name">Set Image <span class="req-star">*</span></label>
                                                 <br>
                                                 <img class="admin-img"
                                                     src="{{ \App\Helpers\FileUploadHelper::url($blog->image) ?? asset('public/assets/images/placeholder.png') }}"
@@ -54,7 +53,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="title">Title *</label>
+                                                <label for="title">Title <span class="req-star">*</span></label>
                                                 <input type="text" name="title" class="form-control" id="title"
                                                     placeholder="Enter Title" value="{{ $blog->title }}">
                                                 @error('title')
@@ -65,15 +64,15 @@
 
 
                                             <div class="form-group">
-                                                <label for="details">Details *</label>
-                                                <textarea name="description" id="details" class="form-control text-editor" rows="5" placeholder="Enter Details">{{ $blog->description }}</textarea>
+                                                <label for="details">Details <span class="req-star">*</span></label>
+                                                <textarea name="description" id="details" class="form-control" rows="10" placeholder="Enter Details">{{ $blog->description }}</textarea>
                                                 @error('description')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="meta_title">Meta Title *
+                                                <label for="meta_title">Meta Title <span class="req-star">*</span>
                                                 </label>
                                                 <input type="text" name="meta_title" class="form-control" id="meta_title"
                                                     placeholder="Enter Meta Title" value="{{ $blog->meta_title }}">
@@ -84,7 +83,7 @@
 
 
                                             <div class="form-group">
-                                                <label for="meta_keywords">Meta Keywords *
+                                                <label for="meta_keywords">Meta Keywords <span class="req-star">*</span>
                                                 </label>
                                                 <input type="text" name="meta_keywords" class="tags" id="meta_keywords"
                                                     placeholder="Enter Meta Keywords" value="{{ $blog->meta_keyword }}">
@@ -94,7 +93,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="title">SEO URL *</label>
+                                                <label for="title">SEO URL <span class="req-star">*</span></label>
                                                 <input type="text" name="meta_url" class="form-control" id="urls"
                                                     placeholder="Enter Meta Link" value="{{ $blog->meta_url }}">
                                                 @error('meta_url')
@@ -103,7 +102,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="meta_description">Meta Description *
+                                                <label for="meta_description">Meta Description <span class="req-star">*</span>
                                                 </label>
                                                 <textarea name="meta_description" id="meta_description" class="form-control" rows="5"
                                                     placeholder="Enter Meta Description">{{ $blog->meta_description }}</textarea>
@@ -127,18 +126,14 @@
     </div>
 @endsection
 
-<script>
-    ClassicEditor
-        .create(document.querySelector('#details'), {
-            // Add image upload configuration
-            ckfinder: {
-                uploadUrl: '{{ route('admin.blog.uploadImage') . '?_token=' . csrf_token() }}',
-            },
-        })
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-</script>
+@section('scripts')
+    <script type="text/javascript">
+        CKEDITOR.config.versionCheck = false;
+        CKEDITOR.config.autoParagraph = false;
+        CKEDITOR.config.allowedContent = true;
+        CKEDITOR.config.extraAllowedContent = '*[style](*)';
+        CKEDITOR.config.ignoreEmptyParagraph = false;
+        CKEDITOR.config.fullPage = false;
+        CKEDITOR.replace('details');
+    </script>
+@endsection

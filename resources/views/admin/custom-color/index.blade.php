@@ -52,7 +52,7 @@
                                             {{-- Price per character --}}
                                             <td>
                                                 @if ($color->price)
-                                                    Rs {{ number_format($color->price, 2) }}
+                                                    {{ config('app.currency.symbol') }}{{ number_format($color->price, 2) }}
                                                 @else
                                                     Free
                                                 @endif

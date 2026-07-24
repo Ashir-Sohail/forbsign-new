@@ -33,7 +33,7 @@
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">Size Name *</label>
+                                                <label for="name">Size Name <span class="req-star">*</span></label>
                                                 <input type="text" name="name" id="name" class="form-control"
                                                     placeholder="e.g. 24 inches, Large" required
                                                     value="{{ old('name') }}">

@@ -73,7 +73,7 @@
 
 
                                             <div class="form-group">
-                                                <label for="name">Option Name 1 (English)*</label>
+                                                <label for="name">Option Name 1 (English)<span class="req-star">*</span></label>
                                                 <input type="text" name="option_name_en" class="form-control item-name"
                                                     id="option_name_en" placeholder="Enter Name"
                                                     value="{{ $option->option_name_en }}">
@@ -82,7 +82,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="name">Option Name 2 (Arabic)*</label>
+                                                <label for="name">Option Name 2 (Arabic)<span class="req-star">*</span></label>
                                                 <input type="text" name="option_name_ar" class="form-control item-name"
                                                     id="option_name_ar" placeholder="Enter Name"
                                                     value="{{ $option->option_name_ar }}">
@@ -91,7 +91,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="title">Type *</label>
+                                                <label for="title">Type <span class="req-star">*</span></label>
                                                 <select name="input_type" id="input-type-select" class="form-control">
                                                     <option value="" disabled
                                                         {{ old('input_type', $option->input_type) == '' ? 'selected' : '' }}>
@@ -144,7 +144,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="serial">Sort *</label>
+                                                <label for="serial">Sort <span class="req-star">*</span></label>
                                                 <input type="number" name="serial" class="form-control" id="serial"
                                                     placeholder="Enter Serial Number" value="{{ $option->serial }}">
                                                 @error('serial')

@@ -32,8 +32,8 @@
                     @csrf
                     <div class="row gy-4 floating_lables">
                         <div class="col-12  mb-3">
-                            <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Fobsign logo" class=""
-                                loading="lazy" style="width: 190px;">
+                            <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Fobsign logo"
+                                loading="lazy" style="width: 230px; max-width: 100%; height: auto;">
                         </div>
                         <div class="col-12 mb-3">
                             <h5 class="mb-4">

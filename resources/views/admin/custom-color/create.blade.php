@@ -37,7 +37,7 @@
 
                                             {{-- Name --}}
                                             <div class="form-group">
-                                                <label for="name">Color Name *</label>
+                                                <label for="name">Color Name <span class="req-star">*</span></label>
                                                 <input type="text" name="name" class="form-control" id="name"
                                                     placeholder="Enter Color Name" value="{{ old('name') }}">
                                                 @error('name')
@@ -47,7 +47,7 @@
 
                                             {{-- Color Picker --}}
                                             <div class="form-group">
-                                                <label for="hex_code">Pick Color *</label><br>
+                                                <label for="hex_code">Pick Color <span class="req-star">*</span></label><br>
                                                 <input type="color" name="hex_code" id="hex_code" class="form-control"
                                                     value="{{ old('hex_code', '#ff0000') }}"
                                                     style="width: 80px; height: 50px; padding: 0;"
@@ -98,6 +98,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

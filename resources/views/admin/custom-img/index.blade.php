@@ -45,7 +45,7 @@
                                                     width="60">
                                             </td>
                                             <td>{{ $image->name }}</td>
-                                            <td>Rs {{ number_format($image->per_character_price, 2) }}</td>
+                                            <td>{{ config('app.currency.symbol') }}{{ number_format($image->per_character_price, 2) }}</td>
                                             <td>{{ $image->serial }}</td>
                                             <td>
                                                 <span class="badge {{ $image->status ? 'badge-success' : 'badge-danger' }}">

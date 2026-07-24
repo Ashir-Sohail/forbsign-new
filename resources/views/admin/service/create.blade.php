@@ -33,7 +33,7 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">Current Image *</label>
+                                                <label for="name">Current Image <span class="req-star">*</span></label>
                                                 <br>
                                                 <img class="admin-img w-50" src="{{ asset('assets/imgs/dummy-img.png') }}"
                                                     alt="No Image Found">
@@ -52,7 +52,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="title">Title *</label>
+                                                <label for="title">Title <span class="req-star">*</span></label>
                                                 <input type="text" name="title" class="form-control" id="title"
                                                     placeholder="Enter Title">
                                                 @error('title')
@@ -62,7 +62,7 @@
 
 
                                             <div class="form-group">
-                                                <label for="details">Details *</label>
+                                                <label for="details">Details <span class="req-star">*</span></label>
                                                 <textarea name="details" id="details" class="form-control" rows="5" placeholder="Enter Details"></textarea>
                                                 @error('details')
                                                     <span class="text-danger">{{ $message }}</span>

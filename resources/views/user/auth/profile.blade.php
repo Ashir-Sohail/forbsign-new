@@ -73,8 +73,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="account-pass">New Password</label>
-                                    <input type="password" class="form-control" name="password" id="account-pass"
-                                        placeholder="Change your password">
+                                    <div class="password-field">
+                                        <input type="password" class="form-control" name="password" id="account-pass"
+                                            placeholder="Change your password" autocomplete="new-password">
+                                        <button type="button" class="password-toggle" data-target="account-pass"
+                                            aria-label="Show password">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -90,4 +96,53 @@
             </div>
         </div>
     </div>
+    <style>
+        .password-field {
+            position: relative;
+        }
+
+        .password-field .form-control {
+            padding-right: 3rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 0.85rem;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            color: #6c757d;
+            padding: 0;
+            line-height: 1;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .password-toggle:hover,
+        .password-toggle:focus {
+            color: #EE903B;
+            outline: none;
+        }
+
+        .password-toggle i {
+            font-size: 1.15rem;
+        }
+    </style>
+    <script>
+        document.querySelectorAll('.password-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const input = document.getElementById(btn.getAttribute('data-target'));
+                if (!input) return;
+                const icon = btn.querySelector('i');
+                const show = input.type === 'password';
+                input.type = show ? 'text' : 'password';
+                btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+                if (icon) {
+                    icon.classList.toggle('bi-eye', !show);
+                    icon.classList.toggle('bi-eye-slash', show);
+                }
+            });
+        });
+    </script>
 @endsection

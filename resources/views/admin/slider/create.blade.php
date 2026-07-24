@@ -32,7 +32,7 @@
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label id="slider_text" for="name">Set Slider Image *</label>
+                                                        <label id="slider_text" for="name">Set Slider Image <span class="req-star">*</span></label>
                                                         <br>
                                                         <img class="admin-img w-50"
                                                             src="{{ asset('assets/imgs/dummy-img.png') }}"
@@ -55,7 +55,7 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="title">Title *</label>
+                                                        <label for="title">Title <span class="req-star">*</span></label>
                                                         <input type="text" name="title" class="form-control"
                                                             id="title" placeholder="Enter Title" value="{{ old('title') }}">
                                                         @error('title')
@@ -64,7 +64,7 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="slider-link">Link *</label>
+                                                        <label for="slider-link">Link <span class="req-star">*</span></label>
                                                         <input type="text" name="url" class="form-control"
                                                             id="slider-link" placeholder="Enter Valid Link Or Url" value="{{ old('url') }}">
                                                         @error('url')
@@ -73,7 +73,7 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="details">Details *</label>
+                                                        <label for="details">Details <span class="req-star">*</span></label>
                                                         <textarea name="details" id="details" class="form-control" rows="5" placeholder="Enter Details">{{ old('details') }}</textarea>
                                                         @error('details')
                                                             <span class="text-danger">{{ $message }}</span>

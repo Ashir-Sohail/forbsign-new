@@ -81,7 +81,7 @@
                         <h3>Personalise sign</h3>
                         <div class="row">
                             <div class="col-12">
-                                <span>Price {{ config('app.currency_symbol') }}</span>
+                                <span>Price {{ config('app.currency.symbol') }}</span>
                                 <div class="mb-3">
                                     <label for="textInput" class="form-label">Enter Text</label>
                                     <textarea id="textInput" class="form-control" placeholder="Type here..."></textarea>
@@ -186,6 +186,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <div id="qualityhelpinstall" class="store_footer_top">

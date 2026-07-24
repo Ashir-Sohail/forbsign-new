@@ -80,7 +80,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="name">Username *</label>
+                                                    <label for="name">Username <span class="req-star">*</span></label>
                                                     <input type="text" name="username" class="form-control"
                                                         id="name" placeholder="User Name"
                                                         value="{{ Auth::guard('admin')->user()->username }}">
@@ -91,7 +91,7 @@
 
 
                                                 <div class="form-group">
-                                                    <label for="email">Email Address *</label>
+                                                    <label for="email">Email Address <span class="req-star">*</span></label>
                                                     <input type="email" name="email" class="form-control" id="email"
                                                         placeholder="Email Address"
                                                         value="{{ Auth::guard('admin')->user()->email }}">
@@ -101,7 +101,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="phone">Phone Number *</label>
+                                                    <label for="phone">Phone Number <span class="req-star">*</span></label>
                                                     <input type="text" name="phone" class="form-control" id="phone"
                                                         placeholder="Phone Number"
                                                         value="{{ Auth::guard('admin')->user()->phone }}">
@@ -111,14 +111,14 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="existingPassword">Existing Password *</label>
+                                                    <label for="existingPassword">Existing Password <span class="req-star">*</span></label>
                                                     <input type="password" name="existing_password" class="form-control"
                                                         id="existingPassword" placeholder="Enter Existing Password">
                                                 </div>
 
                                                 <!-- New Password -->
                                                 <div class="form-group">
-                                                    <label for="newPassword">New Password *</label>
+                                                    <label for="newPassword">New Password <span class="req-star">*</span></label>
                                                     <input type="password" name="password" class="form-control"
                                                         id="newPassword" placeholder="Enter New Password" minlength="8">
                                                     @error('password')
@@ -128,7 +128,7 @@
 
                                                 <!-- Password Confirmation -->
                                                 <div class="form-group">
-                                                    <label for="confirmPassword">Confirm Password *</label>
+                                                    <label for="confirmPassword">Confirm Password <span class="req-star">*</span></label>
                                                     <input type="password" name="password_confirmation"
                                                         class="form-control" id="confirmPassword"
                                                         placeholder="Confirm New Password" minlength="8">
@@ -147,4 +147,5 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

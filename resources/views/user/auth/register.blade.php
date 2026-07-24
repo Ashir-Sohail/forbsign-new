@@ -13,7 +13,7 @@
 
                 <div class="row gy-4 floating_lables">
                     <div class="col-12 mb-md-5 mb-3">
-                        <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Fobsign logo" class="" loading="lazy"
+                        <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Fobsign logo" loading="lazy"
                             style="width: 230px; max-width: 100%; height: auto;">
                     </div>
                     <div class="col-12">
@@ -52,10 +52,14 @@
                         @enderror
                     </div>
                     <div class="col-12">
-                        <div class="form-floating">
+                        <div class="form-floating password-field">
                             <input type="password" class="form-control" id="password" placeholder="Password"
-                                name="password" value="{{ old('password') }}">
-                            <label for="Password">Password</label>
+                                name="password" autocomplete="new-password">
+                            <label for="password">Password</label>
+                            <button type="button" class="password-toggle" data-target="password"
+                                aria-label="Show password">
+                                <i class="bi bi-eye"></i>
+                            </button>
                         </div>
                         @error('password')
                             <p class="text-danger text-start">{{ $message }}</p>
@@ -63,15 +67,15 @@
                     </div>
 
                     <div class="col-12 mt-lg-5 mt-3">
-                        <div class="register-agree d-flex align-items-start gap-2">
+                        <label for="check_input" class="register-agree">
                             <input type="checkbox" id="check_input" class="check_box register-agree__box">
-                            <label for="check_input" class="register-agree__label m-0 text-start">
+                            <span class="register-agree__text">
                                 I agree to the following
                                 <a href="{{ route('user.terms') }}" class="page_link">Terms of Use</a><span
                                     class="text-orang"> / </span><a href="{{ route('user.terms') }}"
                                     class="page_link">Privacy Policy.</a>
-                            </label>
-                        </div>
+                            </span>
+                        </label>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn primary_btn w-100 rounded-0">Register Account</button>
@@ -118,49 +122,127 @@
         </div>
     </div>
     <style>
-        .register-agree__box {
-            flex-shrink: 0;
-            margin-top: 0.3em;
+        .register-agree {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
         }
 
-        .register-agree__label {
-            flex: 1 1 0;
+        .floating_lables .register-agree .register-agree__box.check_box {
+            flex: 0 0 18px;
+            width: 18px !important;
+            height: 18px !important;
+            max-height: 18px !important;
+            min-height: 18px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 1px solid #808080;
+            box-sizing: border-box;
+            align-self: center;
+        }
+
+        .register-agree__text,
+        .floating_lables .register-agree__text,
+        .floating_lables .register-agree__text span {
+            flex: 1 1 auto;
             min-width: 0;
-            line-height: 1.45;
-            font-size: 15px;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+            font-family: "Poppins", sans-serif;
+            font-size: 15px !important;
+            font-weight: 400 !important;
+            line-height: 1.45 !important;
+            color: #333333 !important;
+            opacity: 1 !important;
+            text-align: left;
         }
 
-        .register-agree__label .page_link {
+        .register-agree__text .page_link,
+        .floating_lables .register-agree__text .page_link {
             white-space: nowrap;
-            font-size: inherit;
-            line-height: inherit;
+            font-size: inherit !important;
+            line-height: inherit !important;
+            font-weight: 500 !important;
+            color: #EE903B !important;
+            opacity: 1 !important;
+        }
+
+        .register-agree__text .text-orang,
+        .floating_lables .register-agree__text .text-orang {
+            font-size: inherit !important;
+            line-height: inherit !important;
+            color: #EE903B !important;
+            opacity: 1 !important;
         }
 
         @media (max-width: 400px) {
             .register-agree {
-                gap: 0.5rem !important;
+                gap: 0.5rem;
             }
 
-            .register-agree__label {
-                font-size: 13px;
-                line-height: 1.4;
+            .register-agree__text,
+            .floating_lables .register-agree__text,
+            .floating_lables .register-agree__text span {
+                font-size: 13px !important;
             }
         }
 
         @media (max-width: 320px) {
-            .register-agree__label {
-                font-size: 12px;
+            .register-agree__text,
+            .floating_lables .register-agree__text,
+            .floating_lables .register-agree__text span {
+                font-size: 12px !important;
             }
+        }
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-field .form-control {
+            padding-right: 3rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 0.85rem;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            color: #6c757d;
+            padding: 0;
+            line-height: 1;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .password-toggle:hover,
+        .password-toggle:focus {
+            color: #EE903B;
+            outline: none;
+        }
+
+        .password-toggle i {
+            font-size: 1.15rem;
         }
     </style>
     <script>
-        const passwordInput = document.getElementById('login-pass');
-        const showPasswordCheckbox = document.getElementById('show-password-checkbox');
-
-        showPasswordCheckbox.addEventListener('change', function() {
-            passwordInput.type = this.checked ? 'text' : 'password';
+        document.querySelectorAll('.password-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const input = document.getElementById(btn.getAttribute('data-target'));
+                if (!input) return;
+                const icon = btn.querySelector('i');
+                const show = input.type === 'password';
+                input.type = show ? 'text' : 'password';
+                btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+                if (icon) {
+                    icon.classList.toggle('bi-eye', !show);
+                    icon.classList.toggle('bi-eye-slash', show);
+                }
+            });
         });
     </script>
 @endsection

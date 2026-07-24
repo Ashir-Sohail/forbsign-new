@@ -17,23 +17,20 @@
 
     <section id="cart" class="my-5">
         <div class="container">
-            <div class="row  cart_con">
-                <div class="col-lg-8 ps-xl-4 pe-xl-5 pe-lg-3 py-3 cart_left">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center w-100">
-                        <h5>Contact Information</h5>
-                        {{-- <h6>Already have an account? <span>Sign in now</span></h6> --}}
-                        @guest
-                            <h6>Already have an account?<a
-                                    href="{{ route('user.register', ['redirect_to' => url()->current()]) }}"
-                                    class="text-orang">Sign
-                                    in now</a> </h6>
+            <form id="payment-form" method="POST" action="{{ route('user.stripe.payment.store') }}">
+                @csrf
+                <div class="row cart_con">
+                    <div class="col-lg-8 ps-xl-4 pe-xl-5 pe-lg-3 py-3 cart_left">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center w-100">
+                            <h5>Contact Information</h5>
+                            @guest
+                                <h6>Already have an account?<a
+                                        href="{{ route('user.register', ['redirect_to' => url()->current()]) }}"
+                                        class="text-orang">Sign
+                                        in now</a> </h6>
+                            @endguest
+                        </div>
 
-                        @endguest
-                    </div>
-
-                    <form id="payment-form" method="POST" action="{{ route('user.stripe.payment.store') }}">
-
-                        @csrf
                         <div class="row gy-3 floating_lables">
                             <div class="col-12">
                                 <div class="form-floating">
@@ -145,60 +142,49 @@
                             </a>
                         </div>
 
+                    </div>
+
+                    <div class="col-lg-4 cart_right py-3 mb-3">
+                        <!-- Cart Summary -->
+                        <div class="d-flex flex-wrap justify-content-between align-items-baseline w-100 ">
+                            <h5 class="heading_24">Order Summary</h5>
+                        </div>
+                        <div class="d-flex flex-wrap justify-content-between align-items-baseline w-100 ">
+                            <table class="cart_prodet">
+                                <tr>
+                                    <td>
+                                        <h4 class="mb-0">Deliver to:{{ Auth::check() ? Auth::user()->first_name : 'Guest User' }}</h4>
+                                    </td>
+                                </tr>
+                            </table>
+                            <hr class="w-100">
+                            <table class="cart_prodet w-100">
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td class="heading_24 fw-bold text-end">
+                                        {{ config('app.currency.symbol') }}{{ $total_cart }}</td>
+                                </tr>
+                            </table>
+                            <hr class="w-100">
+                            <table class="cart_prodet w-100">
+                                <tr>
+                                    <td>Total</td>
+                                    <td class="heading_24 fw-bold text-end">{{ config('app.currency.symbol') }}{{ $total_cart }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr>
+                        <h5 class="heading_24">Payment With Stripe</h5>
+                        <input type="hidden" name="stripeToken" id="stripe-token">
+                        <input type="hidden" name="price" value="{{ $total_cart }}">
+                        <div id="card-element" class="form-control"></div>
+
+                        <div class="my-2">
+                            <button class="btn_black px-4 mt-4" type="submit">Place Order</button>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col-lg-4 cart_right py-3 mb-3">
-                    <!-- Cart Summary -->
-                    <div class="d-flex flex-wrap justify-content-between align-items-baseline w-100 ">
-                        <h5 class="heading_24">Order Summary</h5>
-                    </div>
-                    <div class="d-flex flex-wrap justify-content-between align-items-baseline w-100 ">
-                        <table class="cart_prodet">
-                            <tr>
-                                <h4>Deliver to:{{ Auth::check() ? Auth::user()->first_name : 'Guest User' }}</h4>
-                            </tr>
-
-                        </table>
-                        <hr class="w-100">
-                        <table class="cart_prodet w-100">
-                            <tr>
-                                <td>Subtotal</td>
-                                <td class="heading_24 fw-bold text-end">
-                                    {{ config('app.currency.symbol') }}{{ $total_cart }}</td>
-                            </tr>
-                            {{-- <tr>
-                                <td>Shipping</td>
-                                <td class="text-end">Free</td>
-                            </tr> --}}
-                        </table>
-                        <hr class="w-100">
-                        <table class="cart_prodet w-100">
-                            <tr>
-                                <td>Total</td>
-                                <td class="heading_24 fw-bold text-end">{{ config('app.currency.symbol') }}{{ $total_cart }}</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <hr>
-                    <h5 class="heading_24">Payment With Stripe</h5>
-                    <input type="hidden" name="stripeToken" id="stripe-token">
-                    <input type="hidden" name="price" value="{{ $total_cart }}">
-                    <div id="card-element" class="form-control"></div>
-
-
-                    <div class="my-2">
-                        <button class="btn_black px-4 mt-4" type="submit">Place Order</button>
-                    </div>
-
-                    </form>
-
-
-                </div>
-
-                <!-- Accordion End -->
-
-            </div>
-
+            </form>
         </div>
     </section>
 

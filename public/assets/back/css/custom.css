@@ -428,7 +428,13 @@ span.cookie-consent__message p {
   color: #fff;
 }
 
-
+/* Mandatory field asterisk */
+.req-star {
+  color: #dc3545 !important;
+  font-size: 1.35em;
+  font-weight: 700;
+  line-height: 1;
+}
 
 /* pre.CodeMirror-line {
   padding-left: 30px !important;

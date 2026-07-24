@@ -48,7 +48,7 @@
                                         <!-- About Tab -->
                                         <div class="tab-pane fade show active" id="card" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="card_heading">Heading*</label>
+                                                <label for="card_heading">Heading<span class="req-star">*</span></label>
                                                 <input type="text" name="card_heading" class="form-control"
                                                     id="card_heading"
                                                     value="{{ old('card_heading', $cartpreferences['card_heading'] ?? '') }}"
@@ -60,7 +60,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="card_button1">Button1*</label>
+                                                <label for="card_button1">Button1<span class="req-star">*</span></label>
                                                 <input type="text" name="card_button1" class="form-control"
                                                     id="card_button1"
                                                     value="{{ old('card_button1', $cartpreferences['card_button1'] ?? '') }}"
@@ -72,7 +72,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="card_button2">Button2*</label>
+                                                <label for="card_button2">Button2<span class="req-star">*</span></label>
                                                 <input type="text" name="card_button2" class="form-control"
                                                     id="card_button2"
                                                     value="{{ old('card_button2', $cartpreferences['card_button2'] ?? '') }}"
@@ -84,7 +84,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="order_heading">Order Heading*</label>
+                                                <label for="order_heading">Order Heading<span class="req-star">*</span></label>
                                                 <input type="text" name="order_heading" class="form-control"
                                                     id="order_heading"
                                                     value="{{ old('order_heading', $cartpreferences['order_heading'] ?? '') }}"
@@ -96,7 +96,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="card_subtotal">Subtotal*</label>
+                                                <label for="card_subtotal">Subtotal<span class="req-star">*</span></label>
                                                 <input type="text" name="card_subtotal" class="form-control"
                                                     id="card_subtotal"
                                                     value="{{ old('card_subtotal', $cartpreferences['card_subtotal'] ?? '') }}"
@@ -109,7 +109,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="card_shipping">Shipping*</label>
+                                                <label for="card_shipping">Shipping<span class="req-star">*</span></label>
                                                 <input type="text" name="card_shipping" class="form-control"
                                                     id="card_shipping"
                                                     value="{{ old('card_shipping', $cartpreferences['card_shipping'] ?? '') }}"
@@ -124,7 +124,7 @@
                                         {{-- Information --}}
                                         <div class="tab-pane fade" id="information" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="information_icon1">Icon1*</label>
+                                                <label for="information_icon1">Icon1<span class="req-star">*</span></label>
                                                 <textarea name="information_icon1" class="form-control" id="information_icon1" required>{{ old('information_icon1', $cartpreferences['information_icon1'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon1')
@@ -133,7 +133,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading1">Heading1*</label>
+                                                <label for="information_heading1">Heading1<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading1" class="form-control"
                                                     id="information_heading1"
                                                     value="{{ old('information_heading1', $cartpreferences['information_heading1'] ?? '') }}"
@@ -145,7 +145,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_description1">Description1*</label>
+                                                <label for="information_description1">Description1<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_description1" class="form-control" id="information_description1" required>{{ old('information_description1', $cartpreferences['information_description1'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_description1')
@@ -155,7 +155,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_icon2">Icon2*</label>
+                                                <label for="information_icon2">Icon2<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_icon2" class="form-control" id="information_icon2" required>{{ old('information_icon2', $cartpreferences['information_icon2'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon2')
@@ -164,7 +164,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading2">Heading2*</label>
+                                                <label for="information_heading2">Heading2<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading2" class="form-control"
                                                     id="information_heading2"
                                                     value="{{ old('information_heading2', $cartpreferences['information_heading2'] ?? '') }}"
@@ -177,7 +177,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_description2">Description2*</label>
+                                                <label for="information_description2">Description2<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_description2" class="form-control" id="information_description2" required>{{ old('information_description2', $cartpreferences['information_description2'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_description2')
@@ -187,7 +187,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_icon3">Icon3*</label>
+                                                <label for="information_icon3">Icon3<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_icon3" class="form-control" id="information_icon3" required>{{ old('information_icon3', $cartpreferences['information_icon3'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon3')
@@ -196,7 +196,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading3">Heading3*</label>
+                                                <label for="information_heading3">Heading3<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading3" class="form-control"
                                                     id="information_heading3"
                                                     value="{{ old('information_heading3', $cartpreferences['information_heading3'] ?? '') }}"
@@ -208,7 +208,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_Description3">Description3*</label>
+                                                <label for="information_Description3">Description3<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_Description3" class="form-control" id="information_Description3"
                                                     required>{{ old('information_Description3', $cartpreferences['information_Description3'] ?? '') }}</textarea>
                                             </div>
@@ -218,6 +218,7 @@
                                                 </div>
                                             @enderror
                                         </div>
+                                    </div>
                                     <!-- Submit Button -->
                                     <div class="form-group mt-4 text-right">
                                         <button type="submit" class="btn btn-secondary">Save Preferences</button>

@@ -267,8 +267,7 @@
                                                                 data-price="{{ $value['price'] }}">
                                                                 {{ $value['option_values']['option_name_en'] ?? 'N/A' }}
                                                                 @if ($value['price'])
-                                                                    ({{ $value['price_prefix'] }}
-                                                                    {{ number_format($value['price'], 2) }})
+                                                                    ({{ $value['price_prefix'] }}{{ config('app.currency.symbol') }}{{ number_format($value['price'], 2) }})
                                                                 @endif
                                                             </option>
                                                         @endif
@@ -294,8 +293,7 @@
                                                                 for="radio_{{ $value['id'] }}">
                                                                 {{ $value['option_values']['option_name_en'] ?? 'N/A' }}
                                                                 @if ($value['price'])
-                                                                    ({{ $value['price_prefix'] }}
-                                                                    {{ number_format($value['price'], 2) }})
+                                                                    ({{ $value['price_prefix'] }}{{ config('app.currency.symbol') }}{{ number_format($value['price'], 2) }})
                                                                 @endif
                                                             </label>
                                                         </div>
@@ -319,8 +317,7 @@
                                                                 for="checkbox_{{ $value['option_value_id'] }}">
                                                                 {{ $value['option_values']['option_name_en'] ?? 'N/A' }}
                                                                 @if ($value['price'])
-                                                                    ({{ $value['price_prefix'] }}
-                                                                    {{ number_format($value['price'], 2) }})
+                                                                    ({{ $value['price_prefix'] }}{{ config('app.currency.symbol') }}{{ number_format($value['price'], 2) }})
                                                                 @endif
                                                             </label>
                                                         </div>
@@ -579,9 +576,9 @@
                                         </a></h3>
 
                                     <h4 class="product-price">
-                                        <del>${{ $product1->previous_price }}</del>
+                                        <del>{{ config('app.currency.symbol') }}{{ $product1->previous_price }}</del>
 
-                                        ${{ $product1->current_price }}
+                                        {{ config('app.currency.symbol') }}{{ $product1->current_price }}
                                     </h4>
                                 </div>
                             </div>

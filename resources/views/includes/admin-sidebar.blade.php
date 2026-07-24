@@ -111,33 +111,33 @@
                     </a>
                     <div class="collapse" id="order">
                         <ul class="nav nav-collapse">
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.all.order') }}">
                                     <span class="sub-item">All Orders</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.pending.order') }}">
                                     <span class="sub-item">Pending Orders</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.processing.order') }}">
                                     <span class="sub-item">Processing Orders</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.progress.order') }}">
                                     <span class="sub-item">Progress Orders</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.delivered.order') }}">
                                     <span class="sub-item">Delivered Orders</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.canceled.order') }}">
                                     <span class="sub-item">Canceled Orders</span>
                                 </a>
@@ -266,43 +266,43 @@
                     </a>
                     <div class="collapse" id="preferences">
                         <ul class="nav nav-collapse">
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.home.preferences') }}">
                                     <span class="sub-item">Home Preferences</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.about.preferences') }}">
                                     <span class="sub-item">About Preferences</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.service.preferences') }}">
                                     <span class="sub-item">Service Preferences</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.store.preferences') }}">
                                     <span class="sub-item">Store Preferences</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.contact.preferences') }}">
                                     <span class="sub-item">Contact Preferences</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.categories.preferences') }}">
                                     <span class="sub-item">Categories Preferences</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.brands.preferences') }}">
                                     <span class="sub-item">Brands Preferences</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li>
                                 <a class="sub-link" href="{{ route('admin.cart.preferences') }}">
                                     <span class="sub-item">Cart Preferences</span>
                                 </a>

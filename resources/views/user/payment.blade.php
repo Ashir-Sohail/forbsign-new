@@ -42,7 +42,7 @@
                                     <div class="single-payment-method">
                                         <a class="text-decoration-none " href="#" data-bs-toggle="modal"
                                             data-bs-target="#stripe">
-                                            <img class=""
+                                            <img
                                                 src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1601930611stripe-logo-blue.png"
                                                 alt="Stripe" title="Stripe">
                                             <p>Stripe</p>
@@ -51,7 +51,7 @@
                                     <div class="single-payment-method">
                                         <a class="text-decoration-none " href="#" data-bs-toggle="modal"
                                             data-bs-target="#bank">
-                                            <img class=""
+                                            <img
                                                 src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1638530860pngwing.com (1).png"
                                                 alt="Bank Transfer" title="Bank Transfer">
                                             <p>Bank Transfer</p>
@@ -62,7 +62,7 @@
                                     <div class="single-payment-method">
                                         <a class="text-decoration-none " href="#" data-bs-toggle="modal"
                                             data-bs-target="#cod">
-                                            <img class=""
+                                            <img
                                                 src="https://support.sitegiant.com/wp-content/uploads/2022/08/cash-on-delivery-banner.png"
                                                 alt="Flutter Wave" title="Flutter Wave">
                                             <p>Cash on Delivery</p>
@@ -85,7 +85,7 @@
                             </div>
                             <form action="{{ route('user.checkout.cash.on.delivery') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="payment_method" value="Cash On Delivery" id="">
+                                <input type="hidden" name="payment_method" value="Cash On Delivery">
                                 <div class="card-body">
                                     <p>Cash on Delivery basically means you will pay the amount of product while you get the
                                         item delivered to you.</p>

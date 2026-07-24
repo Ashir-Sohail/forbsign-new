@@ -8,7 +8,7 @@
 <body>
     <h1>Thank you for your order!</h1>
     <p>Order ID: {{ $order->id }}</p>
-    <p>Total: ${{ $order->total }}</p>
+    <p>Total: {{ config('app.currency.symbol') }}{{ $order->total }}</p>
     <p>We'll notify you once it ships.</p>
 </body>
 

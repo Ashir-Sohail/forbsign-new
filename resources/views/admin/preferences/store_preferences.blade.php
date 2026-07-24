@@ -51,7 +51,7 @@
                                         <!-- Store Tab -->
                                         <div class="tab-pane fade show active" id="store" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="store_title">Title*</label>
+                                                <label for="store_title">Title<span class="req-star">*</span></label>
                                                 <input type="text" name="store_title" class="form-control"
                                                     id="store_title"
                                                     value="{{ old('store_title', $storepreferences['store_title'] ?? '') }}"
@@ -63,7 +63,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="store_heading">Heading*</label>
+                                                <label for="store_heading">Heading<span class="req-star">*</span></label>
                                                 <input type="text" name="store_heading" class="form-control"
                                                     id="store_heading"
                                                     value="{{ old('store_heading', $storepreferences['store_heading'] ?? '') }}"
@@ -79,7 +79,7 @@
                                         <!-- Card Tab -->
                                         <div class="tab-pane fade" id="card" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="card_heading1">Heading1*</label>
+                                                <label for="card_heading1">Heading1<span class="req-star">*</span></label>
                                                 <input type="text" name="card_heading1" class="form-control"
                                                     id="card_heading1"
                                                     value="{{ old('card_heading1', $storepreferences['card_heading1'] ?? '') }}"
@@ -91,7 +91,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-check">
-                                                <label for="card_heading2">Heading2*</label>
+                                                <label for="card_heading2">Heading2<span class="req-star">*</span></label>
                                                 <input type="text" class="form-control" name="card_heading2"
                                                     id="card_heading2"
                                                   value="{{ old('card_heading2', $storepreferences['card_heading2'] ?? '') }}" required>
@@ -103,7 +103,7 @@
                                             @enderror
 
                                             <div class="form-check">
-                                                <label for="card_heading3">Heading3*</label>
+                                                <label for="card_heading3">Heading3<span class="req-star">*</span></label>
                                                 <input type="text" class="form-control" name="card_heading3"
                                                     id="card_heading3"
                                                   value="{{ old('card_heading3', $storepreferences['card_heading3'] ?? '') }}" required>
@@ -118,7 +118,7 @@
                                         {{-- Information --}}
                                         <div class="tab-pane fade" id="information" role="tabpanel">
                                             <div class="form-group">
-                                                <label for="information_icon1">Icon1*</label>
+                                                <label for="information_icon1">Icon1<span class="req-star">*</span></label>
                                                 <textarea name="information_icon1" class="form-control" id="information_icon1" required>{{ old('information_icon1', $storepreferences['information_icon1'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon1')
@@ -127,7 +127,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading1">Heading1*</label>
+                                                <label for="information_heading1">Heading1<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading1" class="form-control"
                                                     id="information_heading1"
                                                     value="{{ old('information_heading1', $storepreferences['information_heading1'] ?? '') }}"
@@ -139,7 +139,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_description1">Description1*</label>
+                                                <label for="information_description1">Description1<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_description1" class="form-control" id="information_description1"
                                                     required>{{ old('information_description1', $storepreferences['information_description1'] ?? '') }}</textarea>
                                             </div>
@@ -150,7 +150,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_icon2">Icon2*</label>
+                                                <label for="information_icon2">Icon2<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_icon2" class="form-control" id="information_icon2" required>{{ old('information_icon2', $storepreferences['information_icon2'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon2')
@@ -159,7 +159,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading2">Heading2*</label>
+                                                <label for="information_heading2">Heading2<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading2" class="form-control"
                                                     id="information_heading2"
                                                     value="{{ old('information_heading2', $storepreferences['information_heading2'] ?? '') }}"
@@ -172,7 +172,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_description2">Description2*</label>
+                                                <label for="information_description2">Description2<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_description2" class="form-control" id="information_description2"
                                                     required>{{ old('information_description2', $storepreferences['information_description2'] ?? '') }}</textarea>
                                             </div>
@@ -183,7 +183,7 @@
                                             @enderror
 
                                             <div class="form-group">
-                                                <label for="information_icon3">Icon3*</label>
+                                                <label for="information_icon3">Icon3<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_icon3" class="form-control" id="information_icon3" required>{{ old('information_icon3', $storepreferences['information_icon3'] ?? '') }}</textarea>
                                             </div>
                                             @error('information_icon3')
@@ -192,7 +192,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_heading3">Heading3*</label>
+                                                <label for="information_heading3">Heading3<span class="req-star">*</span></label>
                                                 <input type="text" name="information_heading3" class="form-control"
                                                     id="information_heading3"
                                                     value="{{ old('information_heading3', $storepreferences['information_heading3'] ?? '') }}"
@@ -204,7 +204,7 @@
                                                 </div>
                                             @enderror
                                             <div class="form-group">
-                                                <label for="information_Description3">Description3*</label>
+                                                <label for="information_Description3">Description3<span class="req-star">*</span></label>
                                                 <textarea type="text" name="information_Description3" class="form-control" id="information_Description3"
                                                     required>{{ old('information_Description3', $storepreferences['information_Description3'] ?? '') }}</textarea>
                                             </div>

@@ -26,7 +26,7 @@
                             @foreach ($compares as $compare)
                                 <tr>
                                     <td>{{ $compare->product->name }}</td>
-                                    <td>${{ $compare->product->current_price }}</td>
+                                    <td>{{ config('app.currency.symbol') }}{{ $compare->product->current_price }}</td>
                                     <td><img src="{{ \App\Helpers\FileUploadHelper::url($compare->product->featured_image) }}" width="50" alt=""></td>
                                     <td><a class="btn btn-success" href="{{ route('user.add_to_cart', ['id'=>$compare->product->id]) }}">cart</a></td>
                                 </tr>

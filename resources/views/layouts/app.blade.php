@@ -67,7 +67,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Modernizr-->
     <link rel="stylesheet" href="{{ asset('assets/front/css/min.css') }}">
-    <link id="" rel="stylesheet" media="screen" href="{{ asset('assets/front/css/style.css') }}">
+    <link rel="stylesheet" media="screen" href="{{ asset('assets/front/css/style.css') }}">
 
     <script src="{{ asset('assets/front/js/modernizr.min.js') }}"></script>
 
@@ -122,9 +122,9 @@
 
     <!-- Header-->
     <header class="header">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid bg-white">
-                <a class="logo" href="{{ route('user.home') }}">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid header-bar">
+                <a class="logo navbar-brand me-lg-3" href="{{ route('user.home') }}">
                     @if (!empty($media_value->logo))
                         <img src="{{ \App\Helpers\FileUploadHelper::url($media_value->logo) }}" alt="ForbSign Logo"
                             loading="lazy">
@@ -132,99 +132,76 @@
                         <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Default Logo">
                     @endif
                 </a>
-                <div class="d-flex align-items-center gap-3">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <button class="cart" id="cartButton">
-                        <img src="{{ asset('assets/imgs/shopping-basket.svg') }}" alt="">
-                        {{-- <span>{{ session('cart') ? count(session('cart')) : 0 }}</span> --}}
-                        <span id="cart-count">
-                            {{ session('cart') ? array_sum(array_column(session('cart'), 'quantity')) : 0 }}
-                        </span>
 
-                    </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                </div>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav gap-2 align-items-lg-center">
-                        <li>
-                            <a class="nav-link {{ Request::routeIs('user.home') ? 'active' : '' }}" href="{{ route('user.home') }}">Home</a>
+                    <ul class="navbar-nav gap-lg-2 align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('user.home') ? 'active' : '' }}"
+                                href="{{ route('user.home') }}">Home</a>
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link {{ Request::routeIs('user.about') ? 'active' : '' }}"
                                 href="{{ route('user.about') }}">About Us</a>
-
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link {{ Request::routeIs('user.services') ? 'active' : '' }}"
                                 href="{{ route('user.services') }}">Services</a>
-
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link {{ Request::routeIs('user.store') ? 'active' : '' }}"
                                 href="{{ route('user.store') }}">Store</a>
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link {{ Request::routeIs('user.contact') ? 'active' : '' }}"
                                 href="{{ route('user.contact') }}">Contact Us</a>
-
                         </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto gap-3">
-                        <li>
+                    <ul class="navbar-nav ms-lg-auto gap-lg-3 align-items-lg-center header-meta">
+                        <li class="nav-item">
                             <a class="nav-link header-icon"
-                                href="mailto:{{ $footer_value->email ?? 'info@forbsigns.co.uk' }}"><img
-                                    src="{{ asset('assets/imgs/envelope-Bold.svg') }}" alt=""
-                                    loading="lazy"> {{ $footer_value->email ?? 'info@forbsigns.co.uk' }}
+                                href="mailto:{{ $footer_value->email ?? 'info@forbsigns.co.uk' }}">
+                                <img src="{{ asset('assets/imgs/envelope-Bold.svg') }}" alt="" loading="lazy">
+                                <span class="header-meta-text">{{ $footer_value->email ?? 'info@forbsigns.co.uk' }}</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link header-icon"
-                                href="tel:{{ $footer_value->phone ?? '441915678060' }}"><img
-                                    src="{{ asset('assets/imgs/mobile-Bold.svg') }} " alt="" loading="lazy">
-                                {{ $footer_value->phone ?? '441915678060' }}
+                                href="tel:{{ $footer_value->phone ?? '441915678060' }}">
+                                <img src="{{ asset('assets/imgs/mobile-Bold.svg') }}" alt="" loading="lazy">
+                                <span class="header-meta-text">{{ $footer_value->phone ?? '441915678060' }}</span>
                             </a>
                         </li>
-                        <li class="dropdown-center ms-lg-3">
+                        <li class="nav-item">
                             @php
                                 $iconRoute = Auth::check() ? route('user.dashboard') : route('user.login');
                             @endphp
-
-                            <a href="{{ $iconRoute }}" class="nav-link header-icon"
-                                style="display: inline-block;">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-                                    style="
-                                    width: 21px;
-                                    fill: #EE903B;
-                                    "><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                            <a href="{{ $iconRoute }}" class="nav-link header-icon header-user-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true">
                                     <path
                                         d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z">
                                     </path>
                                 </svg>
                             </a>
-
                         </li>
-
-                        <!-- Navbar Search Icon -->
                         <li class="nav-item">
                             <a class="nav-link header-icon" href="#" id="toggleSearch">
                                 <img src="{{ asset('assets/imgs/search.svg') }}" alt="Search" loading="lazy">
                             </a>
                         </li>
-
-                        <!-- Hidden Search Bar -->
-                        <!-- <li class="nav-item d-none" id="searchFormWrapper">
-                            <form class="d-flex" action="{{ route('user.search.product') }}" method="GET">
-                                <input class="form-control me-2" type="search" name="query"
-                                    placeholder="Search Products" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
-                        </li> -->
-
                     </ul>
                 </div>
+
+                <button class="cart" id="cartButton" type="button" aria-label="Cart">
+                    <img src="{{ asset('assets/imgs/shopping-basket.svg') }}" alt="">
+                    <span id="cart-count">
+                        {{ session('cart') ? array_sum(array_column(session('cart'), 'quantity')) : 0 }}
+                    </span>
+                </button>
             </div>
         </nav>
     </header>
@@ -399,9 +376,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
         integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     {{-- <script src="{{ asset('assets/front/js/theme.js.pagespeed.ce.CmKusEWjD7.js') }}"
         type="4b452d4c437ae2859da130d7-text/javascript"></script>

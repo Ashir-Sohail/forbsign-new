@@ -35,7 +35,7 @@
 
                                             <!-- Title -->
                                             <div class="form-group">
-                                                <label for="title">Title *</label>
+                                                <label for="title">Title <span class="req-star">*</span></label>
                                                 <input type="text" name="title" class="form-control" id="title"
                                                     value="{{ old('title') }}" placeholder="Enter title">
                                                 @error('title')
@@ -45,7 +45,7 @@
 
                                             <!-- Body (CKEditor) -->
                                             <div class="form-group">
-                                                <label for="body">Body *</label>
+                                                <label for="body">Body <span class="req-star">*</span></label>
                                                 <textarea name="body" class="form-control" id="body" rows="5" placeholder="Enter content">{{ old('body') }}</textarea>
                                                 @error('body')
                                                     <span class="text-danger">{{ $message }}</span>

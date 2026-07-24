@@ -17,8 +17,6 @@ class ProductOptionValue extends Model
         'subtract',
         'price_prefix',
         'price',
-        'points_prefix',
-        'points',
         'weight_prefix',
         'weight',
     ];

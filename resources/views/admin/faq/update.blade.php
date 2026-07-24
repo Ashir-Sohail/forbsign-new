@@ -33,7 +33,7 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">Title *</label>
+                                                <label for="name">Title <span class="req-star">*</span></label>
                                                 <input type="text" name="title" class="form-control item-name"
                                                     id="name" placeholder="Enter Title" value="{{ $faq->title }}">
                                                 @error('title')
@@ -52,7 +52,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="slug">Select Category *</label>
+                                                <label for="slug">Select Category <span class="req-star">*</span></label>
                                                 <select name="cat_id" id="cat_id" class="form-control">
                                                     <option value="">Select Category</option>
                                                     @foreach ($faq_categories as $category)
