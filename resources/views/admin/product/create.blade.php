@@ -249,7 +249,7 @@
                                     <div class="form-group">
                                         <label for="category_id">Select Category *</label>
                                         <select name="cat_id" id="category_id"
-                                            data-href="{{ url('admin/product/nested/sub/category') }}"
+                                            data-href="{{ route('admin.product.get.sub.category') }}"
                                             class="form-control category-dropdown">
                                             <option value="" selected>Select One</option>
                                             @foreach ($categories as $category)
@@ -501,7 +501,7 @@
             let tbody = block.find('.option-value-rows');
 
             $.ajax({
-                url: '/admin/product/get-option-values/' + optionId,
+                url: "{{ route('admin.product.get.option.values', ['id' => '__ID__']) }}".replace('__ID__', optionId),
                 type: 'GET',
                 success: function(data) {
                     tbody.empty();

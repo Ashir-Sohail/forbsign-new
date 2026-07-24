@@ -9,7 +9,7 @@
         ->implode(', ');
 @endphp
 @section('meta_keywords', $keywords)
-@section('canonical_url', url('blog/' . ($blog->meta_url ?? '')))
+@section('canonical_url', route('user.blog_details', $blog->meta_url ?? $blog->id))
 
 @section('content')
     <div class="container my-4">

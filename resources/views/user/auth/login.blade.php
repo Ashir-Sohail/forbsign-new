@@ -11,7 +11,7 @@
                     <div class="row gy-4 floating_lables">
                         <div class="col-12 mb-4">
                             <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Fobsign logo" class=""
-                                loading="lazy" style="width: 190px;">
+                                loading="lazy" style="width: 230px; max-width: 100%; height: auto;">
                         </div>
                         <div class="col-12">
                             <h5>
@@ -42,14 +42,52 @@
                         <div class="col-12">
                             <button type="submit" class="btn primary_btn w-100 rounded-0">Sign in</button>
                             <a href="{{ route('user.register') }}" class="orang_btn w-100 rounded-0 mt-3">Create Account</a>
+                            <a href="{{ route('password.forgot') }}" class="login-forgot-link d-inline-block mt-3">Forgot password?</a>
                         </div>
-                        <a href="{{route('password.forgot')}}" class="text-center mt-3">Forgot Password?</a>
                     </div>
                 </form>
             </div>
         </div>
     </section>
 
+    <style>
+        #login .login-forgot-link {
+            color: #EE903B;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease, text-decoration-color 0.2s ease;
+        }
+
+        #login .login-forgot-link:hover,
+        #login .login-forgot-link:focus {
+            color: #d67a2a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            outline: none;
+        }
+
+        /* Keep Create Account on one line on narrow phones */
+        #login .orang_btn {
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 400px) {
+            #login .login_box {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            #login .orang_btn,
+            #login .btn.primary_btn {
+                font-size: 15px;
+                line-height: 22px;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
     <div id="qualityhelpinstall" class="store_footer_top">
         <div class="container">
             <div class="row justify-content-between align-items-center">

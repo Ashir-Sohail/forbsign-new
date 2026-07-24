@@ -150,7 +150,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav gap-2 align-items-lg-center">
                         <li>
-                            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
+                            <a class="nav-link {{ Request::routeIs('user.home') ? 'active' : '' }}" href="{{ route('user.home') }}">Home</a>
                         </li>
                         <li>
                             <a class="nav-link {{ Request::routeIs('user.about') ? 'active' : '' }}"

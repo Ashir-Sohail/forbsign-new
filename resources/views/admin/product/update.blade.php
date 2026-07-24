@@ -914,7 +914,7 @@
             let tbody = block.find('.option-value-rows');
 
             $.ajax({
-                url: '/admin/product/get-option-values/' + optionId,
+                url: "{{ route('admin.product.get.option.values', ['id' => '__ID__']) }}".replace('__ID__', optionId),
                 type: 'GET',
                 success: function(data) {
                     tbody.empty();

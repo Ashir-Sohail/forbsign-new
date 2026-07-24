@@ -16,10 +16,10 @@
                         <div class="col-12 mb-4">
                             @if (!empty($media_value->logo))
                                 <img src="{{ \App\Helpers\FileUploadHelper::url($media_value->logo) }}" alt="ForbSign Logo"
-                                    loading="lazy" style="width:190px">
+                                    loading="lazy" style="width: 230px; max-width: 100%; height: auto;">
                             @else
                                 <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Default Logo"
-                                    style="width:60px;height:70px">
+                                    loading="lazy" style="width: 230px; max-width: 100%; height: auto;">
                             @endif
                         </div>
                         <div class="col-12">

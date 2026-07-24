@@ -7,7 +7,7 @@
         <div class="container">
             <div class="column">
                 <ul class="breadcrumbs">
-                    <li><a href="/">Home</a> </li>
+                    <li><a href="{{ route('user.home') }}">Home</a> </li>
                     <li class="separator"></li>
                     <li>Review your order and pay</li>
                 </ul>

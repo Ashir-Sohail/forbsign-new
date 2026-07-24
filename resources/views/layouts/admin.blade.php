@@ -168,7 +168,7 @@
             const serial = $('#option-serial').val();
 
             $.ajax({
-                url: '/admin/option-value/update/' + id,
+                url: "{{ route('admin.option.value.update', ['id' => '__ID__']) }}".replace('__ID__', id),
                 method: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}',

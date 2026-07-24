@@ -38,7 +38,7 @@
         <div class="container-fluid">
             <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                 <li class="nav-item mr-4">
-                    <a class="btn btn-sm btn-primary py-1 text-white" title="website" href="/" target="_blank">
+                    <a class="btn btn-sm btn-primary py-1 text-white" title="website" href="{{ route('user.home') }}" target="_blank">
                         <b> View Website</b>
                     </a>
                 </li>

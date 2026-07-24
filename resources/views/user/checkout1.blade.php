@@ -7,7 +7,7 @@
         <div class="container">
             <div class="column">
                 <ul class="breadcrumbs">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="{{ route('user.home') }}">Home</a></li>
                     <li class="separator"></li>
                     <li>Billing address</li>
                 </ul>
@@ -24,7 +24,7 @@
                         {{-- <h6>Already have an account? <span>Sign in now</span></h6> --}}
                         @guest
                             {{-- <h6>Already have an account? <span>Sign in now</span></h6>
-                            <a href="/login"><span>Sign in now</span></a> --}}
+                            <a href="{{ route('user.login') }}"><span>Sign in now</span></a> --}}
                             {{-- <h6>Already have an account? <a href="{{ route('user.register') }}" class="text-orang">Sign in now</a></h6> --}}
                             <h6>Already have an account?<a
                                     href="{{ route('user.register', ['redirect_to' => url()->current()]) }}"

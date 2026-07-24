@@ -16,10 +16,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="breadcrumbs">
-                        <li><a href="/">Home</a>
+                        <li><a href="{{ route('user.home') }}">Home</a>
                         </li>
                         <li class="separator"></li>
-                        <li><a href="/shop">Shop</a>
+                        <li><a href="{{ route('user.store') }}">Shop</a>
                         </li>
                         <li class="separator"></li>
                         <li>{{ $product->name }}</li>
