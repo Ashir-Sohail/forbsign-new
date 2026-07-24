@@ -15,7 +15,6 @@ class Order extends Model
         'billing_address_id',
         'order_status',
         'total',
-        'website_id',
     ];
 
     public function user(): BelongsTo
@@ -34,10 +33,5 @@ class Order extends Model
     public function billingAddress()
     {
         return $this->belongsTo(BillingAddress::class);
-    }
-
-    public function website()
-    {
-        return $this->belongsTo(Website::class);
     }
 }

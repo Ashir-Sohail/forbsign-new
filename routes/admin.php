@@ -26,8 +26,6 @@ use App\Http\Controllers\Admin\ProductEnquiryController;
 use App\Http\Controllers\Admin\EmailTemplateController;
 use App\Http\Controllers\Admin\PreferencesController;
 use App\Http\Controllers\Admin\ClientController;
-use App\Http\Controllers\Admin\WebsiteController;
-use App\Http\Controllers\Admin\WebsiteTemplateController;
 
 
 Route::prefix('admin')->group(function () {
@@ -303,28 +301,6 @@ Route::prefix('admin')->group(function () {
             Route::post('/brands/store/preferences', 'brands_store')->name('admin.brands.store.preferences');
             Route::get('/cart/preferences', 'cart_preferences')->name('admin.cart.preferences');
             Route::post('/cart/store/preferences', 'cart_store')->name('admin.cart.store.preferences');
-        });
-
-        // Website Route
-        Route::controller(WebsiteController::class)->group(function () {
-            Route::get('/website/index', 'index')->name('admin.website.index');
-            Route::get('/website/create', 'create')->name('admin.website.create');
-            Route::post('/website/store', 'store')->name('admin.website.store');
-            Route::get('/website/edit/{id}', 'edit')->name('admin.website.edit');
-            Route::post('/website/update/{id}', 'update')->name('admin.website.update');
-            Route::get('/website/status/{id}', 'update_status')->name('admin.website.change.status');
-            Route::delete('/website/delete/{id}', 'delete')->name('admin.website.delete');
-        });
-
-        // Website Template Route
-        Route::controller(WebsiteTemplateController::class)->group(function () {
-            Route::get('/website-template/index', 'index')->name('admin.website-template.index');
-            Route::get('/website-template/create', 'create')->name('admin.website-template.create');
-            Route::post('/website-template/store', 'store')->name('admin.website-template.store');
-            Route::get('/website-template/edit/{id}', 'edit')->name('admin.website-template.edit');
-            Route::post('/website-template/update/{id}', 'update')->name('admin.website-template.update');
-            Route::get('/website-template/status/{id}', 'update_status')->name('admin.website-template.change.status');
-            Route::delete('/website-template/delete/{id}', 'delete')->name('admin.website-template.delete');
         });
     });
 });

@@ -21,7 +21,5 @@ class Blog extends Model
         'meta_keyword',
         'meta_description',
         'meta_url',
-        'website_id',
-        'client_id',
     ];
 }

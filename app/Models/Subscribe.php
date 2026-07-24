@@ -12,6 +12,5 @@ class Subscribe extends Model
    protected $table = 'subscribes';
    protected $fillable = [
       'email',
-      'website_id'
    ];
 }

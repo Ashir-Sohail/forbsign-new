@@ -1,9 +1,24 @@
 # Forbsign Code Review — Bug Report
 
-Generated: 2026-07-13
+Generated: 2026-07-13  
+Updated: 2026-07-20 (added UI/S3 findings + spreadsheet sheet)  
 Scope: full codebase (app/, routes/, config/, resources/views/, resources/js/) — vendor/ excluded.
 
+**Sheet (Excel / Google Sheets):** [`BUG_REPORT_SHEET.csv`](./BUG_REPORT_SHEET.csv)  
+**Interactive canvas:** open `forbsign-bug-report-sheet.canvas.tsx` beside chat
+
 Severity key: **Critical** (money/security/data loss, fix now) · **High** (broken feature or real security gap) · **Medium** (real bug, limited blast radius) · **Low** (edge case / cleanup)
+
+---
+
+## Sheet summary (counts)
+
+| Status | Critical | High | Medium | Low | Total |
+|--------|----------|------|--------|-----|-------|
+| Open   | ~18      | ~18  | ~18    | ~8  | ~62   |
+| Fixed (UI/S3 session) | — | 3 | 3 | — | 6 |
+
+Import `BUG_REPORT_SHEET.csv` into Google Sheets or Excel for filtering by Category / Severity / Status / Priority.
 
 ---
 
@@ -173,3 +188,18 @@ Also (Low, from Admin review): `app/Http/Controllers/Admin/ChildCategoryControll
 4. **§4 Admin panel fatals** — restore basic admin functionality (custom sizes/colors/images, product options).
 5. **§6 DB/model mismatches** — decide whether to finish or roll back the multi-tenancy migration.
 6. **§7 XSS**, **§8 uploads**, **§9 routing/config**, **§10 misc** — harden afterward.
+
+---
+
+## 11. Frontend / S3 UI issues (from Jul 2026 session)
+
+| ID | Severity | Status | Issue |
+|----|----------|--------|-------|
+| UI-01 | High | Fixed | Home `image1` used raw path instead of `FileUploadHelper::url` |
+| UI-02 | High | Fixed | Missing static assets (`icon.svg`, `section.jpg`, `image8.jpg`, `CustomerPhotos.png`) |
+| UI-03 | High | Fixed | `primary_btn` invisible text / strange hover (white-on-white) |
+| UI-04 | Medium | Fixed | Inconsistent button classes (`primery_btn` / `btn-primary` / `btn_black`) → standardized to `btn primary_btn` |
+| UI-05 | Medium | Fixed | Blade views used `Storage::disk('s3')->url` directly |
+| UI-06 | Medium | Fixed | Controllers used raw S3 upload/delete — migrated to `FileUploadHelper` |
+| UI-07 | Low | Open | Related pages (contact, about, brand, etc.) still reference missing `image8.jpg` / `CustomerPhotos.png` |
+| UI-08 | Medium | Open | `user-sidebar` “Remove Account” hardcodes geniusdevs.com demo URL |

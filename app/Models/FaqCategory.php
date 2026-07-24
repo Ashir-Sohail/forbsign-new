@@ -12,13 +12,11 @@ class FaqCategory extends Model
 
     protected $table = 'faq_categories';
     protected $fillable = [
-        'client_id',
         'name',
         'slug',
         'text',
         'meta_keyword',
         'meta_description',
-        'website_id',
     ];
 
     function faqs() : HasMany {

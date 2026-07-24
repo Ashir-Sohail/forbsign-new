@@ -112,21 +112,6 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="website_id">Select Website*</label>
-                                                <select name="website_id" id="website_id" class="form-control">
-                                                    <option value="">-- Select Website --</option>
-                                                    @foreach ($website as $item)
-                                                        <option value="{{ $item->id }}"
-                                                            {{ old('website_id', $blog->website_id) == $item->id ? 'selected' : '' }}>
-                                                            {{ $item->domain_name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('website_id')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
                                                 <button type="submit" class="btn btn-secondary ">Update</button>
                                             </div>
                                         </form>

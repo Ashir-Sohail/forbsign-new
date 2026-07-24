@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 
 class Client extends Authenticatable
 {
@@ -23,8 +21,4 @@ class Client extends Authenticatable
     protected $hidden = [
         'password',
     ];
-    public function website(): HasOne
-    {
-        return $this->hasOne(Website::class);
-    }
 }

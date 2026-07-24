@@ -30,7 +30,6 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Name</th>
-                                        <th>Website</th>
                                         <th>Status</th>
                                         <th>Title</th>
                                         <th>Keywoard</th>
@@ -54,9 +53,6 @@
 
                                             <td>
                                                 {{ $brand->name }}
-                                            </td>
-                                             <td>
-                                                {{ $brand->website?->domain_name ?? 'N/A' }}
                                             </td>
                                             <td>
                                                 <div class="dropdown">

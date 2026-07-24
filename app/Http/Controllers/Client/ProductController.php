@@ -24,15 +24,15 @@ class ProductController extends Controller
 {
     public function index(): View
     {
-        $products = Product::where('client_id', auth()->guard('client')->id())->get();
+        $products = Product::latest()->get();
         return view('client.product.index', compact('products'));
     }
 
     public function create(): View
     {
-        $categories = Category::whereNull('parent_id')->where('client_id', auth()->guard('client')->id())->get(); // where parent_id null
-        $brands = Brand::where('client_id', auth()->guard('client')->id())->get();
-        $options = Option::with('option_values')->where('client_id', auth()->guard('client')->id())->get();
+        $categories = Category::whereNull('parent_id')->get();
+        $brands = Brand::latest()->get();
+        $options = Option::with('option_values')->get();
         return view('client.product.create', compact('categories', 'brands', 'options'));
     }
 
@@ -71,7 +71,6 @@ class ProductController extends Controller
         }
         $product = new Product();
         $product->name = $request->name;
-        $product->client_id = auth()->guard('client')->id();
         $product->slug = Str::slug($request->name);
         $product->featured_image = $filename;
         $product->images = json_encode($multipleImages);
@@ -161,8 +160,8 @@ class ProductController extends Controller
         ])->findOrFail($id);
 
         $options = Option::with('option_values')->get();
-        $brands = Brand::where('client_id', auth()->guard('client')->id())->get();
-        $categories = Category::whereNull('parent_id')->where('client_id', auth()->guard('client')->id())->get();
+        $brands = Brand::latest()->get();
+        $categories = Category::whereNull('parent_id')->get();
         $categoryIds = $this->getCategoryHierarchy($product->cat_id);
 
         // Check if the last category in the chain exists (i.e., the assigned category wasn't deleted)

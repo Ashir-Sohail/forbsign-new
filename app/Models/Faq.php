@@ -16,8 +16,6 @@ class Faq extends Model
         'title',
         'cat_id',
         'details',
-        'website_id',   
-        'client_id',
     ];
 
     function category(): BelongsTo

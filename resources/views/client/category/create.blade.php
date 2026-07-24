@@ -61,21 +61,6 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="website_id">Select Website*</label>
-                                                <select name="website_id" id="website_id" class="form-control">
-                                                    <option value="">-- Select Website --</option>
-                                                    @foreach ($websites as $item)
-                                                        <option value="{{ $item->id }}" {{ old('website_id') }}>
-                                                            {{ $item->domain_name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('website_id')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-
                                             {{-- <div class="form-group">
                                                 <label for="parent_id">Parent Category</label>
                                                 <select class="form-control" id="parent_id" name="parent_id">

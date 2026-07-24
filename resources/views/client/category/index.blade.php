@@ -30,7 +30,6 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Name</th>
-                                        <th>Website</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -46,9 +45,6 @@
                                             </td>
                                             <td>
                                                 {{ $category->name }}
-                                            </td>
-                                            <td>
-                                                {{ $category->website->domain_name ?? '' }}
                                             </td>
                                             <td>
 

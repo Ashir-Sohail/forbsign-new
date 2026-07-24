@@ -18,7 +18,7 @@ class OptionController extends Controller
 {
     public function index(): View
     {
-        $options = Option::where('client_id', auth()->guard('client')->id())->get();
+        $options = Option::latest()->get();
         return view('client.option.index', compact('options'));
     }
 
@@ -45,8 +45,6 @@ class OptionController extends Controller
         // }
         // Create Option
         $option = new Option();
-        // $option->image = $filename;
-        $option->client_id = auth()->guard('client')->id();
         $option->option_name_en = $request->option_name_en;
         $option->option_name_ar = $request->option_name_ar;
         $option->input_type = $request->input_type;
@@ -79,7 +77,7 @@ class OptionController extends Controller
 
     public function edit($id): View
     {
-        $option = Option::with('option_values')->where('client_id', auth()->id())->findOrFail($id);
+        $option = Option::with('option_values')->findOrFail($id);
         $InputType = Option::whereIn('input_type', ['select', 'radio', 'checkbox'])->get();
 
         return view('client.option.update', compact('option', 'InputType'));
@@ -100,7 +98,7 @@ class OptionController extends Controller
         ]);
 
         // 1. Find the main Option
-        $option = Option::where('client_id', auth()->id())->findOrFail($id);
+        $option = Option::findOrFail($id);
 
         // 2. Update the main Option
         $option->update([
@@ -174,7 +172,7 @@ class OptionController extends Controller
 
     public function delete($id): RedirectResponse
     {
-        $option = Option::where('client_id',auth()->guard('client')->id())->findOrFail($id);
+        $option = Option::findOrFail($id);
         // $path = public_path('storage\\' . $option->image);
         // if (File::exists($path)) {
         //     File::delete($path);
@@ -185,7 +183,7 @@ class OptionController extends Controller
 
     public function update_status($id): RedirectResponse
     {
-        $option = Option::where('client_id',auth()->guard('client')->id())->findOrFail($id);
+        $option = Option::findOrFail($id);
         if ($option->status == 1) {
             $option->status = 0;
             $option->save();

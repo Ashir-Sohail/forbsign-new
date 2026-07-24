@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use App\Models\Website;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,7 +11,6 @@ use App\Helpers\FileUploadHelper;
 
 class BlogController extends Controller
 {
-
     public function uploadImage(Request $request)
     {
         if ($request->hasFile('upload')) {
@@ -31,14 +29,13 @@ class BlogController extends Controller
 
     public function index(): View
     {
-        $blogs = Blog::where('client_id', auth()->guard('client')->id())->get();
+        $blogs = Blog::latest()->get();
         return view('client.blog.index', compact('blogs'));
     }
 
     public function create(): View
     {
-        $website = Website::where('client_id', auth()->guard('client')->id())->get();
-        return view('client.blog.create', compact('website'));
+        return view('client.blog.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -47,12 +44,10 @@ class BlogController extends Controller
             'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2096',
             'title' => 'required',
             'description' => 'required',
-            // 'tags' => 'required',
             'meta_title' => 'required',
             'meta_keywords' => 'required',
             'meta_description' => 'required',
             'meta_url' => 'required',
-            'website_id' => 'required|exists:websites,id',
         ]);
         $blog = new Blog();
 
@@ -61,12 +56,9 @@ class BlogController extends Controller
             $filename = FileUploadHelper::upload($request->file('image'), 'blog');
         }
 
-        $blog->client_id = auth()->guard('client')->user()->id;
-        $blog->website_id = $request->website_id;
         $blog->image = $filename;
         $blog->title = $request->title;
         $blog->description = $request->description;
-        // $blog->tags = $request->tags;
         $blog->meta_title = $request->meta_title;
         $blog->meta_keyword = $request->meta_keywords;
         $blog->meta_description = $request->meta_description;
@@ -77,9 +69,8 @@ class BlogController extends Controller
 
     public function edit($id): View
     {
-        $blog = Blog::where('client_id', auth()->guard('client')->id())->findOrFail($id);
-        $website = Website::where('client_id', auth()->guard('client')->id())->get();
-        return view('client.blog.update', compact('blog', 'website'));
+        $blog = Blog::findOrFail($id);
+        return view('client.blog.update', compact('blog'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -88,12 +79,10 @@ class BlogController extends Controller
             'image' => 'image|mimes:jpg,png,jpeg|max:2096',
             'title' => 'required',
             'description' => 'required',
-            // 'tags' => 'required',
             'meta_title' => 'required',
             'meta_keywords' => 'required',
             'meta_description' => 'required',
             'meta_url' => 'required',
-            'website_id' => 'required|exists:websites,id',
         ]);
         $blog = Blog::findOrFail($id);
 
@@ -106,10 +95,8 @@ class BlogController extends Controller
             );
         }
 
-        $blog->website_id = $request->website_id;
         $blog->title = $request->title;
         $blog->description = $request->description;
-        // $blog->tags = $request->tags;
         $blog->meta_title = $request->meta_title;
         $blog->meta_keyword = $request->meta_keywords;
         $blog->meta_description = $request->meta_description;
@@ -120,7 +107,7 @@ class BlogController extends Controller
 
     public function delete($id): RedirectResponse
     {
-        $blog = Blog::where('client_id', auth()->guard('client')->id())->findOrFail($id);
+        $blog = Blog::findOrFail($id);
         if ($blog->image) {
             FileUploadHelper::delete($blog->image);
         }

@@ -237,13 +237,6 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
-                    <a href="{{ route('client.website.index') }}">
-                        <i class="fas fa-globe"></i>
-                        <p>Websites</p>
-                    </a>
-                </li>
-
                 {{-- <li class="nav-item">
                     <a href="{{ route('admin.pages') }}">
                         <i class="fab fa-product-hunt"></i>

@@ -8,21 +8,18 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Website;
 
 class FaqCategoryController extends Controller
 {
     public function index(): View
     {
-        $client = auth()->user();
-        $faq_categories = FaqCategory::where('client_id', $client->id)->where('website_id', $client->website->id)->get();
+        $faq_categories = FaqCategory::latest()->get();
         return view('client.faq-category.index', compact('faq_categories'));
     }
 
     public function create(): View
     {
-        $website = Website::where('client_id', auth()->user()->id)->get();
-        return view('client.faq-category.create', compact('website'));
+        return view('client.faq-category.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -30,27 +27,19 @@ class FaqCategoryController extends Controller
         $validate = $request->validate([
             'name' => 'required|unique:faq_categories',
             'text' => 'required',
-            'website_id' => 'required',
-            // 'meta_keyword' => 'required',
-            // 'meta_description' => 'required',
         ]);
         FaqCategory::create([
-            'client_id' => auth()->user()->id,
-            'website_id' => $validate['website_id'],
             'name' => $validate['name'],
             'text' => $validate['text'],
             'slug' => Str::slug($validate['name']),
-            // 'meta_keyword' => $validate['meta_keyword'],
-            // 'meta_description' => $validate['meta_description'],
         ]);
         return redirect()->route('client.faq-category.index')->with('success', 'Faq category add successfully');
     }
 
     public function edit($id): View
     {
-        $website = Website::where('client_id', auth()->user()->id)->get();
         $faq_category = FaqCategory::findOrFail($id);
-        return view('client.faq-category.update', compact('website','faq_category'));
+        return view('client.faq-category.update', compact('faq_category'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -58,17 +47,11 @@ class FaqCategoryController extends Controller
         $validate = $request->validate([
             'name' => 'required',
             'text' => 'required',
-            'website_id' => 'required',
-            // 'meta_keyword' => 'required',
-            // 'meta_description' => 'required',
         ]);
         FaqCategory::where('id', $id)->update([
-            'website_id' => $validate['website_id'],
             'name' => $validate['name'],
-            'text' => $validate['text'], // add this line just for now
+            'text' => $validate['text'],
             'slug' => Str::slug($validate['name']),
-            // 'meta_keyword' => $validate['meta_keyword'],
-            // 'meta_description' => $validate['meta_description'],
         ]);
         return redirect()->route('client.faq-category.index')->with('success', 'Faq category update successfully');
     }

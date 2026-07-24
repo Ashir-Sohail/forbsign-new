@@ -57,9 +57,4 @@ class Category extends Model
         }
         return $depth;
     }
-
-    public function website()
-    {
-        return $this->belongsTo(Website::class, 'website_id');
-    }
 }

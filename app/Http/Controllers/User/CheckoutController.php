@@ -21,8 +21,6 @@ use App\Models\OrderItem;
 use Illuminate\Support\Facades\Log;
 use App\Models\ManageSite;
 use App\Http\Requests\StripePaymentRequest;
-use App\Models\Website;
-
 class CheckoutController extends Controller
 {
     public const ORDER_STATUS_PENDING = 'pending';
@@ -110,11 +108,6 @@ class CheckoutController extends Controller
 
         try {
             // 1. Save Billing Address
-            $host = $request->getHost();  // e.g. "abc.com" or "def.com"
-            // Remove the ".com" or any top-level domain
-            $domain = explode('.', $host)[0];  // "abc" or "def"
-            // Find the website ID based on the domain
-            $webid = Website::where('domain_name', $domain)->value('id');
             $billing = BillingAddress::updateOrCreate(
                 ['user_id' => Auth::id()],
                 [
@@ -130,7 +123,6 @@ class CheckoutController extends Controller
             // 2. Create Order
             $order = Order::create([
                 'user_id'            => Auth::id(),
-                'website_id'         => $webid,
                 'billing_address_id' => $billing->id,
                 'order_status'       => self::ORDER_STATUS_PENDING,
                 'total'              => 0,
@@ -236,7 +228,6 @@ class CheckoutController extends Controller
 
             // 6. Transaction Save
             Transaction::create([
-                'website_id'      => $webid,
                 'order_id'         => $order->id,
                 'user_id'          => Auth::id(),
                 'total_amount'     => $cartTotal,

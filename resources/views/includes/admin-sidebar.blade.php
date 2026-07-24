@@ -316,19 +316,6 @@
                         <p>Clients</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.website.index') }}">
-                        <i class="fas fa-globe"></i>
-                        <p>Websites</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('admin.website-template.index') }}">
-                        <i class="fas fa-globe"></i>
-                        <p>Website Template</p>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>

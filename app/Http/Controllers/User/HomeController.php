@@ -35,8 +35,6 @@ use App\Models\StorePreference;
 use App\Models\BrandsPreference;
 use App\Models\CategoriesPreference;
 use App\Models\CartPreference;
-use App\Models\Website;
-
 class HomeController extends Controller
 {
 
@@ -557,19 +555,12 @@ class HomeController extends Controller
 
     public function subscribe(Request $request)
     {
-        $host = $request->getHost();  // e.g. "abc.com" or "def.com"
-        // Remove the ".com" or any top-level domain
-        $domain = explode('.', $host)[0];  // "abc" or "def"
-        // Find the website ID based on the domain
-        $webid = Website::where('domain_name', $domain)->value('id');
         $request->validate([
             'email' => 'required|email|unique:subscribes,email'
         ]);
 
-        // Create a new subscription record
         Subscribe::create([
             'email' => $request->email,
-            'website_id' => $webid
         ]);
         return response()->json(['success' => true, 'message' => 'Subscribed successfully']);
     }

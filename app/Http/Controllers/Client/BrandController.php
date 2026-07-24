@@ -7,28 +7,24 @@ use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Models\Website;
 use App\Helpers\FileUploadHelper;
+use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
     public function index(): View
     {
-        $brands = Brand::where('client_id', auth()->guard('client')->id())->get();
+        $brands = Brand::latest()->get();
         return view('client.brand.index', compact('brands'));
     }
 
     public function create(): View
     {
-        $website = Website::where('client_id', auth()->guard('client')->id())->get();
-        return view('client.brand.create', compact('website'));
+        return view('client.brand.create');
     }
 
     public function store(BrandRequest $request): RedirectResponse
     {
-
         $filename = '';
         if ($request->hasFile('image')) {
             $filename = FileUploadHelper::upload($request->file('image'), 'brand');
@@ -37,7 +33,6 @@ class BrandController extends Controller
         $brand = new Brand();
         $brand->image = $filename;
         $brand->name = $request->name;
-        $brand->website_id = $request->website_id;
         $brand->slug = Str::slug($request->name);
         $brand->meta_title = $request->meta_title;
         $brand->meta_keyword = $request->meta_keyword;
@@ -51,8 +46,7 @@ class BrandController extends Controller
     public function edit($id): View
     {
         $brand = Brand::findOrFail($id);
-        $website = Website::where('client_id', auth()->guard('client')->id())->get();
-        return view('client.brand.update', compact('brand', 'website'));
+        return view('client.brand.update', compact('brand'));
     }
 
     public function update(BrandRequest $request, $id): RedirectResponse
@@ -69,7 +63,6 @@ class BrandController extends Controller
         }
 
         $brand->name = $request->name;
-        $brand->website_id = $request->website_id;
         $brand->slug = Str::slug($request->name);
         $brand->meta_title = $request->meta_title;
         $brand->meta_url = $request->meta_url;
