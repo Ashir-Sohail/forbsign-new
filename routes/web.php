@@ -155,4 +155,3 @@ Route::middleware(['auth'])->group(function () {
 
 
 require_once 'admin.php';
-require_once 'client.php';

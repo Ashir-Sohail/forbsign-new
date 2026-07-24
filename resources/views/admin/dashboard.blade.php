@@ -296,47 +296,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- total clients --}}
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats card-round">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-icon">
-                                        <div class="icon-big text-center icon-info  bubble-shadow-small">
-                                            <i class="fas fa-users"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col col-stats ml-3 ml-sm-0">
-                                        <div class="numbers">
-                                            <p class="mb-0"><b>Total Clients</b></p>
-                                            <h4 class="card-title">{{ $total_client }}</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    {{-- active clients --}}
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats card-round">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-icon">
-                                        <div class="icon-big text-center icon-info  bubble-shadow-small">
-                                            <i class="fas fa-users"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col col-stats ml-3 ml-sm-0">
-                                        <div class="numbers">
-                                            <p class="mb-0"><b>Active Clients</b></p>
-                                            <h4 class="card-title">{{ $active_client }}</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>

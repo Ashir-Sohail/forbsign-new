@@ -9,7 +9,6 @@
                 <form class="row" action="{{ route('user.make.login') }}" method="POST">
                     @csrf
                     <div class="row gy-4 floating_lables">
-                        <a href="{{route('client.login')}}">Login as Client</a>
                         <div class="col-12 mb-4">
                             <img src="{{ asset('assets/imgs/Fobsignlogo.svg') }}" alt="Fobsign logo" class=""
                                 loading="lazy" style="width: 190px;">

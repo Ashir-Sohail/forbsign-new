@@ -25,7 +25,6 @@ use App\Http\Controllers\Admin\CustomColorController;
 use App\Http\Controllers\Admin\ProductEnquiryController;
 use App\Http\Controllers\Admin\EmailTemplateController;
 use App\Http\Controllers\Admin\PreferencesController;
-use App\Http\Controllers\Admin\ClientController;
 
 
 Route::prefix('admin')->group(function () {
@@ -260,17 +259,6 @@ Route::prefix('admin')->group(function () {
             Route::post('/custom-color/update/{id}', 'update')->name('admin.custom_color.update');
             Route::get('/custom-color/delete/{id}', 'delete')->name('admin.custom_color.delete');
             Route::get('/custom-color/status/{id}', 'update_status')->name('admin.custom_color.change.status');
-        });
-
-        // Clients Route
-        Route::controller(ClientController::class)->group(function () {
-            Route::get('/client/index', 'index')->name('admin.client.index');
-            Route::get('/admin/client/create', 'create')->name('admin.client.create');
-            Route::post('/admin/client/store', 'store')->name('admin.client.store');
-            Route::get('/client/edit/{id}', 'edit')->name('admin.client.edit');
-            Route::post('/client/update/{id}', 'update')->name('admin.client.update');
-            Route::get('/client/status/{id}', 'update_status')->name('admin.client.change.status');
-            Route::delete('/client/delete/{id}', 'delete')->name('admin.client.delete');
         });
 
         // Email Template Route

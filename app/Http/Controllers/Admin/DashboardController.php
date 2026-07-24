@@ -10,9 +10,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\User;
-use App\Models\Client;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -31,14 +29,12 @@ class DashboardController extends Controller
         $total_brand = Brand::count();
         $total_transaction = Transaction::count();
         $total_blog = Blog::count();
-        $total_client = Client::count();
-        $active_client = Client::where('status', 1)->count();
+
         return view('admin.dashboard', compact(
             'pending_orders',
             'processing_orders',
             'progress_orders',
             'delivered_orders',
-            'canceled_orders',
             'canceled_orders',
             'all_orders',
             'total_earning',
@@ -48,8 +44,6 @@ class DashboardController extends Controller
             'total_brand',
             'total_transaction',
             'total_blog',
-            'total_client',
-            'active_client',
         ));
     }
 }

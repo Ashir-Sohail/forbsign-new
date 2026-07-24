@@ -310,12 +310,6 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.client.index') }}">
-                        <i class="fas fa-users"></i>
-                        <p>Clients</p>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
