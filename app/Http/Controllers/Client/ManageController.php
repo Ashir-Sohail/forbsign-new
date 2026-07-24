@@ -131,9 +131,12 @@ class ManageController extends Controller
 
     public function transactions_delete($id)
     {
-        $transactions = Transaction::findOrFail($id);
-        Order::whereOrderId($transactions->order_id)->delete();
-        $transactions->delete();
+        $client = auth()->guard('client')->user();
+
+        Transaction::where('website_id', $client->website->id)
+            ->findOrFail($id)
+            ->delete();
+
         return redirect()->route('client.transactions')->with('success', 'Transaction delete successfully');
     }
 }

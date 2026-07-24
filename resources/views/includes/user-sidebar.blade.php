@@ -38,28 +38,10 @@
                 href="{{ route('user.logout') }}"><i class="icon-log-out"></i>Logout</a> --}}
             <a class="list-group-item with-badge {{ Request::routeIs('user.logout') ? 'active' : '' }}" href="#"
                 data-bs-toggle="modal" data-bs-target="#confirm-logout"><i class="icon-log-out"></i>Logout</a>
+            <a class="list-group-item" href="#" data-bs-toggle="modal" data-bs-target="#confirm-remove-account"><i
+                    class="icon-x"></i>Remove Account</a>
         </nav>
     </aside>
-
-    <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Remove Account</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Are You Sure?</p>
-                    <p>Do you remove you account?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn primary_btn" data-bs-dismiss="modal">Close</button>
-                    <a href="https://geniusdevs.com/codecanyon/omnimart40/admin/remove/account"
-                        class="btn primary_btn">Remove Account</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </div>
 
@@ -88,6 +70,30 @@
                 </form>
             </div>
 
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirm-remove-account" tabindex="-1" aria-labelledby="confirmRemoveAccountLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmRemoveAccountLabel">Remove Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to permanently delete your account?</p>
+                <p class="mb-0">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn primary_btn" data-bs-dismiss="modal">Cancel</button>
+                <form action="{{ route('user.account.delete') }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn primary_btn">Remove Account</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -541,14 +541,6 @@ class HomeController extends Controller
         return view('user.blog', compact('blogs', 'recent_blogs'));
     }
 
-    public function blog_search(Request $request): View
-    {
-        $blogs = Blog::where('title', 'LIKE', '%' . $request->search . '%')->orWhere('title', 'LIKE', '%' . $request->search . '%')->latest()->get();
-        $recent_blogs = Blog::limit(4)->latest()->get();
-        // $categories = BlogCategory::latest()->get();
-        return view('user.blog', compact('blogs', 'categories', 'recent_blogs'));
-    }
-
     public function faq_category(): View
     {
         $faq_categories = FaqCategory::latest()->where('status', 1)->get();

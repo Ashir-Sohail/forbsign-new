@@ -66,7 +66,7 @@ class WishListController extends Controller
 
     function remove_wishlist($id)
     {
-        Wishlist::findOrFail($id)->delete();
+        Wishlist::whereUserId(auth()->id())->findOrFail($id)->delete();
         return redirect()->route('user.wishlist')->with('success', 'wishlist remove successfully');
     }
 }

@@ -101,4 +101,20 @@ class DashboardController extends Controller
         Auth::logout();
         return redirect()->route('user.login');
     }
+
+    public function deleteAccount()
+    {
+        $user = User::findOrFail(auth()->id());
+
+        if ($user->photo) {
+            FileUploadHelper::delete($user->photo);
+        }
+
+        $user->delete();
+
+        session()->forget('cart');
+        Auth::logout();
+
+        return redirect()->route('user.login')->with('success', 'Your account has been deleted successfully.');
+    }
 }

@@ -74,7 +74,6 @@ Route::controller(HomeController::class)->group(function () {
 
 
 
-    Route::get('/search/blog', 'blog_search')->name('user.search');
     Route::get('/blog/category/{id}', 'blog_by_category')->name('user.blog.category');
     Route::get('/product-details/{slug}', 'product_details')->name('user.product_details');
     Route::get('/customize-product', 'customize_product')->name('user.customize_product');
@@ -150,6 +149,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/address', 'show_address')->name('user.dashboard.address');
         Route::post('/update/address', 'update_address')->name('user.address.update');
         Route::post('/logout', 'logout')->name('user.logout');
+        Route::delete('/account', 'deleteAccount')->name('user.account.delete');
     });
 });
 
