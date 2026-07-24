@@ -24,7 +24,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\CustomImage;
-use App\Models\CustomFont;
 use App\Models\CustomColor;
 use App\Models\CustomSize;
 use App\Models\Order;
@@ -274,7 +273,6 @@ class HomeController extends Controller
         $defaultImage = $customImages->first();
         // dd($defaultImage->toArray());
 
-        // $customFonts = CustomFont::where('status', 1)->orderBy('serial')->get();
         $customColors = CustomColor::where('status', 1)->orderBy('serial')->get();
         $customSizes  = CustomSize::where('status', 1)->orderBy('serial')->get();
 

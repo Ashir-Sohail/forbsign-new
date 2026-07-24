@@ -63,12 +63,14 @@
                     </div>
 
                     <div class="col-12 mt-lg-5 mt-3">
-                        <div class="d-flex align-items-baseline gap-3">
-                            <input type="checkbox" id="check_input" class="check_box">
-                            <p class="m-0 text-start"><label for="check_input">I agree to the following <a href="#"
-                                        class="page_link">Terms of Use</a><span class="text-orang"> / </span><a
-                                        href="#" class="page_link"> Privacy
-                                        Policy.</a></label></p>
+                        <div class="register-agree d-flex align-items-start gap-2">
+                            <input type="checkbox" id="check_input" class="check_box register-agree__box">
+                            <label for="check_input" class="register-agree__label m-0 text-start">
+                                I agree to the following
+                                <a href="{{ route('user.terms') }}" class="page_link">Terms of Use</a><span
+                                    class="text-orang"> / </span><a href="{{ route('user.terms') }}"
+                                    class="page_link">Privacy Policy.</a>
+                            </label>
                         </div>
                     </div>
                     <div class="col-12">
@@ -115,6 +117,44 @@
             </div>
         </div>
     </div>
+    <style>
+        .register-agree__box {
+            flex-shrink: 0;
+            margin-top: 0.3em;
+        }
+
+        .register-agree__label {
+            flex: 1 1 0;
+            min-width: 0;
+            line-height: 1.45;
+            font-size: 15px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .register-agree__label .page_link {
+            white-space: nowrap;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        @media (max-width: 400px) {
+            .register-agree {
+                gap: 0.5rem !important;
+            }
+
+            .register-agree__label {
+                font-size: 13px;
+                line-height: 1.4;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .register-agree__label {
+                font-size: 12px;
+            }
+        }
+    </style>
     <script>
         const passwordInput = document.getElementById('login-pass');
         const showPasswordCheckbox = document.getElementById('show-password-checkbox');

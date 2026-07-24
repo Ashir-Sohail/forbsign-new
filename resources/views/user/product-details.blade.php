@@ -234,8 +234,6 @@
                         </div>
                         <div class="row gy-4 floating_lables">
 
-                            {{-- @include('includes.fonts-layout') --}}
-
 
                             @php
                                 $hasRequiredOptions = $product->productOptions->where('required', true)->isNotEmpty();

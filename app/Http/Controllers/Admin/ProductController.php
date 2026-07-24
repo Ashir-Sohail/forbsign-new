@@ -10,7 +10,6 @@ use App\Models\OptionValue;
 use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\ProductOptionValue;
-use App\Models\ProductSize;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -93,15 +92,6 @@ class ProductController extends Controller
 
         $product->save();
 
-
-        // if ($request->sizes) {
-        //     foreach ($request->sizes as $index => $size) {
-        //         ProductSize::create([
-        //             'product_id' => $product->id,
-        //             'size' => $size,
-        //         ]);
-        //     }
-        // }
 
         if ($request->has('product_option')) {
             foreach ($request->product_option as $option) {
@@ -266,25 +256,6 @@ class ProductController extends Controller
 
 
         $product->save();
-
-
-        // code to insert update product size
-        // if ($request->sizes) {
-        //     foreach ($request->sizes as $index => $size) {
-        //         // Check if this size already exists for this product
-        //         $alreadyExists = ProductSize::where('product_id', $product->id)
-        //             ->where('size', $size)
-        //             ->exists();
-
-        //         // If it does not exist, insert it
-        //         if (!$alreadyExists) {
-        //             ProductSize::create([
-        //                 'product_id' => $product->id,
-        //                 'size' => $size,
-        //             ]);
-        //         }
-        //     }
-        // }
 
 
         $product->productOptions()->delete(); // Clear existing product options

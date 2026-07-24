@@ -240,7 +240,7 @@
                 <h1>
                     Newsletter
                 </h1>
-                <form class="row subscriber-form" id="subscribeForm">
+                <form class="subscriber-form" id="subscribeForm">
                     @csrf
                     <div class="input_con">
                         <input class="form-control" type="email" name="email" id="email"
